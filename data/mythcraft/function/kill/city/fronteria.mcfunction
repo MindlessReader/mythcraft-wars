@@ -1,0 +1,1 @@
+function mythcraft:kill/killcity {cityName:Fronteria, advancementName:fronteria}
