@@ -1,0 +1,1 @@
+function mythcraft:kill/killskillloc {locationName:Athena-Library, advancementName:athena-library}

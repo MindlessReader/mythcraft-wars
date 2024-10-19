@@ -24,10 +24,22 @@ scoreboard objectives modify victoryPoints displayname "Victory Points"
 scoreboard players set Druids victoryPoints 0
 scoreboard players set Royals victoryPoints 0
 
+# add location id scoreboard
+scoreboard objectives add locationId dummy
+
 # add city scoreboards
 scoreboard objectives add cityOwnership dummy
 scoreboard objectives add cityConquerProgress dummy
 scoreboard objectives add cityConquerValue dummy
+
+# set city IDs
+scoreboard players set Celak locationId 1
+scoreboard players set Kings-Port locationId 2
+scoreboard players set Athens locationId 3
+scoreboard players set Delphi locationId 4
+scoreboard players set Povertane locationId 5
+scoreboard players set Amnis locationId 6
+scoreboard players set Fronteria locationId 7
 # set city ownership
 scoreboard players set Celak cityOwnership 0
 scoreboard players set Kings-Port cityOwnership 0
@@ -64,35 +76,72 @@ scoreboard players set FronteriaLastChecked cityConquerProgress 0
 # add team xp and levels
 scoreboard objectives add xpColosseum dummy
 scoreboard objectives add levelColosseum dummy
-scoreboard objectives add xpFortReference dummy
-scoreboard objectives add levelFortReference dummy
-scoreboard objectives add xpThothUniversity dummy
-scoreboard objectives add levelThothUniversity dummy
-scoreboard objectives add xpAthenaLibrary dummy
-scoreboard objectives add levelAthenaLibrary dummy
+scoreboard objectives add xpFort-Reference dummy
+scoreboard objectives add levelFort-Reference dummy
+scoreboard objectives add xpThoth-University dummy
+scoreboard objectives add levelThoth-University dummy
+scoreboard objectives add xpAthena-Library dummy
+scoreboard objectives add levelAthena-Library dummy
 
-#set xp and levels for teams
+# set location IDs
+scoreboard players set Colosseum locationId 8
+scoreboard players set Fort-Reference locationId 9
+scoreboard players set Thoth-University locationId 10
+scoreboard players set Athena-Library locationId 11
+
+# set xp and levels for teams
 scoreboard players set Druids xpColosseum 0
-scoreboard players set Druids xpFortReference 0
-scoreboard players set Druids xpThothUniversity 0
-scoreboard players set Druids xpAthenaLibrary 0
+scoreboard players set Druids xpFort-Reference 0
+scoreboard players set Druids xpThoth-University 0
+scoreboard players set Druids xpAthena-Library 0
 scoreboard players set Druids levelColosseum 0
-scoreboard players set Druids levelFortReference 0
-scoreboard players set Druids levelThothUniversity 0
-scoreboard players set Druids levelAthenaLibrary 0
+scoreboard players set Druids levelFort-Reference 0
+scoreboard players set Druids levelThoth-University 0
+scoreboard players set Druids levelAthena-Library 0
 
 scoreboard players set Royals xpColosseum 0
-scoreboard players set Royals xpFortReference 0
-scoreboard players set Royals xpThothUniversity 0
-scoreboard players set Royals xpAthenaLibrary 0
+scoreboard players set Royals xpFort-Reference 0
+scoreboard players set Royals xpThoth-University 0
+scoreboard players set Royals xpAthena-Library 0
 scoreboard players set Royals levelColosseum 0
-scoreboard players set Royals levelFortReference 0
-scoreboard players set Royals levelThothUniversity 0
-scoreboard players set Royals levelAthenaLibrary 0
+scoreboard players set Royals levelFort-Reference 0
+scoreboard players set Royals levelThoth-University 0
+scoreboard players set Royals levelAthena-Library 0
 
 # misc scoreboards
 scoreboard objectives add needsRekit deathCount
 scoreboard objectives add mathCounter dummy
+
+# quests
+scoreboard objectives add questKills dummy
+scoreboard objectives add questWinner dummy
+scoreboard objectives add questType dummy
+scoreboard objectives add questRewardType dummy
+scoreboard objectives add questReward dummy
+scoreboard objectives add questLocation dummy
+scoreboard objectives add questLocationOwner dummy
+scoreboard objectives add victoryPointQuestsRemaining dummy
+scoreboard objectives add questsRemaining dummy
+
+scoreboard players set Druids questKills 0
+scoreboard players set Royals questKills 0
+
+scoreboard players set QuestTracker questWinner 0
+scoreboard players set QuestTracker questType 0
+scoreboard players set QuestTracker questRewardType 0
+scoreboard players set QuestTracker questReward 0
+scoreboard players set QuestTracker questLocation 0
+
+scoreboard players set QuestTracker victoryPointQuestsRemaining 6
+scoreboard players set QuestTracker questsRemaining 10
+
+# rng scoreboards
+scoreboard objectives add RNG_Constant dummy
+scoreboard objectives add RNG_Variable dummy
+scoreboard players set C_1000 RNG_Constant 1000
+scoreboard players set C_314159 RNG_Constant 314159
+scoreboard players set C_2718281 RNG_Constant 2718281
+scoreboard players set RNGseed RNG_Variable 0
 
 #respawn all for testing
 function mythcraft:respawn/masterspawn

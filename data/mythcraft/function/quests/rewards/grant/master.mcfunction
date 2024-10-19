@@ -1,0 +1,8 @@
+# add tag to winning players
+execute if score QuestTracker questWinner matches 1 run tag @a[team=Druids] add wonLastQuest
+execute if score QuestTracker questWinner matches 2 run tag @a[team=Royals] add wonLastQuest
+
+# grant rewards
+execute if score QuestTracker questRewardType matches 1 run function mythcraft:quests/rewards/grant/item
+execute if score QuestTracker questRewardType matches 2 run function mythcraft:quests/rewards/grant/buff
+execute if score QuestTracker questRewardType matches 3 run function mythcraft:quests/rewards/grant/victorypoint
