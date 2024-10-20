@@ -52,4 +52,4 @@ execute if score QuestTracker questType matches 2 run function mythcraft:quests/
 tellraw @a {"bold":true,"color":"dark_purple","text":"~~~~~~~~~~"}
 
 #schedule end of quest
-#schedule function mythcraft:quests/endquest 10s
+schedule function mythcraft:quests/endquest 300s

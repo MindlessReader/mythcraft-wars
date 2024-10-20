@@ -17,4 +17,7 @@ item replace entity @s armor.chest with iron_chestplate 1
 item replace entity @s armor.legs with iron_leggings 1
 item replace entity @s armor.feet with iron_boots 1
 
+# apply buffs
+function mythcraft:applybuffs
+
 scoreboard players reset @s needsRekit
