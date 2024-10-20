@@ -9,5 +9,5 @@ execute if score QuestTracker questReward matches 5 run data modify storage myth
 execute if score QuestTracker questReward matches 6 run data modify storage mythcraft:quest rewardText set value "Netherite Axe"
 execute if score QuestTracker questReward matches 7 run data modify storage mythcraft:quest rewardText set value "3 Splash Potions of Harming II"
 execute if score QuestTracker questReward matches 8 run data modify storage mythcraft:quest rewardText set value "Lingering Potion of Poison II"
-execute if score QuestTracker questReward matches 9 run data modify storage mythcraft:quest rewardText set value "Sharpness 5 Trident"
+execute if score QuestTracker questReward matches 9 run data modify storage mythcraft:quest rewardText set value "Sharpness V Trident"
 execute if score QuestTracker questReward matches 10 run data modify storage mythcraft:quest rewardText set value "Multishot Crossbow"
