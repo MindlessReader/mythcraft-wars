@@ -12,3 +12,6 @@ $function mythcraft:respawn/spawnall {cityName:$(cityName), teamName:$(teamName)
 $scoreboard players set $(cityName) cityConquerProgress 0
 $scoreboard players set $(cityName)LastChecked cityConquerProgress 0
 $say The $(teamName) have conquered $(cityName)!
+
+# add to player's cities conquered statistic (for fun)
+scoreboard players add @s citiesConquered 1

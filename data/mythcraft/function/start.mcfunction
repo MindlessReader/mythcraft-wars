@@ -16,6 +16,7 @@ team modify Royals friendlyFire false
 scoreboard objectives add totalGameDeaths deathCount
 scoreboard objectives add totalGameKills totalKillCount
 scoreboard objectives add totalGamePlayerKills playerKillCount
+scoreboard objectives add citiesConquered dummy
 
 # add and set victory point scoreboards
 scoreboard objectives add victoryPoints dummy
