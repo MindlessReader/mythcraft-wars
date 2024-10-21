@@ -1,0 +1,13 @@
+[
+  {
+    "function": "minecraft:set_enchantments",
+    "enchantments": {
+      "minecraft:power": {
+        "type": "minecraft:score",
+        "target": "this",
+        "score": "levelColosseum",
+        "scale": 1
+      }
+    }
+  }
+]

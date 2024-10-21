@@ -1,0 +1,13 @@
+[
+  {
+    "function": "minecraft:set_enchantments",
+    "enchantments": {
+      "minecraft:protection": {
+        "type": "minecraft:score",
+        "target": "this",
+        "score": "levelFort-Reference",
+        "scale": 1
+      }
+    }
+  }
+]
