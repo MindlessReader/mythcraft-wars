@@ -86,18 +86,18 @@ scoreboard objectives add levelAthena-Library dummy
 scoreboard objectives add xpThresholds dummy
 
 # set xp thresholds
-scoreboard players add Threshold1 xpThresholds 40
-scoreboard players add Threshold2 xpThresholds 100
-scoreboard players add Threshold3 xpThresholds 180
-scoreboard players add Threshold4 xpThresholds 310
-scoreboard players add Threshold5 xpThresholds 500
+scoreboard players set Threshold1 xpThresholds 40
+scoreboard players set Threshold2 xpThresholds 100
+scoreboard players set Threshold3 xpThresholds 180
+scoreboard players set Threshold4 xpThresholds 310
+scoreboard players set Threshold5 xpThresholds 500
 
 # set xp thresholds (temporary for testing)
-scoreboard players add Threshold1 xpThresholds 1
-scoreboard players add Threshold2 xpThresholds 2
-scoreboard players add Threshold3 xpThresholds 3
-scoreboard players add Threshold4 xpThresholds 4
-scoreboard players add Threshold5 xpThresholds 5
+scoreboard players set Threshold1 xpThresholds 1
+scoreboard players set Threshold2 xpThresholds 2
+scoreboard players set Threshold3 xpThresholds 3
+scoreboard players set Threshold4 xpThresholds 4
+scoreboard players set Threshold5 xpThresholds 5
 
 # set location IDs
 scoreboard players set Colosseum locationId 8
@@ -123,6 +123,12 @@ scoreboard players set Royals levelColosseum 0
 scoreboard players set Royals levelFort-Reference 0
 scoreboard players set Royals levelThoth-University 0
 scoreboard players set Royals levelAthena-Library 0
+
+# reset player levels
+scoreboard players set @a levelColosseum 0
+scoreboard players set @a levelFort-Reference 0
+scoreboard players set @a levelThoth-University 0
+scoreboard players set @a levelAthena-Library 0
 
 # misc scoreboards
 scoreboard objectives add needsRekit deathCount
