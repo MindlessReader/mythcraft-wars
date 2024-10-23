@@ -14,7 +14,7 @@ $effect give @e[type=!marker,tag=$(cityName)] resistance 60 4
 # reset conquer score
 $scoreboard players set $(cityName) cityConquerProgress 0
 $scoreboard players set $(cityName)LastChecked cityConquerProgress 0
-$say The $(teamName) have conquered $(cityName)!
+$tellraw @a [{"color":"yellow","text":"The "},{"bold":true,"text":"$(teamName)"},{"color":"yellow","text":" have conquered "},{"bold":true,"text":"$(cityName)"},{"color":"yellow","text":"!"}]
 
 # add to player's cities conquered statistic (for fun)
 scoreboard players add @s citiesConquered 1
