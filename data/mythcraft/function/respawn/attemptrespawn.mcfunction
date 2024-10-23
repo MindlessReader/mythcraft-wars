@@ -9,6 +9,9 @@ $execute unless score EntityCount mathCounter = $(cityName) cityConquerValue run
 $execute if score EntityCount mathCounter = $(cityName) cityConquerValue if score $(cityName) cityOwnership matches 0 run function mythcraft:respawn/spawnall {cityName:$(cityName), teamName:Unaligned}
 $execute if score EntityCount mathCounter = $(cityName) cityConquerValue if score $(cityName) cityOwnership matches 1 run function mythcraft:respawn/spawnall {cityName:$(cityName), teamName:Druids}
 $execute if score EntityCount mathCounter = $(cityName) cityConquerValue if score $(cityName) cityOwnership matches 2 run function mythcraft:respawn/spawnall {cityName:$(cityName), teamName:Royals}
+$execute if score EntityCount mathCounter = $(cityName) cityConquerValue if score $(cityName) cityOwnership matches 0 run tellraw @a [{"bold":false,"text":"Unaligned"},{"color":"yellow","text":" troops have regrouped in "},{"bold":false,"text":"$(cityName)"},{"color":"yellow","text":"!"}]
+$execute if score EntityCount mathCounter = $(cityName) cityConquerValue if score $(cityName) cityOwnership matches 1 run tellraw @a [{"bold":false,"text":"Druids"},{"color":"yellow","text":" troops have regrouped in "},{"bold":false,"text":"$(cityName)"},{"color":"yellow","text":"!"}]
+$execute if score EntityCount mathCounter = $(cityName) cityConquerValue if score $(cityName) cityOwnership matches 2 run tellraw @a [{"bold":false,"text":"Royals"},{"color":"yellow","text":" troops have regrouped in "},{"bold":false,"text":"$(cityName)"},{"color":"yellow","text":"!"}]
 
 # reset conquer progress
 $scoreboard players set $(cityName) cityConquerProgress 0

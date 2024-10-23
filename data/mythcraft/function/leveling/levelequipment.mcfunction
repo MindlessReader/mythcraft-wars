@@ -8,7 +8,6 @@ execute as @s[team=Royals] run scoreboard players operation @s levelColosseum = 
 execute as @s[team=Royals] run scoreboard players operation @s levelFort-Reference = Royals levelFort-Reference
 execute as @s[team=Royals] run scoreboard players operation @s levelThoth-University = Royals levelThoth-University
 execute as @s[team=Royals] run scoreboard players operation @s levelAthena-Library = Royals levelAthena-Library
-say updated skills
 
 # give shield if they don't have one
 execute unless items entity @s[scores={levelFort-Reference=1..}] container.* shield run give @s shield[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}}] 1
