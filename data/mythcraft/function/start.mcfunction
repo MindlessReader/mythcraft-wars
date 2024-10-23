@@ -60,11 +60,11 @@ scoreboard players set Fronteria cityConquerProgress 0
 # set needed conquer value (same as number of markers and troops in that city)
 scoreboard players set Celak cityConquerValue 3
 scoreboard players set Kings-Port cityConquerValue 3
-scoreboard players set Athens cityConquerValue 1
-scoreboard players set Delphi cityConquerValue 1
-scoreboard players set Povertane cityConquerValue 1
-scoreboard players set Amnis cityConquerValue 1
-scoreboard players set Fronteria cityConquerValue 1
+scoreboard players set Athens cityConquerValue 3
+scoreboard players set Delphi cityConquerValue 3
+scoreboard players set Povertane cityConquerValue 3
+scoreboard players set Amnis cityConquerValue 3
+scoreboard players set Fronteria cityConquerValue 3
 # set last checked conquer progress
 scoreboard players set CelakLastChecked cityConquerProgress 0
 scoreboard players set Kings-PortLastChecked cityConquerProgress 0
