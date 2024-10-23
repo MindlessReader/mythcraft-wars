@@ -9,7 +9,6 @@ $execute if score QuestTracker questWinner matches 0 if score QuestTracker quest
 
 # respawn troops
 $function mythcraft:respawn/spawnall {cityName:$(cityName), teamName:$(teamName)}
-$tellraw @a [{"bold":false,"text":"$(teamName)"},{"color":"yellow","text":" troops have regrouped in "},{"bold":false,"text":"$(cityName)"},{"color":"yellow","text":"!"}]
 $effect give @e[type=!marker,tag=$(cityName)] resistance 60 4
 
 # reset conquer score
