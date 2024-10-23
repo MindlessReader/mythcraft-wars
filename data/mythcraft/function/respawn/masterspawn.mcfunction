@@ -5,3 +5,8 @@ function mythcraft:conquer {cityName:Delphi, teamId:0, teamName:Unaligned, rewar
 function mythcraft:conquer {cityName:Povertane, teamId:0, teamName:Unaligned, rewardFunction: povertane}
 function mythcraft:conquer {cityName:Amnis, teamId:0, teamName:Unaligned, rewardFunction: amnis}
 function mythcraft:conquer {cityName:Fronteria, teamId:0, teamName:Unaligned, rewardFunction: fronteria}
+
+function mythcraft:respawn/spawnall {cityName:Colosseum, teamName:Unaligned}
+function mythcraft:respawn/spawnall {cityName:Fort-Reference, teamName:Unaligned}
+function mythcraft:respawn/spawnall {cityName:Athena-Library, teamName:Unaligned}
+function mythcraft:respawn/spawnall {cityName:Thoth-University, teamName:Unaligned}

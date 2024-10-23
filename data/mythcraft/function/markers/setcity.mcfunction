@@ -20,9 +20,9 @@ execute as @s[tag=setmarker_amnis] run tag @e[type=marker,tag=spawnmarker,distan
 execute as @s[tag=setmarker_fronteria] run tag @e[type=marker,tag=spawnmarker,distance=..20] add Fronteria
 #Add Location tag
 execute as @s[tag=setmarker_colosseum] run tag @e[type=marker,tag=spawnmarker,distance=..20] add Colosseum
-execute as @s[tag=setmarker_fortreference] run tag @e[type=marker,tag=spawnmarker,distance=..20] add FortReference
-execute as @s[tag=setmarker_thothuniversity] run tag @e[type=marker,tag=spawnmarker,distance=..20] add ThothUniversity
-execute as @s[tag=setmarker_athenalibrary] run tag @e[type=marker,tag=spawnmarker,distance=..20] add AthenaLibrary
+execute as @s[tag=setmarker_fortreference] run tag @e[type=marker,tag=spawnmarker,distance=..20] add Fort-Reference
+execute as @s[tag=setmarker_thothuniversity] run tag @e[type=marker,tag=spawnmarker,distance=..20] add Thoth-University
+execute as @s[tag=setmarker_athenalibrary] run tag @e[type=marker,tag=spawnmarker,distance=..20] add Athena-Library
 #Visual Notif
 tellraw @a[distance=..20] [{"color":"blue","text":"[Mythcraft Wars Admin] All spawn markers within 20 blocks have had their city/location (re)assigned."}]
 execute at @e[type=marker,tag=spawnmarker,distance=..20] run particle block_marker{block_state:"lime_concrete"} ~ ~1.5 ~ 0 0 0 0 1 force

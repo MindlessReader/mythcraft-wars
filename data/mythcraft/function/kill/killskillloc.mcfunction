@@ -1,3 +1,4 @@
+say hi
 $execute as @s[team=Druids] run scoreboard players add Druids xp$(locationName) 1
 $execute as @s[team=Royals] run scoreboard players add Royals xp$(locationName) 1
 
@@ -18,3 +19,9 @@ $execute if score $(locationName) locationId = QuestTracker questLocation as @s[
 $execute if score $(locationName) locationId = QuestTracker questLocation as @s[team=Royals] run scoreboard players add Royals questKills 1
 
 $advancement revoke @s only mythcraft:kill/skilllocations/$(advancementName)
+
+# respawn troops if not many left
+$scoreboard players reset $(locationName) mathCounter
+$execute as @e[tag=cityTroop,tag=$(locationName)] run scoreboard players add $(locationName) mathCounter 1
+$execute if score $(locationName) mathCounter matches ..3 run function mythcraft:respawn/spawnall {cityName:$(locationName), teamName:Unaligned}
+say hi

@@ -177,3 +177,6 @@ function mythcraft:respawn/masterspawn
 
 # run rekit for testing
 execute as MindlessReader run function mythcraft:rekit
+
+#testing
+advancement revoke @a everything
