@@ -25,6 +25,6 @@ execute as @s[tag=setmarker_thothuniversity] run tag @e[type=marker,tag=spawnmar
 execute as @s[tag=setmarker_athenalibrary] run tag @e[type=marker,tag=spawnmarker,distance=..20] add AthenaLibrary
 #Visual Notif
 tellraw @a[distance=..20] [{"color":"blue","text":"[Mythcraft Wars Admin] All spawn markers within 20 blocks have had their city/location (re)assigned."}]
-execute at @e[type=marker,tag=spawnmarker,distance=..20] run particle block_marker{block_state:"gold_block"} ~ ~1.5 ~ 0 0 0 0 1 force
+execute at @e[type=marker,tag=spawnmarker,distance=..20] run particle block_marker{block_state:"lime_concrete"} ~ ~1.5 ~ 0 0 0 0 1 force
 #Kill egg marker
 kill @s
