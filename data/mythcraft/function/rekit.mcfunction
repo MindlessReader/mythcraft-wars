@@ -12,8 +12,9 @@ item replace entity @s armor.legs with iron_leggings[unbreakable={},enchantments
 item replace entity @s armor.feet with iron_boots[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}}] 1
 
 # shield if appropriate level
+execute as @s[team=Druids] run scoreboard players operation @s levelFort-Reference = Druids levelFort-Reference
+execute as @s[team=Royals] run scoreboard players operation @s levelFort-Reference = Royals levelFort-Reference
 item replace entity @s[scores={levelFort-Reference=1..}] weapon.offhand with shield[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}}] 1
-
 
 # city benefits (/items at top to make sure nothing is overwritten)
 execute if score Amnis cityOwnership matches 1 run item replace entity @s[team=Druids] hotbar.8 with bread[food={nutrition:8,saturation:12.8,eat_seconds:0.432},enchantments={levels:{"minecraft:vanishing_curse":1}},item_name='"Nourishing Bread"'] 64

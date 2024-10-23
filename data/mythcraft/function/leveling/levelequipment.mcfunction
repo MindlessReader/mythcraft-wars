@@ -10,7 +10,8 @@ execute as @s[team=Royals] run scoreboard players operation @s levelThoth-Univer
 execute as @s[team=Royals] run scoreboard players operation @s levelAthena-Library = Royals levelAthena-Library
 
 # give shield if they don't have one
-execute unless items entity @s[scores={levelFort-Reference=1..}] container.* shield run give @s shield[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}}] 1
+execute store result score @s mathCounter run clear @s shield 0
+execute as @s[scores={mathCounter=0}] run give @s[scores={levelFort-Reference=1..}] shield[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}}] 1
 
 # get slots of all items that need upgrading
 data modify storage mythcraft:kit sword set from entity @s Inventory[{id: "minecraft:iron_sword"}].Slot
