@@ -5,7 +5,7 @@ scoreboard players remove QuestTracker questsRemaining 1
 
 # start next quest
 execute if score QuestTracker questsRemaining matches 1.. run schedule function mythcraft:quests/startquest 10s
-execute if score QuestTracker questsRemaining matches 0 run schedule function mythcraft:endgame 10s
+execute if score QuestTracker questsRemaining matches 0 run schedule function mythcraft:beginendgame 10s
 
 # end function early if winner was already handled due to attackers winning a conquer quest
 execute if score QuestTracker questType matches 1 if score QuestTracker questWinner matches 1.. run return 1

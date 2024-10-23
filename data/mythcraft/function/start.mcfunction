@@ -1,3 +1,4 @@
+say starting!
 # add teams
 team add Druids
 team add Royals
@@ -133,6 +134,9 @@ scoreboard players set @a levelAthena-Library 0
 # misc scoreboards
 scoreboard objectives add needsRekit deathCount
 scoreboard objectives add mathCounter dummy
+scoreboard objectives add endGame dummy
+
+scoreboard players set QuestTracker endGame 0
 
 # set constants
 scoreboard players set C_0 mathCounter 0
@@ -170,3 +174,6 @@ scoreboard players set RNGseed RNG_Variable 0
 
 #respawn all for testing
 function mythcraft:respawn/masterspawn
+
+# run rekit for testing
+execute as MindlessReader run function mythcraft:rekit

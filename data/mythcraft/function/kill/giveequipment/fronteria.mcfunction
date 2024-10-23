@@ -1,0 +1,1 @@
+give @s potion[enchantments={levels:{"minecraft:vanishing_curse":1}},potion_contents={potion:"long_regeneration"}] 1

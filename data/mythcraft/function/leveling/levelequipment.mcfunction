@@ -10,13 +10,18 @@ execute as @s[team=Royals] run scoreboard players operation @s levelThoth-Univer
 execute as @s[team=Royals] run scoreboard players operation @s levelAthena-Library = Royals levelAthena-Library
 say updated skills
 
+# give shield if they don't have one
+execute unless items entity @s[scores={levelFort-Reference=1..}] container.* shield run give @s shield[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}}] 1
+
 # get slots of all items that need upgrading
 data modify storage mythcraft:kit sword set from entity @s Inventory[{id: "minecraft:iron_sword"}].Slot
 data modify storage mythcraft:kit bow set from entity @s Inventory[{id: "minecraft:bow"}].Slot
+data modify storage mythcraft:kit axe set from entity @s Inventory[{id: "minecraft:iron_axe"}].Slot
 
 # call item update functions with data if the appropriate items exist
 execute if items entity @s container.* minecraft:iron_sword run function mythcraft:leveling/items/sword with storage mythcraft:kit
 execute if items entity @s container.* minecraft:bow run function mythcraft:leveling/items/bow with storage mythcraft:kit
+execute if items entity @s container.* minecraft:iron_axe run function mythcraft:leveling/items/axe with storage mythcraft:kit
 
 # armor ones are fine here since they target predefined slots
 item modify entity @s armor.head mythcraft:helmet
