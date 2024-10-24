@@ -1,0 +1,2 @@
+execute if score QuestTracker questWinner matches 0 run title @a actionbar [{"nbt":"typeText","storage":"mythcraft:quest"},": ",{"nbt":"locationText","storage":"mythcraft:quest"}," (",{"nbt":"rewardText","storage":"mythcraft:quest"},")"]
+schedule function mythcraft:quests/actionbar 2s
