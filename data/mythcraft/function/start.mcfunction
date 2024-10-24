@@ -164,6 +164,12 @@ scoreboard players set QuestTracker questLocation 0
 scoreboard players set QuestTracker victoryPointQuestsRemaining 6
 scoreboard players set QuestTracker questsRemaining 10
 
+# buff time remaining
+scoreboard objectives add BuffResistance dummy
+scoreboard objectives add BuffSpeed dummy
+scoreboard objectives add BuffHealthBoost dummy
+scoreboard objectives add BuffStrength dummy
+
 # rng scoreboards
 scoreboard objectives add RNG_Constant dummy
 scoreboard objectives add RNG_Variable dummy
@@ -172,6 +178,7 @@ scoreboard players set C_314159 RNG_Constant 314159
 scoreboard players set C_2718281 RNG_Constant 2718281
 scoreboard players set RNGseed RNG_Variable 0
 
+# TESTING AREA      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #respawn all for testing
 function mythcraft:respawn/masterspawn
 
@@ -180,3 +187,9 @@ execute as MindlessReader run function mythcraft:rekit
 
 #testing
 advancement revoke @a everything
+## TESTING AREA END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# start loops
+function mythcraft:respawn/respawnchecker
+function mythcraft:quests/buffloop
+function mythcraft:quests/actionbar

@@ -1,4 +1,4 @@
-effect give @s[tag=BuffResistance] resistance 300 0
-effect give @s[tag=BuffSpeed] speed 300 0
-effect give @s[tag=BuffHealthBoost] health_boost 300 1
-effect give @s[tag=BuffStrength] strength 300 0
+effect give @a[scores={BuffResistance=1..}] resistance 10 0
+effect give @a[scores={BuffSpeed=1..}] speed 10 0
+effect give @a[scores={BuffHealthBoost=1..}] health_boost 10 1
+effect give @a[scores={BuffStrength=1..}] strength 10 0
