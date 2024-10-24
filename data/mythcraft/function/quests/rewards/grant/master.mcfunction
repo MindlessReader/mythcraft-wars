@@ -2,6 +2,8 @@
 execute if score QuestTracker questWinner matches 1 run tag @a[team=Druids] add wonLastQuest
 execute if score QuestTracker questWinner matches 2 run tag @a[team=Royals] add wonLastQuest
 
+execute as @a[tag=wonLastQuest] at @s run playsound minecraft:ui.toast.challenge_complete master @s ~ ~ ~
+
 # grant rewards
 execute if score QuestTracker questRewardType matches 1 run function mythcraft:quests/rewards/grant/item
 execute if score QuestTracker questRewardType matches 2 run function mythcraft:quests/rewards/grant/buff

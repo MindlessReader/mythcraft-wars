@@ -192,4 +192,3 @@ advancement revoke @a everything
 # start loops
 function mythcraft:respawn/respawnchecker
 function mythcraft:quests/buffloop
-function mythcraft:quests/actionbar

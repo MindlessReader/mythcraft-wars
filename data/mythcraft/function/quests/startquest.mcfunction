@@ -51,5 +51,14 @@ execute if score QuestTracker questType matches 1 run function mythcraft:quests/
 execute if score QuestTracker questType matches 2 run function mythcraft:quests/announce/killquest
 tellraw @a {"bold":true,"color":"dark_purple","text":"~~~~~~~~~~"}
 
+title @a title {"bold":true,"color":"yellow","text":"New Quest"}
+title @a subtitle ["New ",{"nbt":"typeText","storage":"mythcraft:quest"},": ",{"color":"red","nbt":"locationText","storage":"mythcraft:quest"},{"text":" Reward: "},{"bold":true,"color":"dark_purple","nbt":"rewardText","storage":"mythcraft:quest"}]
+
+# start actionbar loop
+function mythcraft:quests/actionbar
+
+
+execute as @a at @s run playsound block.note_block.chime master @s ~ ~ ~
+
 #schedule end of quest
 schedule function mythcraft:quests/endquest 300s
