@@ -1,0 +1,100 @@
+[
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:food": {
+				"nutrition": 0,
+				"saturation": 0,
+				"can_always_eat": true,
+				"eat_seconds": 999
+			},
+			"minecraft:max_stack_size": 1,
+			"minecraft:custom_data": "{mythcraft_breathspell:1b}"
+		}
+	},
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": "[{\"color\":\"light_purple\",\"italic\":false,\"text\":\"Seeking Breath\"},{\"color\":\"white\",\"italic\":false,\"text\":\" [Cold]\"}]",
+			"minecraft:lore": [
+				"[{\"color\":\"gray\",\"italic\":false,\"text\":\"Cooldown: 30s\",\"underlined\":true}]"
+			]},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelThoth-University": 1
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": "[{\"color\":\"light_purple\",\"italic\":false,\"text\":\"Seeking Breath\"},{\"color\":\"white\",\"italic\":false,\"text\":\" [Lukewarm]\"}]",
+			"minecraft:lore": [
+				"{\"color\":\"gray\",\"italic\":false,\"text\":\"Cooldown: 15s\",\"underlined\":true}"
+			]},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelThoth-University": 2
+				}
+			}
+		]
+	},
+  {
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": "[{\"color\":\"light_purple\",\"italic\":false,\"text\":\"Seeking Breath\"},{\"color\":\"white\",\"italic\":false,\"text\":\" [Warm]\"}]",
+			"minecraft:lore": [
+				"{\"color\":\"gray\",\"italic\":false,\"text\":\"Cooldown: 10s\",\"underlined\":true}"
+			]},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelThoth-University": 3
+				}
+			}
+		]
+	},
+  {
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": "[{\"color\":\"light_purple\",\"italic\":false,\"text\":\"Seeking Breath\"},{\"color\":\"white\",\"italic\":false,\"text\":\" [Hot]\"}]",
+			"minecraft:lore": [
+				"{\"color\":\"gray\",\"italic\":false,\"text\":\"Cooldown: 5s\",\"underlined\":true}"
+			]},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelThoth-University": 4
+				}
+			}
+		]
+	},
+  {
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": "[{\"color\":\"light_purple\",\"italic\":false,\"text\":\"Seeking Breath\"},{\"color\":\"white\",\"italic\":false,\"text\":\" [Boiling]\"}]",
+			"minecraft:lore": [
+				"{\"color\":\"gray\",\"italic\":false,\"text\":\"Cooldown: 3s\",\"underlined\":true}"
+			]},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelThoth-University": 5
+				}
+			}
+		]
+	}
+]

@@ -178,6 +178,10 @@ scoreboard players set C_314159 RNG_Constant 314159
 scoreboard players set C_2718281 RNG_Constant 2718281
 scoreboard players set RNGseed RNG_Variable 0
 
+#Spell Timer
+scoreboard objectives add SpellBreathCooldown dummy
+scoreboard objectives add SpellBreathLifetime dummy
+
 # TESTING AREA      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #respawn all for testing
 function mythcraft:respawn/masterspawn
