@@ -182,6 +182,21 @@ scoreboard players set RNGseed RNG_Variable 0
 scoreboard objectives add SpellBreathCooldown dummy
 scoreboard objectives add SpellBreathLifetime dummy
 
+# Display
+scoreboard objectives add display dummy
+scoreboard objectives modify display displayname "Cities"
+scoreboard objectives setdisplay sidebar display
+scoreboard objectives modify display numberformat blank
+scoreboard objectives setdisplay list victoryPoints
+
+scoreboard players set Celak display -2
+scoreboard players set Kings-Port display -3
+scoreboard players set Athens display -4
+scoreboard players set Delphi display -5
+scoreboard players set Povertane display -6
+scoreboard players set Amnis display -7
+scoreboard players set Fronteria display -8
+
 # TESTING AREA      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #respawn all for testing
 function mythcraft:respawn/masterspawn

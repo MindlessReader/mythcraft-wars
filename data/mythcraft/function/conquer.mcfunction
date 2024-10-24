@@ -1,5 +1,6 @@
 # set ownership
 $scoreboard players set $(cityName) cityOwnership $(teamId)
+$team join $(teamName) $(cityName)
 
 # grant benefits
 $execute as @a[team=$(teamName)] run function mythcraft:kill/giveequipment/$(rewardFunction)
