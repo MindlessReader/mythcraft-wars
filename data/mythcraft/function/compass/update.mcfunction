@@ -1,0 +1,2 @@
+$item modify entity @s weapon {function:"set_components",components:{lodestone_tracker:{tracked:false,target:{dimension:"minecraft:overworld",pos:$(position)}}}}
+$item modify entity @s weapon {function:"set_name",name:$(name)}

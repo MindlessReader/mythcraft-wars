@@ -4,6 +4,7 @@ clear @s
 # rekit
 item replace entity @s hotbar.0 with iron_sword[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}}]
 item replace entity @s hotbar.1 with bow[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}}]
+item replace entity @s hotbar.7 with compass[enchantments={levels:{"minecraft:vanishing_curse":1}},max_stack_size=1,food={nutrition:0,saturation:0,can_always_eat:true,eat_seconds:0.1},lodestone_tracker={tracked:false,target:{dimension:"minecraft:the_end",pos:[I;0,0,0]}},item_name='"Unset, right click to set"']
 item replace entity @s hotbar.8 with cooked_beef[enchantments={levels:{"minecraft:vanishing_curse":1}}] 64
 item replace entity @s inventory.8 with arrow[enchantments={levels:{"minecraft:vanishing_curse":1}}] 64
 item replace entity @s[team=Druids] armor.head with iron_helmet[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},trim={material:emerald,pattern:wild}] 1 
