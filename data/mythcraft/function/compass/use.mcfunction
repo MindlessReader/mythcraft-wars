@@ -6,5 +6,7 @@ execute as @n[tag=cityTroop,distance=1..] if entity @s[team=Unaligned] run data 
 execute as @n[tag=cityTroop,distance=1..] if entity @s[team=Unaligned] run data modify storage mythcraft:nearest_troop team set value Druid
 execute as @n[tag=cityTroop,distance=1..] if entity @s[team=Unaligned] run data modify storage mythcraft:nearest_troop team set value Royal
 
+execute at @s run playsound block.note_block.chime master @s ~ ~ ~
+
 function mythcraft:compass/update with storage mythcraft:nearest_troop
 advancement revoke @s only mythcraft:item/compass
