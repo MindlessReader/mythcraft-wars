@@ -155,7 +155,7 @@ scoreboard objectives add questsRemaining dummy
 scoreboard players set Druids questKills 0
 scoreboard players set Royals questKills 0
 
-scoreboard players set QuestTracker questWinner 0
+scoreboard players set QuestTracker questWinner -1
 scoreboard players set QuestTracker questType 0
 scoreboard players set QuestTracker questRewardType 0
 scoreboard players set QuestTracker questReward 0
