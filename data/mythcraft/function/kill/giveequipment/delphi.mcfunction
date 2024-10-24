@@ -1,1 +1,1 @@
-give @s tipped_arrow[enchantments={levels:{"minecraft:vanishing_curse":1}},potion_contents={custom_effects:[{id:"minecraft:levitation",amplifier:1,duration:20}]}] 5
+give @s tipped_arrow[enchantments={levels:{"minecraft:vanishing_curse":1},show_in_tooltip:false},enchantment_glint_override=true,potion_contents={custom_effects:[{id:"minecraft:levitation",amplifier:1,duration:20}]}] 5

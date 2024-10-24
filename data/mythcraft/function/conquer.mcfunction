@@ -17,14 +17,16 @@ $scoreboard players set $(cityName) cityConquerProgress 0
 $scoreboard players set $(cityName)LastChecked cityConquerProgress 0
 
 # announce
-$tellraw @a [{"color":"yellow","text":"The "},{"bold":true,"text":"$(teamName)"},{"color":"yellow","text":" have conquered "},{"bold":true,"text":"$(cityName)"},{"color":"yellow","text":"!"}]
+$title @a[team=!$(teamName)] title [{"bold":false,"text":"$(teamName)"},{"color":"dark_red","text":" 🗡 "},{"bold":false,"text":"$(cityName)"}]
+$title @a[team=$(teamName)] title [{"bold":false,"text":"$(teamName)"},{"color":"dark_green","text":" ☮ "},{"bold":false,"text":"$(cityName)"}]
+$tellraw @a [{"color":"#FFD700","text":"The "},{"bold":true,"text":"$(teamName)"},{"color":"#FFD700","text":" have conquered "},{"bold":true,"text":"$(cityName)"},{"color":"#FFD700","text":"!"}]
 
 $execute if score $(cityName) cityOwnership matches 2 as @s[team=Druids] as @a[team=Druids] run title @p title {"color":"dark_red","text":"Lost $(cityName)"}
 $execute if score $(cityName) cityOwnership matches 1 as @s[team=Royals] as @a[team=Royals] run title @p title {"color":"dark_red","text":"Lost $(cityName)"}
-$execute if score $(cityName) cityOwnership matches 2 if score QuestTracker endGame matches 0 as @s[team=Druids] as @a[team=Druids] run title @p subtitle {"color":"dark_purple","text":"Enemy troops in the city will be invulnerable for 1 minute"}
-$execute if score $(cityName) cityOwnership matches 1 if score QuestTracker endGame matches 0 as @s[team=Royals] as @a[team=Royals] run title @p subtitle {"color":"dark_purple","text":"Enemy troops in the city will be invulnerable for 1 minute"}
-$execute if score $(cityName) cityOwnership matches 2 if score QuestTracker endGame matches 1 as @s[team=Druids] as @a[team=Druids] run title @p subtitle {"color":"dark_purple","text":"Enemy troops in the city can be killed again immediately"}
-$execute if score $(cityName) cityOwnership matches 1 if score QuestTracker endGame matches 1 as @s[team=Royals] as @a[team=Royals] run title @p subtitle {"color":"dark_purple","text":"Enemy troops in the city can be killed again immediately"}
+$execute if score $(cityName) cityOwnership matches 2 if score QuestTracker endGame matches 0 as @a[team=Druids] run title @s subtitle {"color":"#663399","text":"Enemy troops in the city will be invulnerable for 1 minute"}
+$execute if score $(cityName) cityOwnership matches 1 if score QuestTracker endGame matches 0 as @a[team=Royals] run title @s subtitle {"color":"#663399","text":"Enemy troops in the city will be invulnerable for 1 minute"}
+$execute if score $(cityName) cityOwnership matches 2 if score QuestTracker endGame matches 1 as @a[team=Druids] run title @s subtitle {"color":"#663399","text":"Enemy troops in the city can be killed again immediately"}
+$execute if score $(cityName) cityOwnership matches 1 if score QuestTracker endGame matches 1 as @a[team=Royals] run title @s subtitle {"color":"#663399","text":"Enemy troops in the city can be killed again immediately"}
 
 
 $execute if score $(cityName) cityOwnership matches 2 as @s[team=Druids] as @a[team=Druids] at @s run playsound minecraft:entity.wither.death master @s ~ ~ ~

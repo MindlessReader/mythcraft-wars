@@ -6,6 +6,7 @@ team add Unaligned
 
 team modify Druids color green
 team modify Royals color blue
+team modify Unaligned color yellow
 
 team modify Druids seeFriendlyInvisibles true
 team modify Royals seeFriendlyInvisibles true
@@ -13,6 +14,11 @@ team modify Royals seeFriendlyInvisibles true
 team modify Druids friendlyFire false
 team modify Royals friendlyFire false
 
+bossbar add mythcraft:victorypointsbar "Royals-Druids"
+bossbar set mythcraft:victorypointsbar visible true
+bossbar set mythcraft:victorypointsbar style progress
+bossbar set mythcraft:victorypointsbar name [{"bold":false,"color":"blue","text":"Royals "},{"bold":true,"color":"white","score":{"name":"Royals","objective":"victoryPoints"}},{"bold":false,"color":"dark_gray","text":"-"},{"bold":true,"color":"white","score":{"name":"Druids","objective":"victoryPoints"}},{"bold":false,"color":"green","text":" Druids"}]
+execute as @a run bossbar set mythcraft:victorypointsbar players @s
 # statistics scoreboards
 scoreboard objectives add totalGameDeaths deathCount
 scoreboard objectives add totalGameKills totalKillCount
@@ -61,11 +67,11 @@ scoreboard players set Fronteria cityConquerProgress 0
 # set needed conquer value (same as number of markers and troops in that city)
 scoreboard players set Celak cityConquerValue 3
 scoreboard players set Kings-Port cityConquerValue 3
-scoreboard players set Athens cityConquerValue 1
-scoreboard players set Delphi cityConquerValue 1
-scoreboard players set Povertane cityConquerValue 1
-scoreboard players set Amnis cityConquerValue 1
-scoreboard players set Fronteria cityConquerValue 1
+scoreboard players set Athens cityConquerValue 3
+scoreboard players set Delphi cityConquerValue 3
+scoreboard players set Povertane cityConquerValue 3
+scoreboard players set Amnis cityConquerValue 3
+scoreboard players set Fronteria cityConquerValue 3
 # set last checked conquer progress
 scoreboard players set CelakLastChecked cityConquerProgress 0
 scoreboard players set Kings-PortLastChecked cityConquerProgress 0

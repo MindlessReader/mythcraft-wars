@@ -1,2 +1,2 @@
-give @s dried_kelp[enchantments={levels:{"minecraft:vanishing_curse":1}},food={nutrition:1,saturation:1,effects:[{effect:{id:"minecraft:invisibility",amplifier:0,duration:100},probability:1}]}] 5
-give @s tipped_arrow[enchantments={levels:{"minecraft:vanishing_curse":1}},potion_contents={potion:"minecraft:wind_charged"}] 20
+give @s dried_kelp[enchantments={levels:{"minecraft:vanishing_curse":1},show_in_tooltip:false},enchantment_glint_override=true,food={nutrition:1,saturation:1,effects:[{effect:{id:"minecraft:invisibility",amplifier:0,duration:100},probability:1}]}] 5
+give @s tipped_arrow[enchantments={levels:{"minecraft:vanishing_curse":1},show_in_tooltip:false},enchantment_glint_override=true,potion_contents={potion:"minecraft:wind_charged"}] 20

@@ -10,8 +10,8 @@ scoreboard players set QuestTracker questLocationOwner 0
 
 # Gets quest type, 1 = conquer, 2 = kill
 execute store result score QuestTracker questType run function mythcraft:getrandomnumber {max:2}
-execute if score QuestTracker questType matches 1 run data modify storage mythcraft:quest typeText set value "Conquer Quest"
-execute if score QuestTracker questType matches 2 run data modify storage mythcraft:quest typeText set value "Kill Quest"
+execute if score QuestTracker questType matches 1 run data modify storage mythcraft:quest typeText set value "Conquer"
+execute if score QuestTracker questType matches 2 run data modify storage mythcraft:quest typeText set value "Kill"
 
 # If conquer, get city, 3-7 for cities (capitals excluded for fairness)
 execute if score QuestTracker questType matches 1 store result score QuestTracker questLocation run function mythcraft:getrandomnumber {max:5}
@@ -45,14 +45,14 @@ data modify storage mythcraft:getlocation locationPath set value "mythcraft:ques
 function mythcraft:lookup/locationbyid with storage mythcraft:getlocation
 
 # announce and call relevant announcement function for detailed description
-tellraw @a {"bold":true,"color":"dark_purple","text":"~~~~~~~~~~"}
-tellraw @a ["New ",{"nbt":"typeText","storage":"mythcraft:quest"},": ",{"color":"red","nbt":"locationText","storage":"mythcraft:quest"},{"text":"\nReward: "},{"bold":true,"color":"dark_purple","nbt":"rewardText","storage":"mythcraft:quest"}]
+tellraw @a {"bold":true,"color":"#DDA0DD","text":"~~~~~~~~~~"}
+tellraw @a [{"nbt":"typeText","storage":"mythcraft:quest"},": ",{"color":"red","nbt":"locationText","storage":"mythcraft:quest"},{"text":"\nReward: "},{"bold":true,"color":"#663399","nbt":"rewardText","storage":"mythcraft:quest"}]
 execute if score QuestTracker questType matches 1 run function mythcraft:quests/announce/conquerquest
 execute if score QuestTracker questType matches 2 run function mythcraft:quests/announce/killquest
-tellraw @a {"bold":true,"color":"dark_purple","text":"~~~~~~~~~~"}
+tellraw @a {"bold":true,"color":"#DDA0DD","text":"~~~~~~~~~~"}
 
-title @a title {"bold":true,"color":"yellow","text":"New Quest"}
-title @a subtitle ["New ",{"nbt":"typeText","storage":"mythcraft:quest"},": ",{"color":"red","nbt":"locationText","storage":"mythcraft:quest"},{"text":" Reward: "},{"bold":true,"color":"dark_purple","nbt":"rewardText","storage":"mythcraft:quest"}]
+title @a title {"bold":true,"color":"#FFD700","text":"New Quest"}
+title @a subtitle [{"nbt":"typeText","storage":"mythcraft:quest"},": ",{"color":"red","nbt":"locationText","storage":"mythcraft:quest"},{"text":" / Reward: "},{"bold":true,"color":"#663399","nbt":"rewardText","storage":"mythcraft:quest"}]
 
 # start actionbar loop
 function mythcraft:quests/actionbar

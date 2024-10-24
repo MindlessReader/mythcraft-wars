@@ -1,5 +1,22 @@
 [
   {
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:enchantment_glint_override": true
+		},
+		"conditions": [
+			{
+        "condition": "minecraft:inverted",
+				"term": {
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelFort-Reference": 0
+				}
+			}
+  }]
+	},
+  {
     "function": "minecraft:set_enchantments",
     "enchantments": {
       "minecraft:protection": {
