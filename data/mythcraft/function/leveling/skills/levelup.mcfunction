@@ -3,10 +3,12 @@ $execute as @s[team=Druids] run scoreboard players add Druids level$(locationNam
 $execute as @s[team=Royals] run scoreboard players add Royals level$(locationName) 1
 
 # announce level up
-$execute as @s[team=Druids] run tellraw @a [{"bold":false,"color":"green","text":"Druids"},{"color":"yellow","text":" have leveled up the "},{"bold":false,"color":"white","text":"$(locationName)"},{"color":"yellow","text":" skill to level "},{"color":"dark_purple","score":{"name":"Druids","objective":"level$(locationName)"}},{"color":"yellow","text":"!"}]
-$execute as @s[team=Royals] run tellraw @a [{"bold":false,"color":"blue","text":"Royals"},{"color":"yellow","text":" have leveled up the "},{"bold":false,"color":"white","text":"$(locationName)"},{"color":"yellow","text":" skill to level "},{"color":"dark_purple","score":{"name":"Royals","objective":"level$(locationName)"}},{"color":"yellow","text":"!"}]
-execute as @s[team=Druids] as @a[team=Druids] at @s run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~ 100 0.5
-execute as @s[team=Royals] as @a[team=Royals] at @s run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~ 100 0.5
+$execute as @s[team=Druids] run tellraw @a [{"bold":false,"color":"green","text":"Druids"},{"color":"#FFD700","text":" have leveled up the "},{"bold":false,"color":"white","text":"$(locationName)"},{"color":"#FFD700","text":" skill to level "},{"color":"#663399","score":{"name":"Druids","objective":"level$(locationName)"}},{"color":"#FFD700","text":" ⚡"}]
+$execute as @s[team=Royals] run tellraw @a [{"bold":false,"color":"blue","text":"Royals"},{"color":"#FFD700","text":" have leveled up the "},{"bold":false,"color":"white","text":"$(locationName)"},{"color":"#FFD700","text":" skill to level "},{"color":"#663399","score":{"name":"Royals","objective":"level$(locationName)"}},{"color":"#FFD700","text":" ⚡"}]
+execute at @s[team=Druids] as @a[team=Druids] run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~ 100 0.5
+execute at @s[team=Royals] as @a[team=Royals] run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~ 100 0.5
+execute at @s[team=Druids] as @a[team=Druids] run playsound minecraft:block.smithing_table.use master @s ~ ~ ~ 100 0.99
+execute at @s[team=Royals] as @a[team=Royals] run playsound minecraft:block.smithing_table.use master @s ~ ~ ~ 100 0.99
 
 # call function to update the kit of all players on the team
 execute as @s[team=Druids] as @a[team=Druids] run function mythcraft:leveling/levelequipment

@@ -16,16 +16,16 @@ execute if score Fronteria cityOwnership matches 2 run scoreboard players add Ro
 
 execute if score Druids victoryPoints = Royals victoryPoints if score Athens cityOwnership matches 1 run scoreboard players add Druids victoryPoints 1
 execute if score Druids victoryPoints = Royals victoryPoints if score Athens cityOwnership matches 2 run scoreboard players add Druids victoryPoints 1
-execute if score Druids victoryPoints = Royals victoryPoints run tellraw @a [{"color":"dark_purple","text":"Tiebreak: Owners of Athens granted an additonal victory point."}]
+execute if score Druids victoryPoints = Royals victoryPoints run tellraw @a [{"color":"#663399","text":"Tiebreak: Owners of Athens granted an additonal victory point."}]
 
 #Announce winners
 execute if score Druids victoryPoints > Royals victoryPoints run title @a title {"bold":true,"color":"green","text":"Druid Victory"}
-execute if score Druids victoryPoints > Royals victoryPoints run title @a subtitle {"color":"dark_purple","text":"Winners of the Mythcraft 10 Year Anniversary Event"}
-execute if score Druids victoryPoints > Royals victoryPoints run tellraw @a [{"bold":false,"color":"dark_purple","text":"The "},{"bold":true,"color":"green","text":"Druids"},{"bold":false,"color":"dark_purple","text":" are the winners of the MythCraft 10 Year Anniversary Event!"}]
+execute if score Druids victoryPoints > Royals victoryPoints run title @a subtitle {"color":"#663399","text":"Winners of the Mythcraft 10 Year Anniversary Event"}
+execute if score Druids victoryPoints > Royals victoryPoints run tellraw @a [{"bold":false,"color":"#663399","text":"The "},{"bold":true,"color":"green","text":"Druids"},{"bold":false,"color":"#663399","text":" are the winners of the MythCraft 10 Year Anniversary Event!"}]
 
 execute if score Druids victoryPoints < Royals victoryPoints run title @a title {"bold":true,"color":"blue","text":"Royal Victory"}
-execute if score Druids victoryPoints < Royals victoryPoints run title @a subtitle {"color":"dark_purple","text":"Winners of the Mythcraft 10 Year Anniversary Event"}
-execute if score Druids victoryPoints < Royals victoryPoints run tellraw @a [{"bold":false,"color":"dark_purple","text":"The "},{"bold":true,"color":"blue","text":"Royals"},{"bold":false,"color":"dark_purple","text":" are the winners of the MythCraft 10 Year Anniversary Event!"}]
+execute if score Druids victoryPoints < Royals victoryPoints run title @a subtitle {"color":"#663399","text":"Winners of the Mythcraft 10 Year Anniversary Event"}
+execute if score Druids victoryPoints < Royals victoryPoints run tellraw @a [{"bold":false,"color":"#663399","text":"The "},{"bold":true,"color":"blue","text":"Royals"},{"bold":false,"color":"#663399","text":" are the winners of the MythCraft 10 Year Anniversary Event!"}]
 
 execute as @a at @s run playsound entity.ender_dragon.death master @s ~ ~ ~
 

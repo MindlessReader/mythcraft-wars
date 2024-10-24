@@ -2,19 +2,19 @@
 clear @s
 
 # rekit
-item replace entity @s hotbar.0 with iron_sword[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}}]
-item replace entity @s hotbar.1 with bow[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}}]
+item replace entity @s hotbar.0 with iron_sword[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},enchantment_glint_override=false]
+item replace entity @s hotbar.1 with bow[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},enchantment_glint_override=false]
 item replace entity @s hotbar.7 with compass[enchantments={levels:{"minecraft:vanishing_curse":1}},max_stack_size=1,food={nutrition:0,saturation:0,can_always_eat:true,eat_seconds:0.1},lodestone_tracker={tracked:false,target:{dimension:"minecraft:the_end",pos:[I;0,0,0]}},item_name='"Unset, right click to set"']
-item replace entity @s hotbar.8 with cooked_beef[enchantments={levels:{"minecraft:vanishing_curse":1}}] 64
-item replace entity @s inventory.8 with arrow[enchantments={levels:{"minecraft:vanishing_curse":1}}] 64
-item replace entity @s[team=Druids] armor.head with iron_helmet[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},trim={material:emerald,pattern:wild}] 1 
-item replace entity @s[team=Druids] armor.chest with iron_chestplate[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},trim={material:emerald,pattern:wild}] 1
-item replace entity @s[team=Druids] armor.legs with iron_leggings[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},trim={material:emerald,pattern:wild}] 1
-item replace entity @s[team=Druids] armor.feet with iron_boots[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},trim={material:emerald,pattern:wild}] 1
-item replace entity @s[team=Royals] armor.head with iron_helmet[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},trim={material:lapis,pattern:sentry}] 1 
-item replace entity @s[team=Royals] armor.chest with iron_chestplate[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},trim={material:lapis,pattern:sentry}] 1
-item replace entity @s[team=Royals] armor.legs with iron_leggings[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},trim={material:lapis,pattern:sentry}] 1
-item replace entity @s[team=Royals] armor.feet with iron_boots[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},trim={material:lapis,pattern:sentry}] 1
+item replace entity @s hotbar.8 with cooked_beef[enchantments={levels:{"minecraft:vanishing_curse":1}},enchantment_glint_override=false] 64
+item replace entity @s inventory.8 with arrow[enchantments={levels:{"minecraft:vanishing_curse":1}},enchantment_glint_override=false] 64
+item replace entity @s[team=Druids] armor.head with iron_helmet[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},enchantment_glint_override=false,trim={material:emerald,pattern:silence}] 1 
+item replace entity @s[team=Druids] armor.chest with iron_chestplate[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},enchantment_glint_override=false,trim={material:emerald,pattern:wild}] 1
+item replace entity @s[team=Druids] armor.legs with iron_leggings[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},enchantment_glint_override=false,trim={material:emerald,pattern:wild}] 1
+item replace entity @s[team=Druids] armor.feet with iron_boots[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},enchantment_glint_override=false,trim={material:emerald,pattern:wild}] 1
+item replace entity @s[team=Royals] armor.head with iron_helmet[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},enchantment_glint_override=false,trim={material:lapis,pattern:silence}] 1 
+item replace entity @s[team=Royals] armor.chest with iron_chestplate[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},enchantment_glint_override=false,trim={material:lapis,pattern:sentry}] 1
+item replace entity @s[team=Royals] armor.legs with iron_leggings[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},enchantment_glint_override=false,trim={material:lapis,pattern:sentry}] 1
+item replace entity @s[team=Royals] armor.feet with iron_boots[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}},enchantment_glint_override=false,trim={material:lapis,pattern:sentry}] 1
 
 # shield if appropriate level
 execute as @s[team=Druids] run scoreboard players operation @s levelFort-Reference = Druids levelFort-Reference
@@ -29,7 +29,7 @@ execute if score Amnis cityOwnership matches 2 run item replace entity @s[team=R
 execute as @s[team=Druids] run scoreboard players operation @s levelThoth-University = Druids levelThoth-University
 execute as @s[team=Royals] run scoreboard players operation @s levelThoth-University = Royals levelThoth-University
 scoreboard players set @s SpellBreathCooldown 0
-give @s[scores={levelThoth-University=1..5}] dragon_breath[enchantments={levels:{"minecraft:vanishing_curse":1}},max_stack_size=1,custom_name='[{"color":"light_purple","italic":false,"text":"Seeking Breath"},{"color":"white","italic":false,"text":" [Cold]"}]',lore=['{"color":"gray","italic":false,"text":"Cooldown: 30s","underlined":true}'],hide_additional_tooltip={},custom_data={mythcraft_breathspell:1b},food={nutrition:0,saturation:0,can_always_eat:true}] 1
+give @s[scores={levelThoth-University=1..5}] dragon_breath[enchantments={levels:{"minecraft:vanishing_curse":1}},max_stack_size=1,custom_name='[{"color":"#DDA0DD","italic":false,"text":"Seeking Breath"},{"color":"white","italic":false,"text":" [Cold]"}]',lore=['{"color":"gray","italic":false,"text":"Cooldown: 30s","underlined":true}'],hide_additional_tooltip={},custom_data={mythcraft_breathspell:1b},food={nutrition:0,saturation:0,can_always_eat:true}] 1
 #
 
 

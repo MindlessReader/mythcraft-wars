@@ -1,5 +1,37 @@
 [
   {
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:enchantment_glint_override": true
+		},
+		"conditions": [
+			{
+        "condition": "minecraft:inverted",
+				"term": {
+				"condition": "minecraft:all_of",
+				"terms": [
+					{
+						"condition": "minecraft:entity_scores",
+						"entity": "this",
+						"scores": {
+							"levelAthena-Library": {
+								"min": 0,
+								"max": 2
+							}
+						}
+					},
+					{
+						"condition": "minecraft:entity_scores",
+						"entity": "this",
+						"scores": {
+							"levelColosseum": 0
+						}
+					}
+				]
+			}
+  }]
+	},
+  {
     "function": "minecraft:set_enchantments",
     "enchantments": {
       "minecraft:power": {
