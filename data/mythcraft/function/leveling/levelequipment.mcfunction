@@ -12,9 +12,8 @@ execute as @s[team=Royals] run scoreboard players operation @s levelAthena-Libra
 # give shield if they don't have one
 execute store result score @s mathCounter run clear @s shield 0
 execute as @s[scores={mathCounter=0}] run give @s[scores={levelFort-Reference=1..}] shield[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1}}] 1
-#Dragon breath Spell from Thoth U leveling
-clear @s[scores={levelThoth-University=0..5}] dragon_breath[max_stack_size=1,custom_name='[{"color":"light_purple","italic":false,"text":"Seeking Breath"},{"color":"white","italic":false,"text":" [Cold]"}]',lore=['{"color":"gray","italic":false,"text":"Cooldown: 30s","underlined":true}'],hide_additional_tooltip={},custom_data={mythcraft_breathspell:1b},food={nutrition:0,saturation:0,can_always_eat:true}]
-give @s[scores={levelThoth-University=1..5}] dragon_breath[max_stack_size=1,custom_name='[{"color":"light_purple","italic":false,"text":"Seeking Breath"},{"color":"white","italic":false,"text":" [Cold]"}]',lore=['{"color":"gray","italic":false,"text":"Cooldown: 30s","underlined":true}'],hide_additional_tooltip={},custom_data={mythcraft_breathspell:1b},food={nutrition:0,saturation:0,can_always_eat:true}] 1
+#give Dragon breath Spell from Thoth U leveling if they dont have one
+execute unless items entity @s[scores={levelThoth-University=1..5}] container.* dragon_breath unless items entity @s container.* glass_bottle run give @s[scores={levelThoth-University=1..5}] dragon_breath[enchantments={levels:{"minecraft:vanishing_curse":1}},max_stack_size=1,custom_name='[{"color":"light_purple","italic":false,"text":"Seeking Breath"},{"color":"white","italic":false,"text":" [Cold]"}]',lore=['{"color":"gray","italic":false,"text":"Cooldown: 30s","underlined":true}'],hide_additional_tooltip={},custom_data={mythcraft_breathspell:1b},food={nutrition:0,saturation:0,can_always_eat:true}] 1
 
 # get slots of all items that need upgrading
 data modify storage mythcraft:kit sword set from entity @s Inventory[{id: "minecraft:iron_sword"}].Slot
