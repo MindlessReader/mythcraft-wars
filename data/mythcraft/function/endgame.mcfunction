@@ -18,6 +18,11 @@ execute if score Druids victoryPoints = Royals victoryPoints if score Athens cit
 execute if score Druids victoryPoints = Royals victoryPoints if score Athens cityOwnership matches 2 run scoreboard players add Druids victoryPoints 1
 execute if score Druids victoryPoints = Royals victoryPoints run tellraw @a [{"color":"#663399","text":"Tiebreak: Owners of Athens granted an additonal victory point."}]
 
+# update boss bar
+execute as @a run bossbar set mythcraft:victorypointsbar players @s
+bossbar set mythcraft:victorypointsbar name [{"bold":false,"color":"blue","text":"Royals "},{"bold":true,"color":"white","score":{"name":"Royals","objective":"victoryPoints"}},{"bold":false,"color":"dark_gray","text":"-"},{"bold":true,"color":"white","score":{"name":"Druids","objective":"victoryPoints"}},{"bold":false,"color":"green","text":" Druids"}]
+
+
 #Announce winners
 execute if score Druids victoryPoints > Royals victoryPoints run title @a title {"bold":true,"color":"green","text":"Druid Victory"}
 execute if score Druids victoryPoints > Royals victoryPoints run title @a subtitle {"color":"#663399","text":"Winners of the Mythcraft 10 Year Anniversary Event"}

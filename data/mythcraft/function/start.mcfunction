@@ -65,13 +65,13 @@ scoreboard players set Povertane cityConquerProgress 0
 scoreboard players set Amnis cityConquerProgress 0
 scoreboard players set Fronteria cityConquerProgress 0
 # set needed conquer value (same as number of markers and troops in that city)
-scoreboard players set Celak cityConquerValue 3
-scoreboard players set Kings-Port cityConquerValue 3
-scoreboard players set Athens cityConquerValue 3
-scoreboard players set Delphi cityConquerValue 3
-scoreboard players set Povertane cityConquerValue 3
-scoreboard players set Amnis cityConquerValue 3
-scoreboard players set Fronteria cityConquerValue 3
+#scoreboard players set Celak cityConquerValue 3
+#scoreboard players set Kings-Port cityConquerValue 3
+#scoreboard players set Athens cityConquerValue 1
+#scoreboard players set Delphi cityConquerValue 1
+#scoreboard players set Povertane cityConquerValue 1
+#scoreboard players set Amnis cityConquerValue 1
+#scoreboard players set Fronteria cityConquerValue 1
 # set last checked conquer progress
 scoreboard players set CelakLastChecked cityConquerProgress 0
 scoreboard players set Kings-PortLastChecked cityConquerProgress 0
@@ -100,11 +100,11 @@ scoreboard players set Threshold4 xpThresholds 310
 scoreboard players set Threshold5 xpThresholds 500
 
 # set xp thresholds (temporary for testing)
-scoreboard players set Threshold1 xpThresholds 1
-scoreboard players set Threshold2 xpThresholds 2
-scoreboard players set Threshold3 xpThresholds 3
-scoreboard players set Threshold4 xpThresholds 4
-scoreboard players set Threshold5 xpThresholds 5
+#scoreboard players set Threshold1 xpThresholds 1
+#scoreboard players set Threshold2 xpThresholds 2
+#scoreboard players set Threshold3 xpThresholds 3
+#scoreboard players set Threshold4 xpThresholds 4
+#scoreboard players set Threshold5 xpThresholds 5
 
 # set location IDs
 scoreboard players set Colosseum locationId 8
@@ -205,15 +205,11 @@ scoreboard players set Fronteria display -8
 
 # TESTING AREA      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #respawn all for testing
-function mythcraft:respawn/masterspawn
+#function mythcraft:respawn/masterspawn
 
 # run rekit for testing
-execute as MindlessReader run function mythcraft:rekit
+#execute as MindlessReader run function mythcraft:rekit
 
 #testing
-advancement revoke @a everything
+#advancement revoke @a everything
 ## TESTING AREA END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-# start loops
-function mythcraft:respawn/respawnchecker
-function mythcraft:quests/buffloop

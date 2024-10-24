@@ -1,1 +1,1 @@
-tellraw @a ["The team that kills the most enemies at ",{"color":"red","nbt":"locationText","storage":"mythcraft:quest"}," wins the reward!"]
+tellraw @a ["The team that kills the most enemies in the next 5 minutes at ",{"color":"red","nbt":"locationText","storage":"mythcraft:quest"}," wins the reward!"]
