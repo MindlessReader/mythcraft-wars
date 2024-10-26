@@ -93,11 +93,11 @@ scoreboard objectives add levelAthena-Library dummy
 scoreboard objectives add xpThresholds dummy
 
 # set xp thresholds
-scoreboard players set Threshold1 xpThresholds 40
-scoreboard players set Threshold2 xpThresholds 100
-scoreboard players set Threshold3 xpThresholds 180
-scoreboard players set Threshold4 xpThresholds 310
-scoreboard players set Threshold5 xpThresholds 500
+#scoreboard players set Threshold1 xpThresholds 40
+#scoreboard players set Threshold2 xpThresholds 100
+#scoreboard players set Threshold3 xpThresholds 180
+#scoreboard players set Threshold4 xpThresholds 310
+#scoreboard players set Threshold5 xpThresholds 500
 
 # set xp thresholds (temporary for testing)
 #scoreboard players set Threshold1 xpThresholds 1
@@ -193,7 +193,7 @@ scoreboard objectives add display dummy
 scoreboard objectives modify display displayname "Cities"
 scoreboard objectives setdisplay sidebar display
 scoreboard objectives modify display numberformat blank
-scoreboard objectives setdisplay list victoryPoints
+#scoreboard objectives setdisplay list victoryPoints
 
 scoreboard players set Celak display -2
 scoreboard players set Kings-Port display -3
