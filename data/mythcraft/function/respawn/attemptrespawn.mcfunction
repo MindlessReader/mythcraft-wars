@@ -13,5 +13,6 @@ $execute if score EntityCount mathCounter >= $(cityName) cityConquerValue if sco
 $execute if score EntityCount mathCounter >= $(cityName) cityConquerValue if score $(cityName) cityOwnership matches 1 run tellraw @a [{"color":"green","bold":false,"text":"Druids"},{"color":"#FFD700","text":" troops have regrouped in "},{"bold":false,"text":"$(cityName)","color":"white"},{"color":"#FFD700","text":"!"}]
 $execute if score EntityCount mathCounter >= $(cityName) cityConquerValue if score $(cityName) cityOwnership matches 2 run tellraw @a [{"color":"blue","bold":false,"text":"Royals"},{"color":"#FFD700","text":" troops have regrouped in "},{"bold":false,"text":"$(cityName)","color":"white"},{"color":"#FFD700","text":"!"}]
 
-# reset conquer progress
+# reset conquer progress and last checked value
 $scoreboard players set $(cityName) cityConquerProgress 0
+$scoreboard players set $(cityName)LastChecked cityConquerProgress 0
