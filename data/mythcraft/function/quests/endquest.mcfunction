@@ -22,7 +22,7 @@ execute if score QuestTracker questWinner matches 1 run function mythcraft:quest
 execute if score QuestTracker questWinner matches 2 run function mythcraft:quests/quest_winroyals
 
 #tie
-execute if score QuestTracker questWinner matches 0 run tellraw @a [{"bold":true,"color":"#663399","text":"Quest End: "}, {"bold":false,"color":"#FFD700","text":"No one won the quest due to a tie or unconquered city."}]
+execute if score QuestTracker questWinner matches 0 run tellraw @a [{bold:true,color:"#663399",text:"Quest End: "},{bold:false,color:"#FFD700",text:"No one won the quest due to a tie or unconquered city."}]
 
 # kill quest winner calculator
 execute if score QuestTracker questType matches 2 if score Druids questKills > Royals questKills run scoreboard players set QuestTracker questWinner 1

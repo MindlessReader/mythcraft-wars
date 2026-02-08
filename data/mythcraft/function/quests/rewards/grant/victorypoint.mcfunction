@@ -11,7 +11,7 @@ scoreboard players operation @a[team=Royals] victoryPoints = Royals victoryPoint
 
 # update boss bar
 execute as @a run bossbar set mythcraft:victorypointsbar players @s
-bossbar set mythcraft:victorypointsbar name [{"bold":false,"color":"blue","text":"Royals "},{"bold":true,"color":"white","score":{"name":"Royals","objective":"victoryPoints"}},{"bold":false,"color":"dark_gray","text":"-"},{"bold":true,"color":"white","score":{"name":"Druids","objective":"victoryPoints"}},{"bold":false,"color":"green","text":" Druids"}]
+bossbar set mythcraft:victorypointsbar name [{bold:false,color:"blue",text:"Royals "},{bold:true,color:"white",score:{name:"Royals",objective:"victoryPoints"}},{bold:false,color:"dark_gray",text:"-"},{bold:true,color:"white",score:{name:"Druids",objective:"victoryPoints"}},{bold:false,color:"green",text:" Druids"}]
 
 # tag remove
 tag @a remove wonLastQuest

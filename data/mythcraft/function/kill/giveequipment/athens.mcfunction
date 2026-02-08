@@ -1,1 +1,1 @@
-give @s iron_axe[unbreakable={},enchantments={levels:{"minecraft:vanishing_curse":1},show_in_tooltip:false},enchantment_glint_override=true]
+give @s iron_axe[unbreakable={},enchantments={"minecraft:vanishing_curse":1},enchantment_glint_override=true,tooltip_display={hidden_components:["minecraft:enchantments"]}]

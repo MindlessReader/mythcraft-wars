@@ -19,8 +19,10 @@
 						"minecraft:food": {
 							"nutrition": 0,
 							"saturation": 0,
-							"can_always_eat": true,
-							"eat_seconds": 999
+							"can_always_eat": true
+						},
+						"consumable": {
+							"consume_seconds": 999
 						},
 						"minecraft:max_stack_size": 1,
 						"minecraft:custom_data": "{mythcraft_breathspell:1b}"

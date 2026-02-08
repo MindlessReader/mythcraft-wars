@@ -45,14 +45,14 @@ data modify storage mythcraft:getlocation locationPath set value "mythcraft:ques
 function mythcraft:lookup/locationbyid with storage mythcraft:getlocation
 
 # announce and call relevant announcement function for detailed description
-tellraw @a {"bold":true,"color":"#DDA0DD","text":"~~~~~~~~~~"}
-tellraw @a [{"nbt":"typeText","storage":"mythcraft:quest"},": ",{"color":"red","nbt":"locationText","storage":"mythcraft:quest"},{"text":"\nReward: "},{"bold":true,"color":"#663399","nbt":"rewardText","storage":"mythcraft:quest"}]
+tellraw @a {bold:true,color:"#DDA0DD",text:"~~~~~~~~~~"}
+tellraw @a [{nbt:"typeText",storage:"mythcraft:quest"},": ",{color:"red",nbt:"locationText",storage:"mythcraft:quest"},{text:"\nReward: "},{bold:true,color:"#663399",nbt:"rewardText",storage:"mythcraft:quest"}]
 execute if score QuestTracker questType matches 1 run function mythcraft:quests/announce/conquerquest
 execute if score QuestTracker questType matches 2 run function mythcraft:quests/announce/killquest
-tellraw @a {"bold":true,"color":"#DDA0DD","text":"~~~~~~~~~~"}
+tellraw @a {bold:true,color:"#DDA0DD",text:"~~~~~~~~~~"}
 
-title @a title {"bold":true,"color":"#FFD700","text":"New Quest"}
-title @a subtitle [{"nbt":"typeText","storage":"mythcraft:quest"},": ",{"color":"red","nbt":"locationText","storage":"mythcraft:quest"},{"text":" / Reward: "},{"bold":true,"color":"#663399","nbt":"rewardText","storage":"mythcraft:quest"}]
+title @a title {bold:true,color:"#FFD700",text:"New Quest"}
+title @a subtitle [{nbt:"typeText",storage:"mythcraft:quest"},": ",{color:"red",nbt:"locationText",storage:"mythcraft:quest"},{text:" / Reward: "},{bold:true,color:"#663399",nbt:"rewardText",storage:"mythcraft:quest"}]
 
 # start actionbar loop
 function mythcraft:quests/actionbar
