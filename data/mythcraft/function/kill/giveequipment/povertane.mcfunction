@@ -1,1 +1,1 @@
-give @s splash_potion[enchantments={levels:{"minecraft:vanishing_curse":1},show_in_tooltip:false},enchantment_glint_override=true,potion_contents={potion:"strong_poison"}] 3
+give @s splash_potion[enchantments={"minecraft:vanishing_curse":1},enchantment_glint_override=true,tooltip_display={hidden_components:["minecraft:enchantments"]},potion_contents={potion:"strong_poison"}] 3

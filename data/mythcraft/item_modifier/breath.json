@@ -5,26 +5,46 @@
 			"minecraft:food": {
 				"nutrition": 0,
 				"saturation": 0,
-				"can_always_eat": true,
-				"eat_seconds": 999
+				"can_always_eat": true
 			},
-			
+			"minecraft:consumable": {
+				"consume_seconds": 999
+			},
 			"minecraft:max_stack_size": 1,
-			"minecraft:custom_data": "{mythcraft_breathspell:1b}",
+			"minecraft:custom_data": {
+				"mythcraft_breathspell": 1
+			},
 			"minecraft:enchantment_glint_override": false,
-			"minecraft:enchantments": {
-				"levels": {},
-				"show_in_tooltip": false
+			"minecraft:enchantments": {},
+			"minecraft:tooltip_display": {
+				"hidden_components": ["minecraft:enchantments"]
 			}
 		}
 	},
 	{
 		"function": "minecraft:set_components",
 		"components": {
-			"minecraft:custom_name": "[{\"color\":\"light_purple\",\"italic\":false,\"text\":\"Seeking Breath\"},{\"color\":\"white\",\"italic\":false,\"text\":\" [Cold]\"}]",
+			"minecraft:custom_name": [
+				{
+					"color": "light_purple",
+					"italic": false,
+					"text": "Seeking Breath"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Cold]"
+				}
+			],
 			"minecraft:lore": [
-				"[{\"color\":\"gray\",\"italic\":false,\"text\":\"Cooldown: 30s\",\"underlined\":true}]"
-			]},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Cooldown: 30s",
+					"underlined": true
+				}
+			]
+		},
 		"conditions": [
 			{
 				"condition": "minecraft:entity_scores",
@@ -38,10 +58,27 @@
 	{
 		"function": "minecraft:set_components",
 		"components": {
-			"minecraft:custom_name": "[{\"color\":\"light_purple\",\"italic\":false,\"text\":\"Seeking Breath\"},{\"color\":\"white\",\"italic\":false,\"text\":\" [Lukewarm]\"}]",
+			"minecraft:custom_name": [
+				{
+					"color": "light_purple",
+					"italic": false,
+					"text": "Seeking Breath"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Lukewarm]"
+				}
+			],
 			"minecraft:lore": [
-				"{\"color\":\"gray\",\"italic\":false,\"text\":\"Cooldown: 15s\",\"underlined\":true}"
-			]},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Cooldown: 15s",
+					"underlined": true
+				}
+			]
+		},
 		"conditions": [
 			{
 				"condition": "minecraft:entity_scores",
@@ -52,13 +89,30 @@
 			}
 		]
 	},
-  {
+	{
 		"function": "minecraft:set_components",
 		"components": {
-			"minecraft:custom_name": "[{\"color\":\"light_purple\",\"italic\":false,\"text\":\"Seeking Breath\"},{\"color\":\"white\",\"italic\":false,\"text\":\" [Warm]\"}]",
+			"minecraft:custom_name": [
+				{
+					"color": "light_purple",
+					"italic": false,
+					"text": "Seeking Breath"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Warm]"
+				}
+			],
 			"minecraft:lore": [
-				"{\"color\":\"gray\",\"italic\":false,\"text\":\"Cooldown: 10s\",\"underlined\":true}"
-			]},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Cooldown: 10s",
+					"underlined": true
+				}
+			]
+		},
 		"conditions": [
 			{
 				"condition": "minecraft:entity_scores",
@@ -69,13 +123,30 @@
 			}
 		]
 	},
-  {
+	{
 		"function": "minecraft:set_components",
 		"components": {
-			"minecraft:custom_name": "[{\"color\":\"light_purple\",\"italic\":false,\"text\":\"Seeking Breath\"},{\"color\":\"white\",\"italic\":false,\"text\":\" [Hot]\"}]",
+			"minecraft:custom_name": [
+				{
+					"color": "light_purple",
+					"italic": false,
+					"text": "Seeking Breath"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Hot]"
+				}
+			],
 			"minecraft:lore": [
-				"{\"color\":\"gray\",\"italic\":false,\"text\":\"Cooldown: 5s\",\"underlined\":true}"
-			]},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Cooldown: 5s",
+					"underlined": true
+				}
+			]
+		},
 		"conditions": [
 			{
 				"condition": "minecraft:entity_scores",
@@ -86,13 +157,30 @@
 			}
 		]
 	},
-  {
+	{
 		"function": "minecraft:set_components",
 		"components": {
-			"minecraft:custom_name": "[{\"color\":\"light_purple\",\"italic\":false,\"text\":\"Seeking Breath\"},{\"color\":\"white\",\"italic\":false,\"text\":\" [Boiling]\"}]",
+			"minecraft:custom_name": [
+				{
+					"color": "light_purple",
+					"italic": false,
+					"text": "Seeking Breath"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Boiling]"
+				}
+			],
 			"minecraft:lore": [
-				"{\"color\":\"gray\",\"italic\":false,\"text\":\"Cooldown: 3s\",\"underlined\":true}"
-			]},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Cooldown: 3s",
+					"underlined": true
+				}
+			]
+		},
 		"conditions": [
 			{
 				"condition": "minecraft:entity_scores",

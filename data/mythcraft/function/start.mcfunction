@@ -17,7 +17,7 @@ team modify Royals friendlyFire false
 bossbar add mythcraft:victorypointsbar "Royals-Druids"
 bossbar set mythcraft:victorypointsbar visible true
 bossbar set mythcraft:victorypointsbar style progress
-bossbar set mythcraft:victorypointsbar name [{"bold":false,"color":"blue","text":"Royals "},{"bold":true,"color":"white","score":{"name":"Royals","objective":"victoryPoints"}},{"bold":false,"color":"dark_gray","text":"-"},{"bold":true,"color":"white","score":{"name":"Druids","objective":"victoryPoints"}},{"bold":false,"color":"green","text":" Druids"}]
+bossbar set mythcraft:victorypointsbar name [{bold:false,color:"blue",text:"Royals "},{bold:true,color:"white",score:{name:"Royals",objective:"victoryPoints"}},{bold:false,color:"dark_gray",text:"-"},{bold:true,color:"white",score:{name:"Druids",objective:"victoryPoints"}},{bold:false,color:"green",text:" Druids"}]
 execute as @a run bossbar set mythcraft:victorypointsbar players @s
 # statistics scoreboards
 scoreboard objectives add totalGameDeaths deathCount
@@ -98,13 +98,6 @@ scoreboard objectives add xpThresholds dummy
 #scoreboard players set Threshold3 xpThresholds 180
 #scoreboard players set Threshold4 xpThresholds 310
 #scoreboard players set Threshold5 xpThresholds 500
-
-# set xp thresholds (temporary for testing)
-#scoreboard players set Threshold1 xpThresholds 1
-#scoreboard players set Threshold2 xpThresholds 2
-#scoreboard players set Threshold3 xpThresholds 3
-#scoreboard players set Threshold4 xpThresholds 4
-#scoreboard players set Threshold5 xpThresholds 5
 
 # set location IDs
 scoreboard players set Colosseum locationId 8
@@ -204,6 +197,22 @@ scoreboard players set Amnis display -7
 scoreboard players set Fronteria display -8
 
 # TESTING AREA      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# thresholds
+#scoreboard players set Celak cityConquerValue 3
+#scoreboard players set Kings-Port cityConquerValue 3
+#scoreboard players set Athens cityConquerValue 1
+#scoreboard players set Delphi cityConquerValue 1
+#scoreboard players set Povertane cityConquerValue 1
+#scoreboard players set Amnis cityConquerValue 1
+#coreboard players set Fronteria cityConquerValue 1
+
+# set xp thresholds (temporary for testing)
+#scoreboard players set Threshold1 xpThresholds 1
+#scoreboard players set Threshold2 xpThresholds 2
+#scoreboard players set Threshold3 xpThresholds 3
+#scoreboard players set Threshold4 xpThresholds 4
+#scoreboard players set Threshold5 xpThresholds 5
+
 #respawn all for testing
 #function mythcraft:respawn/masterspawn
 
