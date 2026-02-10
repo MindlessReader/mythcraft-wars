@@ -11,7 +11,7 @@
 				"condition": "minecraft:entity_scores",
 				"entity": "this",
 				"scores": {
-					"levelColosseum": 0
+					"levelAttack": 0
 				}
 			}
     }
@@ -23,7 +23,7 @@
       "minecraft:sharpness": {
         "type": "minecraft:score",
         "target": "this",
-        "score": "levelColosseum",
+        "score": "levelAttack",
         "scale": 1
       }
     }

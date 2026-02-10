@@ -1,1 +1,0 @@
-function mythcraft:kill/killskillloc {locationName:Fort-Reference, advancementName:fort-reference}

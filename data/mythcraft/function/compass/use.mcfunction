@@ -2,9 +2,9 @@ item replace entity @s weapon with compass[enchantments={"minecraft:vanishing_cu
 
 data modify storage mythcraft:nearest_troop position set from entity @n[tag=cityTroop,distance=1..] Pos
 data modify storage mythcraft:nearest_troop name set from entity @n[tag=cityTroop,distance=1..] CustomName
-execute as @n[tag=cityTroop,distance=1..] if entity @s[team=Unaligned] run data modify storage mythcraft:nearest_troop team set value Unaligned
-execute as @n[tag=cityTroop,distance=1..] if entity @s[team=Unaligned] run data modify storage mythcraft:nearest_troop team set value Druid
-execute as @n[tag=cityTroop,distance=1..] if entity @s[team=Unaligned] run data modify storage mythcraft:nearest_troop team set value Royal
+execute as @n[tag=cityTroop,distance=1..] if entity @s[team=Unaligned] run data modify storage mythcraft:nearest_troop team set value "Unaligned"
+execute as @n[tag=cityTroop,distance=1..] if entity @s[team=Team1] run data modify storage mythcraft:nearest_troop team set from storage mythcraft:config teams.Team1.name
+execute as @n[tag=cityTroop,distance=1..] if entity @s[team=Team2] run data modify storage mythcraft:nearest_troop team set from storage mythcraft:config teams.Team2.name
 
 execute at @s run playsound block.note_block.chime master @s ~ ~ ~
 

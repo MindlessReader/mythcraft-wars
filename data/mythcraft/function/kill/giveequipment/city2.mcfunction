@@ -1,0 +1,1 @@
+give @s totem_of_undying[enchantments={"minecraft:vanishing_curse":1},enchantment_glint_override=true,attribute_modifiers=[{id:"mythcraft:max_health",type:"minecraft:max_health",amount:-8,operation:"add_value"}],tooltip_display={hidden_components:["minecraft:enchantments","minecraft:attribute_modifiers"]}] 1

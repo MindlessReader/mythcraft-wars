@@ -1,2 +1,2 @@
-$execute if items entity @s container.$(breath) minecraft:glass_bottle run item replace entity @s[scores={levelThoth-University=1..5,SpellBreathCooldown=0}] container.$(breath) with dragon_breath[enchantments={"minecraft:vanishing_curse":1}] 1
+$execute if items entity @s container.$(breath) minecraft:glass_bottle run item replace entity @s[scores={levelMagic=1..5,SpellBreathCooldown=0}] container.$(breath) with dragon_breath[enchantments={"minecraft:vanishing_curse":1}] 1
 $item modify entity @s container.$(breath) mythcraft:breath

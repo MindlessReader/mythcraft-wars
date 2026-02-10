@@ -1,1 +1,0 @@
-function mythcraft:kill/killcity {cityName:Delphi, advancementName:delphi}

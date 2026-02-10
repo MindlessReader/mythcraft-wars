@@ -5,8 +5,8 @@ execute as @a at @s run playsound ui.toast.challenge_complete master @s ~ ~ ~
 
 schedule function mythcraft:quests/startquest 300s
 
-tag @a[team=Druids] add enableTroops
-tag @a[team=Royals] add enableTroops
+tag @a[team=Team1] add enableTroops
+tag @a[team=Team2] add enableTroops
 
 function mythcraft:respawn/respawnchecker
 function mythcraft:quests/buffloop

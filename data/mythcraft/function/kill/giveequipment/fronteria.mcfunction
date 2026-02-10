@@ -1,1 +1,0 @@
-give @s ghast_tear[custom_name={italic:false,text:"Ghast Tear of Regeneration"},lore=[{color:"blue",italic:false,text:"Regeneration (1:30)"},"Like a potion but more fun"],food={nutrition:0,saturation:0,can_always_eat:true},consumable={on_consume_effects:[{type:"minecraft:apply_effects",effects:[{id:"minecraft:regeneration",amplifier:0,duration:1800}],probability:1.0}]}] 1

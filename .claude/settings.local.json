@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(cd:*)",
-      "WebFetch(domain:minecraft.wiki)"
+      "WebFetch(domain:minecraft.wiki)",
+      "Bash(grep:*)"
     ]
   }
 }

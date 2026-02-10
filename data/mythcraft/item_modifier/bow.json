@@ -14,7 +14,7 @@
 						"condition": "minecraft:entity_scores",
 						"entity": "this",
 						"scores": {
-							"levelAthena-Library": {
+							"levelSpecial": {
 								"min": 0,
 								"max": 2
 							}
@@ -24,7 +24,7 @@
 						"condition": "minecraft:entity_scores",
 						"entity": "this",
 						"scores": {
-							"levelColosseum": 0
+							"levelAttack": 0
 						}
 					}
 				]
@@ -37,7 +37,7 @@
       "minecraft:power": {
         "type": "minecraft:score",
         "target": "this",
-        "score": "levelColosseum",
+        "score": "levelAttack",
         "scale": 1
       }
     }
@@ -51,7 +51,7 @@
         "condition": "minecraft:entity_scores",
         "entity": "this",
         "scores": {
-          "levelAthena-Library": {
+          "levelSpecial": {
             "min": 3
           }
         }
@@ -67,7 +67,7 @@
         "condition": "minecraft:entity_scores",
         "entity": "this",
         "scores": {
-          "levelAthena-Library": {
+          "levelSpecial": {
             "min": 4
           }
         }

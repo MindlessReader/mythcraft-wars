@@ -1,1 +1,0 @@
-function mythcraft:kill/killskillloc {locationName:Thoth-University, advancementName:thoth-university}

@@ -1,1 +1,0 @@
-function mythcraft:kill/killcity {cityName:Celak, advancementName:celak}

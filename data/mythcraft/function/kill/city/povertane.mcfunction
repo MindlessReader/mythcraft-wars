@@ -1,1 +1,0 @@
-function mythcraft:kill/killcity {cityName:Povertane, advancementName:povertane}

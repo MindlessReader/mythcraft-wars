@@ -50,7 +50,7 @@
 				"condition": "minecraft:entity_scores",
 				"entity": "this",
 				"scores": {
-					"levelThoth-University": 1
+					"levelMagic": 1
 				}
 			}
 		]
@@ -84,7 +84,7 @@
 				"condition": "minecraft:entity_scores",
 				"entity": "this",
 				"scores": {
-					"levelThoth-University": 2
+					"levelMagic": 2
 				}
 			}
 		]
@@ -118,7 +118,7 @@
 				"condition": "minecraft:entity_scores",
 				"entity": "this",
 				"scores": {
-					"levelThoth-University": 3
+					"levelMagic": 3
 				}
 			}
 		]
@@ -152,7 +152,7 @@
 				"condition": "minecraft:entity_scores",
 				"entity": "this",
 				"scores": {
-					"levelThoth-University": 4
+					"levelMagic": 4
 				}
 			}
 		]
@@ -186,7 +186,7 @@
 				"condition": "minecraft:entity_scores",
 				"entity": "this",
 				"scores": {
-					"levelThoth-University": 5
+					"levelMagic": 5
 				}
 			}
 		]

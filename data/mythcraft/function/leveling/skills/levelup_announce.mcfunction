@@ -1,0 +1,3 @@
+# announce level up with resolved team display names
+$execute as @s[team=Team1] run tellraw @a [{color:"$(team1Color)",text:"$(team1Name)"},{color:"#FFD700",text:" have leveled up the "},{bold:false,color:"white",text:"$(locationName)"},{color:"#FFD700",text:" skill to level "},{color:"#663399",score:{name:"Team1",objective:"level$(locationName)"}},{color:"#FFD700",text:" ⚡"}]
+$execute as @s[team=Team2] run tellraw @a [{color:"$(team2Color)",text:"$(team2Name)"},{color:"#FFD700",text:" have leveled up the "},{bold:false,color:"white",text:"$(locationName)"},{color:"#FFD700",text:" skill to level "},{color:"#663399",score:{name:"Team2",objective:"level$(locationName)"}},{color:"#FFD700",text:" ⚡"}]

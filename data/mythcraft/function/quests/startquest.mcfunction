@@ -1,6 +1,6 @@
 #reset values from previous quest
-scoreboard players set Druids questKills 0
-scoreboard players set Royals questKills 0
+scoreboard players set Team1 questKills 0
+scoreboard players set Team2 questKills 0
 scoreboard players set QuestTracker questWinner 0
 scoreboard players set QuestTracker questType 0
 scoreboard players set QuestTracker questRewardType 0
@@ -22,7 +22,7 @@ execute if score QuestTracker questType matches 1 store result storage mythcraft
 execute if score QuestTracker questType matches 1 run data modify storage mythcraft:getlocationowner locationPath set value "QuestTracker questLocationOwner"
 execute if score QuestTracker questType matches 1 run function mythcraft:lookup/cityownerbyid with storage mythcraft:getlocationowner
 
-# If kill, get leveling location, 8 = Colosseum, 9 = Fort Reference, 10 = Thoth University, 11 = Athena Library
+# If kill, get leveling location, 8 = Attack, 9 = Defense, 10 = Magic, 11 = Special
 execute if score QuestTracker questType matches 2 store result score QuestTracker questLocation run function mythcraft:getrandomnumber {max:4}
 execute if score QuestTracker questType matches 2 run scoreboard players add QuestTracker questLocation 7
 

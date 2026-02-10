@@ -1,1 +1,0 @@
-function mythcraft:kill/killcity {cityName:Amnis, advancementName:amnis}

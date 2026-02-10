@@ -1,23 +1,24 @@
 say starting!
+# load world config (city names, VP values, etc.)
+function mythcraft:config
+
 # add teams
-team add Druids
-team add Royals
+team add Team1
+team add Team2
 team add Unaligned
 
-team modify Druids color green
-team modify Royals color blue
+function mythcraft:setup/configteam with storage mythcraft:config teams.Team1
+function mythcraft:setup/configteam with storage mythcraft:config teams.Team2
 team modify Unaligned color yellow
 
-team modify Druids seeFriendlyInvisibles true
-team modify Royals seeFriendlyInvisibles true
-
-team modify Druids friendlyFire false
-team modify Royals friendlyFire false
-
-bossbar add mythcraft:victorypointsbar "Royals-Druids"
+bossbar add mythcraft:victorypointsbar "Victory Points"
 bossbar set mythcraft:victorypointsbar visible true
 bossbar set mythcraft:victorypointsbar style progress
-bossbar set mythcraft:victorypointsbar name [{bold:false,color:"blue",text:"Royals "},{bold:true,color:"white",score:{name:"Royals",objective:"victoryPoints"}},{bold:false,color:"dark_gray",text:"-"},{bold:true,color:"white",score:{name:"Druids",objective:"victoryPoints"}},{bold:false,color:"green",text:" Druids"}]
+data modify storage mythcraft:temp team1Name set from storage mythcraft:config teams.Team1.name
+data modify storage mythcraft:temp team1Color set from storage mythcraft:config teams.Team1.color
+data modify storage mythcraft:temp team2Name set from storage mythcraft:config teams.Team2.name
+data modify storage mythcraft:temp team2Color set from storage mythcraft:config teams.Team2.color
+function mythcraft:setup/bossbar with storage mythcraft:temp
 execute as @a run bossbar set mythcraft:victorypointsbar players @s
 # statistics scoreboards
 scoreboard objectives add totalGameDeaths deathCount
@@ -29,8 +30,8 @@ scoreboard objectives add citiesConquered dummy
 scoreboard objectives add victoryPoints dummy
 scoreboard objectives modify victoryPoints displayname "Victory Points"
 
-scoreboard players set Druids victoryPoints 0
-scoreboard players set Royals victoryPoints 0
+scoreboard players set Team1 victoryPoints 0
+scoreboard players set Team2 victoryPoints 0
 
 # add location id scoreboard
 scoreboard objectives add locationId dummy
@@ -41,55 +42,55 @@ scoreboard objectives add cityConquerProgress dummy
 scoreboard objectives add cityConquerValue dummy
 
 # set city IDs
-scoreboard players set Celak locationId 1
-scoreboard players set Kings-Port locationId 2
-scoreboard players set Athens locationId 3
-scoreboard players set Delphi locationId 4
-scoreboard players set Povertane locationId 5
-scoreboard players set Amnis locationId 6
-scoreboard players set Fronteria locationId 7
+scoreboard players set City1 locationId 1
+scoreboard players set City2 locationId 2
+scoreboard players set City3 locationId 3
+scoreboard players set City4 locationId 4
+scoreboard players set City5 locationId 5
+scoreboard players set City6 locationId 6
+scoreboard players set City7 locationId 7
 # set city ownership
-scoreboard players set Celak cityOwnership 0
-scoreboard players set Kings-Port cityOwnership 0
-scoreboard players set Athens cityOwnership 0
-scoreboard players set Delphi cityOwnership 0
-scoreboard players set Povertane cityOwnership 0
-scoreboard players set Amnis cityOwnership 0
-scoreboard players set Fronteria cityOwnership 0
+scoreboard players set City1 cityOwnership 0
+scoreboard players set City2 cityOwnership 0
+scoreboard players set City3 cityOwnership 0
+scoreboard players set City4 cityOwnership 0
+scoreboard players set City5 cityOwnership 0
+scoreboard players set City6 cityOwnership 0
+scoreboard players set City7 cityOwnership 0
 # set conquer progress
-scoreboard players set Celak cityConquerProgress 0
-scoreboard players set Kings-Port cityConquerProgress 0
-scoreboard players set Athens cityConquerProgress 0
-scoreboard players set Delphi cityConquerProgress 0
-scoreboard players set Povertane cityConquerProgress 0
-scoreboard players set Amnis cityConquerProgress 0
-scoreboard players set Fronteria cityConquerProgress 0
+scoreboard players set City1 cityConquerProgress 0
+scoreboard players set City2 cityConquerProgress 0
+scoreboard players set City3 cityConquerProgress 0
+scoreboard players set City4 cityConquerProgress 0
+scoreboard players set City5 cityConquerProgress 0
+scoreboard players set City6 cityConquerProgress 0
+scoreboard players set City7 cityConquerProgress 0
 # set needed conquer value (same as number of markers and troops in that city)
-#scoreboard players set Celak cityConquerValue 3
-#scoreboard players set Kings-Port cityConquerValue 3
-#scoreboard players set Athens cityConquerValue 1
-#scoreboard players set Delphi cityConquerValue 1
-#scoreboard players set Povertane cityConquerValue 1
-#scoreboard players set Amnis cityConquerValue 1
-#scoreboard players set Fronteria cityConquerValue 1
+#scoreboard players set City1 cityConquerValue 3
+#scoreboard players set City2 cityConquerValue 3
+#scoreboard players set City3 cityConquerValue 1
+#scoreboard players set City4 cityConquerValue 1
+#scoreboard players set City5 cityConquerValue 1
+#scoreboard players set City6 cityConquerValue 1
+#scoreboard players set City7 cityConquerValue 1
 # set last checked conquer progress
-scoreboard players set CelakLastChecked cityConquerProgress 0
-scoreboard players set Kings-PortLastChecked cityConquerProgress 0
-scoreboard players set AthensLastChecked cityConquerProgress 0
-scoreboard players set DelphiLastChecked cityConquerProgress 0
-scoreboard players set PovertaneLastChecked cityConquerProgress 0
-scoreboard players set AmnisLastChecked cityConquerProgress 0
-scoreboard players set FronteriaLastChecked cityConquerProgress 0
+scoreboard players set City1LastChecked cityConquerProgress 0
+scoreboard players set City2LastChecked cityConquerProgress 0
+scoreboard players set City3LastChecked cityConquerProgress 0
+scoreboard players set City4LastChecked cityConquerProgress 0
+scoreboard players set City5LastChecked cityConquerProgress 0
+scoreboard players set City6LastChecked cityConquerProgress 0
+scoreboard players set City7LastChecked cityConquerProgress 0
 
 # add team xp and levels
-scoreboard objectives add xpColosseum dummy
-scoreboard objectives add levelColosseum dummy
-scoreboard objectives add xpFort-Reference dummy
-scoreboard objectives add levelFort-Reference dummy
-scoreboard objectives add xpThoth-University dummy
-scoreboard objectives add levelThoth-University dummy
-scoreboard objectives add xpAthena-Library dummy
-scoreboard objectives add levelAthena-Library dummy
+scoreboard objectives add xpAttack dummy
+scoreboard objectives add levelAttack dummy
+scoreboard objectives add xpDefense dummy
+scoreboard objectives add levelDefense dummy
+scoreboard objectives add xpMagic dummy
+scoreboard objectives add levelMagic dummy
+scoreboard objectives add xpSpecial dummy
+scoreboard objectives add levelSpecial dummy
 scoreboard objectives add xpThresholds dummy
 
 # set xp thresholds
@@ -100,35 +101,35 @@ scoreboard objectives add xpThresholds dummy
 #scoreboard players set Threshold5 xpThresholds 500
 
 # set location IDs
-scoreboard players set Colosseum locationId 8
-scoreboard players set Fort-Reference locationId 9
-scoreboard players set Thoth-University locationId 10
-scoreboard players set Athena-Library locationId 11
+scoreboard players set Attack locationId 8
+scoreboard players set Defense locationId 9
+scoreboard players set Magic locationId 10
+scoreboard players set Special locationId 11
 
 # set xp and levels for teams
-scoreboard players set Druids xpColosseum 0
-scoreboard players set Druids xpFort-Reference 0
-scoreboard players set Druids xpThoth-University 0
-scoreboard players set Druids xpAthena-Library 0
-scoreboard players set Druids levelColosseum 0
-scoreboard players set Druids levelFort-Reference 0
-scoreboard players set Druids levelThoth-University 0
-scoreboard players set Druids levelAthena-Library 0
+scoreboard players set Team1 xpAttack 0
+scoreboard players set Team1 xpDefense 0
+scoreboard players set Team1 xpMagic 0
+scoreboard players set Team1 xpSpecial 0
+scoreboard players set Team1 levelAttack 0
+scoreboard players set Team1 levelDefense 0
+scoreboard players set Team1 levelMagic 0
+scoreboard players set Team1 levelSpecial 0
 
-scoreboard players set Royals xpColosseum 0
-scoreboard players set Royals xpFort-Reference 0
-scoreboard players set Royals xpThoth-University 0
-scoreboard players set Royals xpAthena-Library 0
-scoreboard players set Royals levelColosseum 0
-scoreboard players set Royals levelFort-Reference 0
-scoreboard players set Royals levelThoth-University 0
-scoreboard players set Royals levelAthena-Library 0
+scoreboard players set Team2 xpAttack 0
+scoreboard players set Team2 xpDefense 0
+scoreboard players set Team2 xpMagic 0
+scoreboard players set Team2 xpSpecial 0
+scoreboard players set Team2 levelAttack 0
+scoreboard players set Team2 levelDefense 0
+scoreboard players set Team2 levelMagic 0
+scoreboard players set Team2 levelSpecial 0
 
 # reset player levels
-scoreboard players set @a levelColosseum 0
-scoreboard players set @a levelFort-Reference 0
-scoreboard players set @a levelThoth-University 0
-scoreboard players set @a levelAthena-Library 0
+scoreboard players set @a levelAttack 0
+scoreboard players set @a levelDefense 0
+scoreboard players set @a levelMagic 0
+scoreboard players set @a levelSpecial 0
 
 # misc scoreboards
 scoreboard objectives add needsRekit deathCount
@@ -151,8 +152,8 @@ scoreboard objectives add questLocationOwner dummy
 scoreboard objectives add victoryPointQuestsRemaining dummy
 scoreboard objectives add questsRemaining dummy
 
-scoreboard players set Druids questKills 0
-scoreboard players set Royals questKills 0
+scoreboard players set Team1 questKills 0
+scoreboard players set Team2 questKills 0
 
 scoreboard players set QuestTracker questWinner -1
 scoreboard players set QuestTracker questType 0
@@ -188,37 +189,38 @@ scoreboard objectives setdisplay sidebar display
 scoreboard objectives modify display numberformat blank
 #scoreboard objectives setdisplay list victoryPoints
 
-scoreboard players set Celak display -2
-scoreboard players set Kings-Port display -3
-scoreboard players set Athens display -4
-scoreboard players set Delphi display -5
-scoreboard players set Povertane display -6
-scoreboard players set Amnis display -7
-scoreboard players set Fronteria display -8
+# Sidebar display names are set dynamically from config
+function mythcraft:setup/sidebar_city {cityId:City1, displayScore:-2}
+function mythcraft:setup/sidebar_city {cityId:City2, displayScore:-3}
+function mythcraft:setup/sidebar_city {cityId:City3, displayScore:-4}
+function mythcraft:setup/sidebar_city {cityId:City4, displayScore:-5}
+function mythcraft:setup/sidebar_city {cityId:City5, displayScore:-6}
+function mythcraft:setup/sidebar_city {cityId:City6, displayScore:-7}
+function mythcraft:setup/sidebar_city {cityId:City7, displayScore:-8}
 
 # TESTING AREA      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # thresholds
-#scoreboard players set Celak cityConquerValue 3
-#scoreboard players set Kings-Port cityConquerValue 3
-#scoreboard players set Athens cityConquerValue 1
-#scoreboard players set Delphi cityConquerValue 1
-#scoreboard players set Povertane cityConquerValue 1
-#scoreboard players set Amnis cityConquerValue 1
-#coreboard players set Fronteria cityConquerValue 1
+scoreboard players set City1 cityConquerValue 3
+scoreboard players set City2 cityConquerValue 3
+scoreboard players set City3 cityConquerValue 1
+scoreboard players set City4 cityConquerValue 1
+scoreboard players set City5 cityConquerValue 1
+scoreboard players set City6 cityConquerValue 1
+scoreboard players set City7 cityConquerValue 1
 
 # set xp thresholds (temporary for testing)
-#scoreboard players set Threshold1 xpThresholds 1
-#scoreboard players set Threshold2 xpThresholds 2
-#scoreboard players set Threshold3 xpThresholds 3
-#scoreboard players set Threshold4 xpThresholds 4
-#scoreboard players set Threshold5 xpThresholds 5
+scoreboard players set Threshold1 xpThresholds 1
+scoreboard players set Threshold2 xpThresholds 2
+scoreboard players set Threshold3 xpThresholds 3
+scoreboard players set Threshold4 xpThresholds 4
+scoreboard players set Threshold5 xpThresholds 5
 
 #respawn all for testing
-#function mythcraft:respawn/masterspawn
+function mythcraft:respawn/masterspawn
 
 # run rekit for testing
-#execute as MindlessReader run function mythcraft:rekit
+execute as MindlessReader run function mythcraft:rekit
 
 #testing
-#advancement revoke @a everything
+advancement revoke @a everything
 ## TESTING AREA END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

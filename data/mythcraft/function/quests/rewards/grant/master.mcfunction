@@ -1,6 +1,6 @@
 # add tag to winning players
-execute if score QuestTracker questWinner matches 1 run tag @a[team=Druids] add wonLastQuest
-execute if score QuestTracker questWinner matches 2 run tag @a[team=Royals] add wonLastQuest
+execute if score QuestTracker questWinner matches 1 run tag @a[team=Team1] add wonLastQuest
+execute if score QuestTracker questWinner matches 2 run tag @a[team=Team2] add wonLastQuest
 
 execute as @a[tag=wonLastQuest] at @s run playsound minecraft:ui.toast.challenge_complete master @s ~ ~ ~
 

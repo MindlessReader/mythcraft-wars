@@ -14,14 +14,14 @@
 						"condition": "minecraft:entity_scores",
 						"entity": "this",
 						"scores": {
-							"levelAthena-Library": 0
+							"levelSpecial": 0
 						}
 					},
 					{
 						"condition": "minecraft:entity_scores",
 						"entity": "this",
 						"scores": {
-							"levelFort-Reference": 0
+							"levelDefense": 0
 						}
 					}
 				]
@@ -34,7 +34,7 @@
       "minecraft:protection": {
         "type": "minecraft:score",
         "target": "this",
-        "score": "levelFort-Reference",
+        "score": "levelDefense",
         "scale": 1
       }
     }
@@ -48,7 +48,7 @@
         "condition": "minecraft:entity_scores",
         "entity": "this",
         "scores": {
-          "levelFort-Reference": {
+          "levelDefense": {
             "min": 3
           }
         }
@@ -64,7 +64,7 @@
         "condition": "minecraft:entity_scores",
         "entity": "this",
         "scores": {
-          "levelAthena-Library": {
+          "levelSpecial": {
             "min": 1
           }
         }
