@@ -14,19 +14,25 @@ Mythcraft Wars is a Minecraft datapack for a team-based PvP conquest game. Two t
 
 ### Configuration System
 
-All world-specific names and settings are in `config.mcfunction` (loaded by `start.mcfunction`). Map makers edit this single file to customize:
+Default config values live in `config.mcfunction`. On load, `start.mcfunction` conditionally initializes: `execute unless data storage mythcraft:config cities run function mythcraft:config` — so config persists across reloads and is only set on first run.
 
-- **City display names:** `mythcraft:config cities.City1.name` through `City7.name`
-- **City VP values:** `mythcraft:config cities.CityN.vpValue`
-- **Skill location display names:** `mythcraft:config skillLocations.Attack.name`, `.Defense.name`, `.Magic.name`, `.Special.name`
-- **Team display names/colors:** `mythcraft:config teams.Team1.name`, `.color`
-- **Team armor trims:** `mythcraft:config teams.TeamN.trimMaterial`, `.trimPattern`, `.trimPatternHead`
-- **Tiebreak city:** `mythcraft:config tiebreakCity`
+Config fields in `mythcraft:config` storage:
+
+- **City display names:** `cities.City1.name` through `City7.name`
+- **City VP values:** `cities.CityN.vpValue`
+- **Skill location display names:** `skillLocations.Attack.name`, `.Defense.name`, `.Magic.name`, `.Special.name`
+- **Team display names/colors:** `teams.Team1.name`, `.color`
+- **Team armor trims:** `teams.TeamN.trimMaterial`, `.trimPattern`, `.trimPatternHead`
+- **Tiebreak city:** `tiebreakCity`
 
 Display text uses the "resolve into temp, call helper with macros" pattern: values are read from `mythcraft:config` into `mythcraft:temp` storage via `data modify`, then passed to helper functions via `function ... with storage mythcraft:temp` so they become `$(paramName)` macro parameters. This avoids `{nbt:...,storage:...,interpret:true}` which does not work reliably for bossbars, titles, or entity CustomName.
 
+### In-Game Config Editor
+
+All config fields are editable in-game via `/function mythcraft:config/open`. Uses inline SNBT dialogs (`config/` directory): `edit/*` reads current values into `mythcraft:temp`, `show/*` constructs the dialog with macros, `apply/*` writes inputs back. `refresh.mcfunction` re-applies display settings; `reset.mcfunction` restores defaults.
+
 ### Game Flow
-`start.mcfunction` (on load) → `config.mcfunction` → `startgame.mcfunction` → 10 quest cycles via `quests/startquest` → `beginendgame` → `endgame` (victory calculation)
+`start.mcfunction` (on load) → `config.mcfunction` (conditional, first run only) → `startgame.mcfunction` → 10 quest cycles via `quests/startquest` → `beginendgame` → `endgame` (victory calculation)
 
 The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown ticking, troop activation/deactivation by player proximity, and buff reapplication.
 
@@ -34,7 +40,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 
 | Subsystem | Directory | Purpose |
 |-----------|-----------|---------|
-| **Config** | `config.mcfunction`, `setup/` | World-level configuration and team/sidebar setup helpers |
+| **Config** | `config.mcfunction`, `config/`, `setup/` | World-level configuration, in-game dialog editor, and team/sidebar setup helpers |
 | **Conquest** | `conquer.mcfunction`, `kill/city/` | City capture via troop kills; threshold = marker count |
 | **Quests** | `quests/` | 10 randomized quests (conquer or kill type) with VP/buff/item rewards |
 | **Leveling** | `leveling/` | 4 skill locations, 5 levels each; team-wide progression via item modifiers |
@@ -69,6 +75,8 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - **Config-driven display:** City/team/skill location names resolved from `mythcraft:config` into `mythcraft:temp`, then passed as macro params to helper functions (never use `interpret:true` or nbt storage refs in display contexts)
 - **Armor trims from config:** `rekit/applyarmor.mcfunction` reads trim material/pattern from storage macros
 - **Sidebar coloring:** `setup/sidebar_color` chain joins display names to teams for colored sidebar entries
+- **Inline SNBT dialogs:** All dialogs constructed inline via `dialog show @s {...}` in mcfunctions — dialog JSON registry files don't load from datapacks
+- **`\u0024` escape trick:** In `config/show/*.mcfunction`, dialog template `$(key)` refs use `\u0024(key)` to survive mcfunction macro resolution
 
 ## Conventions
 
