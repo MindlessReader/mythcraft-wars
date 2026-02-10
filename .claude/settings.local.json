@@ -3,7 +3,12 @@
     "allow": [
       "Bash(cd:*)",
       "WebFetch(domain:minecraft.wiki)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "WebFetch(domain:datapack.wiki)",
+      "WebFetch(domain:maven.fabricmc.net)",
+      "WebFetch(domain:misode.github.io)",
+      "WebFetch(domain:www.minecraftforum.net)",
+      "WebFetch(domain:docs.smithed.dev)"
     ]
   }
 }

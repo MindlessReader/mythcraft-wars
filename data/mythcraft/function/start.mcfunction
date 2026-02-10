@@ -1,6 +1,6 @@
 say starting!
-# load world config (city names, VP values, etc.)
-function mythcraft:config
+# load world config defaults (only on first run — dialog edits persist across reloads)
+execute unless data storage mythcraft:config cities run function mythcraft:config
 
 # add teams
 team add Team1

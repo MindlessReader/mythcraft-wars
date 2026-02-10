@@ -1,0 +1,3 @@
+# Shows the general settings editor dialog with current values pre-filled
+# Parameters: $(currentTiebreak)
+$dialog show @s {type:"minecraft:multi_action",title:"General Settings",pause:true,body:[{type:"minecraft:plain_message",contents:"Enter a city ID (City1 through City7) for the tiebreak city.",width:300}],inputs:[{type:"minecraft:text",key:"tiebreak",label:"Tiebreak City",initial:"$(currentTiebreak)",max_length:10}],columns:1,actions:[{label:{text:"Save",color:"green"},width:150,action:{type:"minecraft:dynamic/run_command",template:"function mythcraft:config/apply/general {tiebreak:\"\u0024(tiebreak)\"}"}},{label:{text:"Back"},width:150,action:{type:"minecraft:run_command",command:"function mythcraft:config/open"}}]}

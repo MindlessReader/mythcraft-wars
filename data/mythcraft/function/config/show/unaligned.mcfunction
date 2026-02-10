@@ -1,0 +1,4 @@
+# Shows the Unaligned team editor dialog with current values pre-filled
+# Parameters: $(currentName), $(currentColor)
+# Color can be a named color or hex code (e.g. #FFD700)
+$dialog show @s {type:"minecraft:multi_action",title:"Configure Unaligned",pause:true,body:[{type:"minecraft:plain_message",contents:"Color can be a named color or hex code (e.g. #FFD700)",width:300}],inputs:[{type:"minecraft:text",key:"name",label:"Display Name",initial:"$(currentName)",max_length:32},{type:"minecraft:text",key:"color",label:"Color",initial:"$(currentColor)",max_length:32}],columns:1,actions:[{label:{text:"Save",color:"green"},width:150,action:{type:"minecraft:dynamic/run_command",template:"function mythcraft:config/apply/unaligned {name:\"\u0024(name)\",color:\"\u0024(color)\"}"}},{label:{text:"Back"},width:150,action:{type:"minecraft:run_command",command:"function mythcraft:config/show/teams_menu"}}]}
