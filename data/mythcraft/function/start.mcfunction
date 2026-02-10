@@ -190,6 +190,7 @@ scoreboard objectives modify display numberformat blank
 #scoreboard objectives setdisplay list victoryPoints
 
 # Sidebar display names are set dynamically from config
+scoreboard players reset * display
 function mythcraft:setup/sidebar_city {cityId:City1, displayScore:-2}
 function mythcraft:setup/sidebar_city {cityId:City2, displayScore:-3}
 function mythcraft:setup/sidebar_city {cityId:City3, displayScore:-4}
