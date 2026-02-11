@@ -1,5 +1,6 @@
-# character XP for individual progression
-scoreboard players operation @s characterXP += TroopKill characterXPReward
+# character XP for individual progression (only for enemy troop kills)
+$execute unless score $(cityName) cityOwnership matches 1 as @s[team=Team1] run scoreboard players operation @s characterXP += TroopKill characterXPReward
+$execute unless score $(cityName) cityOwnership matches 2 as @s[team=Team2] run scoreboard players operation @s characterXP += TroopKill characterXPReward
 function mythcraft:leveling/character/checklevel
 
 # if player killed a mob on their own team, respawns one from the nearest marker
