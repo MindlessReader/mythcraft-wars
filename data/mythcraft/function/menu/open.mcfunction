@@ -72,5 +72,18 @@ data modify storage mythcraft:temp skillDef set from storage mythcraft:config sk
 data modify storage mythcraft:temp skillMag set from storage mythcraft:config skillLocations.Magic.name
 data modify storage mythcraft:temp skillSpc set from storage mythcraft:config skillLocations.Special.name
 
+# Resolve player name via helmet trick (set_name resolves selector server-side)
+# NOTE: If named helmets are ever added, the custom_name restore will need a different approach
+# (set_name with nbt/storage/interpret doesn't resolve; it stores the literal component definition)
+data modify storage mythcraft:temp playerName set value "Player"
+# If no helmet, temporarily place one
+execute unless items entity @s armor.head * run item replace entity @s armor.head with stone_button
+# Resolve @s selector into the item's custom_name, then read the plain username
+item modify entity @s armor.head mythcraft:resolve_player_name
+data modify storage mythcraft:temp playerName set from entity @s equipment.head.components."minecraft:custom_name".insertion
+# Clean up: clear custom_name from helmet, or remove temp item
+execute if items entity @s armor.head stone_button run item replace entity @s armor.head with air
+execute unless items entity @s armor.head stone_button run item modify entity @s armor.head mythcraft:clear_custom_name
+
 # Show the dialog
 function mythcraft:menu/show with storage mythcraft:temp
