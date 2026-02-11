@@ -21,6 +21,9 @@ data modify storage mythcraft:kit bow set from entity @s Inventory[{id: "minecra
 data modify storage mythcraft:kit axe set from entity @s Inventory[{id: "minecraft:iron_axe"}].Slot
 data modify storage mythcraft:kit breath set from entity @s Inventory[{id: "minecraft:glass_bottle",components:{"minecraft:custom_data":{mythcraft_breathempty:1b}}}].Slot
 data modify storage mythcraft:kit breath set from entity @s Inventory[{id: "minecraft:dragon_breath",components:{"minecraft:custom_data":{mythcraft_breathspell:1b}}}].Slot
+data modify storage mythcraft:kit crossbow set from entity @s Inventory[{id: "minecraft:crossbow"}].Slot
+data modify storage mythcraft:kit mace set from entity @s Inventory[{id: "minecraft:mace"}].Slot
+data modify storage mythcraft:kit spear set from entity @s Inventory[{id: "minecraft:iron_spear"}].Slot
 
 # call item update functions with data if the appropriate items exist
 execute if items entity @s container.* minecraft:iron_sword run function mythcraft:leveling/items/sword with storage mythcraft:kit
@@ -28,6 +31,9 @@ execute if items entity @s container.* minecraft:bow run function mythcraft:leve
 execute if items entity @s container.* minecraft:iron_axe run function mythcraft:leveling/items/axe with storage mythcraft:kit
 execute if items entity @s container.* minecraft:dragon_breath run function mythcraft:leveling/items/breath with storage mythcraft:kit
 execute if items entity @s container.* minecraft:glass_bottle run function mythcraft:leveling/items/breath with storage mythcraft:kit
+execute if items entity @s container.* minecraft:crossbow run function mythcraft:leveling/items/crossbow with storage mythcraft:kit
+execute if items entity @s container.* minecraft:mace run function mythcraft:leveling/items/mace with storage mythcraft:kit
+execute if items entity @s container.* minecraft:iron_spear run function mythcraft:leveling/items/spear with storage mythcraft:kit
 
 # armor ones are fine here since they target predefined slots
 item modify entity @s armor.head mythcraft:helmet

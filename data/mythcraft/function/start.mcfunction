@@ -136,6 +136,10 @@ scoreboard objectives add needsRekit deathCount
 scoreboard objectives add mathCounter dummy
 scoreboard objectives add endGame dummy
 
+# class system
+scoreboard objectives add playerClass dummy
+scoreboard objectives add selectClass trigger
+
 scoreboard players set QuestTracker endGame 0
 
 # set constants

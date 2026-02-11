@@ -1,0 +1,77 @@
+[
+  {
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:enchantment_glint_override": true
+		},
+		"conditions": [
+			{
+        "condition": "minecraft:inverted",
+				"term": {
+				"condition": "minecraft:all_of",
+				"terms": [
+					{
+						"condition": "minecraft:entity_scores",
+						"entity": "this",
+						"scores": {
+							"levelSpecial": {
+								"min": 0,
+								"max": 2
+							}
+						}
+					},
+					{
+						"condition": "minecraft:entity_scores",
+						"entity": "this",
+						"scores": {
+							"levelAttack": 0
+						}
+					}
+				]
+			}
+  }]
+	},
+  {
+    "function": "minecraft:set_enchantments",
+    "enchantments": {
+      "minecraft:quick_charge": {
+        "type": "minecraft:score",
+        "target": "this",
+        "score": "levelAttack",
+        "scale": 1
+      }
+    }
+  },{
+    "function": "minecraft:set_enchantments",
+    "enchantments": {
+      "minecraft:multishot": 1
+    },
+    "conditions": [
+      {
+        "condition": "minecraft:entity_scores",
+        "entity": "this",
+        "scores": {
+          "levelSpecial": {
+            "min": 3
+          }
+        }
+      }
+    ]
+  },{
+    "function": "minecraft:set_enchantments",
+    "enchantments": {
+      "minecraft:piercing": 4
+    },
+    "conditions": [
+      {
+        "condition": "minecraft:entity_scores",
+        "entity": "this",
+        "scores": {
+          "levelSpecial": {
+            "min": 4
+          }
+        }
+      }
+    ]
+  }
+]

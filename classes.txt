@@ -1,0 +1,119 @@
+====================================
+  MYTHCRAFT WARS - CLASS REFERENCE
+====================================
+
+Switch class anytime: /trigger selectClass set <1/2/3>
+(Instantly re-equips you with your new class gear)
+
+
+------------------------------------
+  WARRIOR (Default)
+  /trigger selectClass set 1
+------------------------------------
+  Slot 1: Iron Sword
+  Slot 2: Bow
+  Slot 3: Iron Spear
+  Slot 8: Compass
+  Slot 9: Steak x64
+  Armor:  Iron Helmet, Iron Chestplate, Leather Leggings, Leather Boots
+
+
+------------------------------------
+  ASSASSIN
+  /trigger selectClass set 2
+------------------------------------
+  Slot 1: Iron Sword
+  Slot 2: Bow
+  Slot 3: Crossbow
+  Slot 8: Compass
+  Slot 9: Steak x64
+  Offhand: Totem of Undying
+  Armor:   Full Leather
+
+
+------------------------------------
+  BASTION
+  /trigger selectClass set 3
+------------------------------------
+  Slot 1: Iron Axe
+  Slot 2: Crossbow
+  Slot 3: Mace
+  Slot 8: Compass
+  Slot 9: Steak x64
+  Offhand: Shield
+  Armor:   Full Iron
+
+
+====================================
+  SKILL PROGRESSION
+====================================
+All classes share the same skill tree.
+Enchantments are applied automatically based on your team's skill levels.
+
+
+------------------------------------
+  ATTACK (Levels 1-5)
+------------------------------------
+  Level 1-5:
+    Iron Sword    -> Sharpness I-V
+    Iron Axe      -> Sharpness I-V
+    Iron Spear    -> Sharpness I-V
+    Bow           -> Power I-V
+    Crossbow      -> Quick Charge I-V
+    Mace          -> Density I-V
+  Level 3+:
+    Iron Sword    -> Sweeping Edge III
+
+
+------------------------------------
+  DEFENSE (Levels 1-5)
+------------------------------------
+  Level 1+:
+    Shield granted (if you don't already have one)
+    All Armor     -> Protection I-V (scales with level)
+  Level 3+:
+    All Armor     -> Thorns III
+
+
+------------------------------------
+  MAGIC (Levels 1-5)
+------------------------------------
+  Level 1+:
+    Seeking Breath spell unlocked
+  Level 3+:
+    Iron Sword    -> Knockback II
+    Iron Spear    -> Lunge III
+
+  Seeking Breath Cooldowns:
+    Level 1: Cold      (30s)
+    Level 2: Lukewarm  (15s)
+    Level 3: Warm      (10s)
+    Level 4: Hot       ( 5s)
+    Level 5: Boiling   ( 3s)
+
+
+------------------------------------
+  SPECIAL (Levels 1-5)
+------------------------------------
+  Level 1+:
+    Boots         -> Frost Walker II
+  Level 2+:
+    Leggings      -> Swift Sneak III
+  Level 3+:
+    Bow           -> Infinity
+    Crossbow      -> Multishot
+  Level 4+:
+    Bow           -> Flame
+    Crossbow      -> Piercing IV
+  Level 5:
+    Iron Sword    -> Fire Aspect II
+    Mace          -> Wind Burst III
+
+
+====================================
+  NOTES
+====================================
+- Each weapon only appears for the classes that use it.
+  Enchantments only apply if you have that weapon in your kit.
+- City bonuses and quest rewards stack on top of class gear.
+- Your class persists across deaths.
