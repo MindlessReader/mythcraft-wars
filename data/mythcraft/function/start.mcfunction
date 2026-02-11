@@ -159,7 +159,7 @@ scoreboard players set PlayerKill characterXPReward 3
 
 # reset all players
 scoreboard players set @a characterXP 0
-scoreboard players set @a characterLevel 0
+scoreboard players set @a characterLevel 1
 
 scoreboard players set QuestTracker endGame 0
 
@@ -246,12 +246,10 @@ scoreboard players set Threshold4 xpThresholds 4
 scoreboard players set Threshold5 xpThresholds 5
 
 # character level thresholds (temporary for testing)
-#scoreboard players set CharLvl1 characterXPThresholds 5
 #scoreboard players set CharLvl2 characterXPThresholds 15
 #scoreboard players set CharLvl3 characterXPThresholds 30
 #scoreboard players set CharLvl4 characterXPThresholds 50
 #scoreboard players set CharLvl5 characterXPThresholds 80
-scoreboard players set CharLvl1 characterXPThresholds 1
 scoreboard players set CharLvl2 characterXPThresholds 2
 scoreboard players set CharLvl3 characterXPThresholds 3
 scoreboard players set CharLvl4 characterXPThresholds 4

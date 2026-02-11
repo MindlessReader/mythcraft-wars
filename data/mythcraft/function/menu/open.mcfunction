@@ -36,7 +36,6 @@ execute store result storage mythcraft:temp charLvl int 1 run scoreboard players
 execute store result storage mythcraft:temp charXP int 1 run scoreboard players get @s characterXP
 
 # Get character XP threshold for next level
-execute if score @s characterLevel matches 0 store result storage mythcraft:temp charThresh int 1 run scoreboard players get CharLvl1 characterXPThresholds
 execute if score @s characterLevel matches 1 store result storage mythcraft:temp charThresh int 1 run scoreboard players get CharLvl2 characterXPThresholds
 execute if score @s characterLevel matches 2 store result storage mythcraft:temp charThresh int 1 run scoreboard players get CharLvl3 characterXPThresholds
 execute if score @s characterLevel matches 3 store result storage mythcraft:temp charThresh int 1 run scoreboard players get CharLvl4 characterXPThresholds
