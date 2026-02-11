@@ -25,6 +25,19 @@ data modify storage mythcraft:config skillLocations.Defense.name set value "Fort
 data modify storage mythcraft:config skillLocations.Magic.name set value "Thoth-University"
 data modify storage mythcraft:config skillLocations.Special.name set value "Athena-Library"
 
+# Teleport coordinates (admin should set these to actual world locations)
+data modify storage mythcraft:config cities.City1.teleport set value {x:0,y:64,z:0,yaw:0,pitch:0}
+data modify storage mythcraft:config cities.City2.teleport set value {x:0,y:64,z:0,yaw:0,pitch:0}
+data modify storage mythcraft:config cities.City3.teleport set value {x:0,y:64,z:0,yaw:0,pitch:0}
+data modify storage mythcraft:config cities.City4.teleport set value {x:0,y:64,z:0,yaw:0,pitch:0}
+data modify storage mythcraft:config cities.City5.teleport set value {x:0,y:64,z:0,yaw:0,pitch:0}
+data modify storage mythcraft:config cities.City6.teleport set value {x:0,y:64,z:0,yaw:0,pitch:0}
+data modify storage mythcraft:config cities.City7.teleport set value {x:0,y:64,z:0,yaw:0,pitch:0}
+data modify storage mythcraft:config skillLocations.Attack.teleport set value {x:0,y:64,z:0,yaw:0,pitch:0}
+data modify storage mythcraft:config skillLocations.Defense.teleport set value {x:0,y:64,z:0,yaw:0,pitch:0}
+data modify storage mythcraft:config skillLocations.Magic.teleport set value {x:0,y:64,z:0,yaw:0,pitch:0}
+data modify storage mythcraft:config skillLocations.Special.teleport set value {x:0,y:64,z:0,yaw:0,pitch:0}
+
 # Number of active cities
 data modify storage mythcraft:config cityCount set value 7
 

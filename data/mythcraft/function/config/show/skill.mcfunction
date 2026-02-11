@@ -1,0 +1,4 @@
+# Shows the individual skill location editor dialog
+# Parameters: $(currentName), $(skill)
+# Uses \u0024 to escape $(key) for dialog template substitution
+$dialog show @s {type:"minecraft:multi_action",title:"Configure $(skill) Location",pause:true,inputs:[{type:"minecraft:text",key:"name",label:"Location Name",initial:"$(currentName)",max_length:32}],columns:2,actions:[{label:{text:"Teleport Config",color:"aqua"},width:150,action:{type:"minecraft:run_command",command:"function mythcraft:config/edit/skill_teleport {skill:$(skill)}"}},{label:{text:"Save",color:"green"},width:150,action:{type:"minecraft:dynamic/run_command",template:"function mythcraft:config/apply/skill {skill:$(skill),name:\"\u0024(name)\"}"}},{label:{text:"Back"},width:150,action:{type:"minecraft:run_command",command:"function mythcraft:config/show/skills_menu"}}]}

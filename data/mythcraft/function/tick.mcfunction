@@ -15,6 +15,16 @@ execute as @e[type=area_effect_cloud,tag=breath_spell] at @s run function mythcr
 #Markers
 execute as @e[type=marker,tag=setmarker] at @s run function mythcraft:markers/setcity
 
+# Player menu (sub-dialog navigation via triggers)
+scoreboard players enable @a openMenu
+execute as @a[scores={openMenu=1}] run function mythcraft:menu/open
+execute as @a[scores={openMenu=2}] run function mythcraft:menu/classselect_open
+execute as @a[scores={openMenu=3}] run function mythcraft:menu/questhistory_open
+
+# Teleport
+scoreboard players enable @a teleportLocation
+execute as @a[scores={teleportLocation=1..11}] run function mythcraft:menu/teleport
+
 # activate mobs
 execute as @a[tag=enableTroops,team=Team1] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team1] slowness
 execute as @a[tag=enableTroops,team=Team2] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team2] slowness

@@ -1,6 +1,8 @@
 say starting!
 # load world config defaults (only on first run — dialog edits persist across reloads)
 execute unless data storage mythcraft:config cities run function mythcraft:config
+# initialize teleport coordinates if missing (for worlds created before this feature)
+execute unless data storage mythcraft:config cities.City1.teleport run function mythcraft:config/init_teleports
 
 # add teams
 team add Team1
@@ -140,6 +142,10 @@ scoreboard objectives add endGame dummy
 scoreboard objectives add playerClass dummy
 scoreboard objectives add selectClass trigger
 
+# player menu triggers
+scoreboard objectives add openMenu trigger
+scoreboard objectives add teleportLocation trigger
+
 # character leveling (per-player progression)
 scoreboard objectives add characterXP dummy
 scoreboard objectives add characterLevel dummy
@@ -173,6 +179,10 @@ scoreboard objectives add questsRemaining dummy
 
 scoreboard players set Team1 questKills 0
 scoreboard players set Team2 questKills 0
+
+# quest history
+data remove storage mythcraft:questhistory log
+data modify storage mythcraft:questhistory log set value []
 
 scoreboard players set QuestTracker questWinner -1
 scoreboard players set QuestTracker questType 0

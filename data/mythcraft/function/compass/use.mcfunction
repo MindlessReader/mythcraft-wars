@@ -1,3 +1,8 @@
+# Shift+right-click: open player menu instead of normal compass behavior
+execute if predicate mythcraft:is_sneaking run function mythcraft:menu/open
+execute if predicate mythcraft:is_sneaking run advancement revoke @s only mythcraft:item/compass
+execute if predicate mythcraft:is_sneaking run return 1
+
 item replace entity @s weapon with compass[enchantments={"minecraft:vanishing_curse":1},max_stack_size=1,food={nutrition:0,saturation:0,can_always_eat:true},consumable={consume_seconds:0.1},lodestone_tracker={tracked:false,target:{dimension:"minecraft:the_end",pos:[I;0,0,0]}},custom_name="Unset, right click to set"]
 
 data modify storage mythcraft:nearest_troop position set from entity @n[tag=cityTroop,distance=1..] Pos

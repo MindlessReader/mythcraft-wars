@@ -8,6 +8,7 @@ execute if score QuestTracker questsRemaining matches 1.. run schedule function 
 execute if score QuestTracker questsRemaining matches 0 run schedule function mythcraft:beginendgame 10s
 
 # end function early if winner was already handled due to attackers winning a conquer quest
+execute if score QuestTracker questType matches 1 if score QuestTracker questWinner matches 1.. run function mythcraft:quests/logresult
 execute if score QuestTracker questType matches 1 if score QuestTracker questWinner matches 1.. run return 1
 
 # conquer quest defense winner calculator; if attackers won, winner was handled immediately via conquer event (conquerquestattackreward.mcfunction), not here
@@ -27,5 +28,8 @@ execute if score QuestTracker questWinner matches 0 run tellraw @a [{bold:true,c
 # kill quest winner calculator
 execute if score QuestTracker questType matches 2 if score Team1 questKills > Team2 questKills run scoreboard players set QuestTracker questWinner 1
 execute if score QuestTracker questType matches 2 if score Team1 questKills < Team2 questKills run scoreboard players set QuestTracker questWinner 2
+
+# Log quest result to history
+function mythcraft:quests/logresult
 
 execute if score QuestTracker questWinner matches 1..2 run function mythcraft:quests/rewards/grant/master
