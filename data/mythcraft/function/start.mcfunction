@@ -140,6 +140,21 @@ scoreboard objectives add endGame dummy
 scoreboard objectives add playerClass dummy
 scoreboard objectives add selectClass trigger
 
+# character leveling (per-player progression)
+scoreboard objectives add characterXP dummy
+scoreboard objectives add characterLevel dummy
+scoreboard objectives add characterXPThresholds dummy
+scoreboard objectives add characterXPReward dummy
+scoreboard objectives add _prevCharLevel dummy
+
+# tunable XP-per-kill values (fake players, adjustable on the fly)
+scoreboard players set TroopKill characterXPReward 1
+scoreboard players set PlayerKill characterXPReward 3
+
+# reset all players
+scoreboard players set @a characterXP 0
+scoreboard players set @a characterLevel 0
+
 scoreboard players set QuestTracker endGame 0
 
 # set constants
@@ -219,6 +234,18 @@ scoreboard players set Threshold2 xpThresholds 2
 scoreboard players set Threshold3 xpThresholds 3
 scoreboard players set Threshold4 xpThresholds 4
 scoreboard players set Threshold5 xpThresholds 5
+
+# character level thresholds (temporary for testing)
+#scoreboard players set CharLvl1 characterXPThresholds 5
+#scoreboard players set CharLvl2 characterXPThresholds 15
+#scoreboard players set CharLvl3 characterXPThresholds 30
+#scoreboard players set CharLvl4 characterXPThresholds 50
+#scoreboard players set CharLvl5 characterXPThresholds 80
+scoreboard players set CharLvl1 characterXPThresholds 1
+scoreboard players set CharLvl2 characterXPThresholds 2
+scoreboard players set CharLvl3 characterXPThresholds 3
+scoreboard players set CharLvl4 characterXPThresholds 4
+scoreboard players set CharLvl5 characterXPThresholds 5
 
 #respawn all for testing
 function mythcraft:respawn/masterspawn

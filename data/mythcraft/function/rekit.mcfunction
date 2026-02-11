@@ -22,6 +22,9 @@ execute if score @s playerClass matches 2 as @s[team=Team2] run function mythcra
 execute if score @s playerClass matches 3 as @s[team=Team1] run function mythcraft:rekit/applyarmor with storage mythcraft:config teams.Team1
 execute if score @s playerClass matches 3 as @s[team=Team2] run function mythcraft:rekit/applyarmor with storage mythcraft:config teams.Team2
 
+# apply armor/toughness attributes based on class + character level
+function mythcraft:leveling/character/setattributes
+
 # city benefits (/items at top to make sure nothing is overwritten)
 execute if score City6 cityOwnership matches 1 run item replace entity @s[team=Team1] hotbar.8 with bread[food={nutrition:8,saturation:12.8},consumable={consume_seconds:0.432},enchantments={"minecraft:vanishing_curse":1},custom_name="Nourishing Bread"] 64
 execute if score City6 cityOwnership matches 2 run item replace entity @s[team=Team2] hotbar.8 with bread[food={nutrition:8,saturation:12.8},consumable={consume_seconds:0.432},enchantments={"minecraft:vanishing_curse":1},custom_name="Nourishing Bread"] 64

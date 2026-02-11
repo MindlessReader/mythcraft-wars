@@ -8,7 +8,8 @@
       "WebFetch(domain:maven.fabricmc.net)",
       "WebFetch(domain:misode.github.io)",
       "WebFetch(domain:www.minecraftforum.net)",
-      "WebFetch(domain:docs.smithed.dev)"
+      "WebFetch(domain:docs.smithed.dev)",
+      "Bash(find:*)"
     ]
   }
 }

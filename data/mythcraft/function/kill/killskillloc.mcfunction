@@ -1,3 +1,7 @@
+# character XP for individual progression
+scoreboard players operation @s characterXP += TroopKill characterXPReward
+function mythcraft:leveling/character/checklevel
+
 $execute as @s[team=Team1] run scoreboard players add Team1 xp$(locationName) 1
 $execute as @s[team=Team2] run scoreboard players add Team2 xp$(locationName) 1
 

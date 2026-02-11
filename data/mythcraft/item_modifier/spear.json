@@ -1,36 +1,34 @@
 [
   {
-		"function": "minecraft:set_components",
-		"components": {
-			"minecraft:enchantment_glint_override": true
-		},
-		"conditions": [
-			{
+    "function": "minecraft:set_components",
+    "components": {
+      "minecraft:enchantment_glint_override": true
+    },
+    "conditions": [
+      {
         "condition": "minecraft:inverted",
-				"term": {
-				"condition": "minecraft:all_of",
-				"terms": [
-					{
-						"condition": "minecraft:entity_scores",
-						"entity": "this",
-						"scores": {
-							"levelMagic": {
-								"min": 0,
-								"max": 2
-							}
-						}
-					},
-					{
-						"condition": "minecraft:entity_scores",
-						"entity": "this",
-						"scores": {
-							"levelAttack": 0
-						}
-					}
-				]
-			}
-  }]
-	},
+        "term": {
+          "condition": "minecraft:all_of",
+          "terms": [
+            {
+              "condition": "minecraft:entity_scores",
+              "entity": "this",
+              "scores": {
+                "characterLevel": 0
+              }
+            },
+            {
+              "condition": "minecraft:entity_scores",
+              "entity": "this",
+              "scores": {
+                "levelAttack": 0
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
   {
     "function": "minecraft:set_enchantments",
     "enchantments": {
@@ -41,7 +39,44 @@
         "scale": 1
       }
     }
-  },{
+  },
+  {
+    "function": "minecraft:set_enchantments",
+    "enchantments": {
+      "minecraft:lunge": 1
+    },
+    "conditions": [
+      {
+        "condition": "minecraft:entity_scores",
+        "entity": "this",
+        "scores": {
+          "characterLevel": {
+            "min": 1,
+            "max": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "function": "minecraft:set_enchantments",
+    "enchantments": {
+      "minecraft:lunge": 2
+    },
+    "conditions": [
+      {
+        "condition": "minecraft:entity_scores",
+        "entity": "this",
+        "scores": {
+          "characterLevel": {
+            "min": 3,
+            "max": 4
+          }
+        }
+      }
+    ]
+  },
+  {
     "function": "minecraft:set_enchantments",
     "enchantments": {
       "minecraft:lunge": 3
@@ -51,8 +86,8 @@
         "condition": "minecraft:entity_scores",
         "entity": "this",
         "scores": {
-          "levelMagic": {
-            "min": 3
+          "characterLevel": {
+            "min": 5
           }
         }
       }
