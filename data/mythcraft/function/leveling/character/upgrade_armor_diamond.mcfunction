@@ -1,8 +1,8 @@
 # In-place armor upgrade: iron → diamond with team trims
 # Called with: function ... with storage mythcraft:config teams.TeamN
 
-# Warrior (1) and Bastion (3) have iron head+chest → diamond
-$execute unless score @s playerClass matches 2 run item replace entity @s armor.head with diamond_helmet[attribute_modifiers=[],unbreakable={},enchantments={"minecraft:vanishing_curse":1},enchantment_glint_override=false,trim={material:$(trimMaterial),pattern:$(trimPatternHead)}] 1
+# Warrior (1), Assassin (2), and Bastion (3) have iron head → diamond; Warrior/Bastion chest too
+$item replace entity @s armor.head with diamond_helmet[attribute_modifiers=[],unbreakable={},enchantments={"minecraft:vanishing_curse":1},enchantment_glint_override=false,trim={material:$(trimMaterial),pattern:$(trimPatternHead)}] 1
 $execute unless score @s playerClass matches 2 run item replace entity @s armor.chest with diamond_chestplate[attribute_modifiers=[],unbreakable={},enchantments={"minecraft:vanishing_curse":1},enchantment_glint_override=false,trim={material:$(trimMaterial),pattern:$(trimPattern)}] 1
 
 # Bastion only: legs+feet are also iron → diamond
