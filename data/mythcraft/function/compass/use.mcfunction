@@ -1,6 +1,9 @@
 # Shift+right-click: open player menu instead of normal compass behavior
+# set_name interrupts consumption; scheduled restore gives compass back if it still gets eaten
+execute if predicate mythcraft:is_sneaking run tag @s add compassRestore
+execute if predicate mythcraft:is_sneaking run schedule function mythcraft:compass/restore 1t
+execute if predicate mythcraft:is_sneaking run item modify entity @s weapon {function:"set_name",name:"Compass"}
 execute if predicate mythcraft:is_sneaking run function mythcraft:menu/open
-execute if predicate mythcraft:is_sneaking run item replace entity @s weapon with compass[enchantments={"minecraft:vanishing_curse":1},max_stack_size=1,food={nutrition:0,saturation:0,can_always_eat:true},consumable={consume_seconds:0.1,animation:"none",sound:"minecraft:intentionally_empty",has_consume_particles:false},lodestone_tracker={tracked:false,target:{dimension:"minecraft:the_end",pos:[I;0,0,0]}},custom_name="Unset, right click to set"]
 execute if predicate mythcraft:is_sneaking run advancement revoke @s only mythcraft:item/compass
 execute if predicate mythcraft:is_sneaking run return 1
 
