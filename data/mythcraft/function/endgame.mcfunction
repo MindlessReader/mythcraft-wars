@@ -31,7 +31,7 @@ data modify storage mythcraft:temp vpValue set from storage mythcraft:config cit
 function mythcraft:endgame_addvp with storage mythcraft:temp
 
 execute if score Team1 victoryPoints = Team2 victoryPoints if score City3 cityOwnership matches 1 run scoreboard players add Team1 victoryPoints 1
-execute if score Team1 victoryPoints = Team2 victoryPoints if score City3 cityOwnership matches 2 run scoreboard players add Team1 victoryPoints 1
+execute if score Team1 victoryPoints = Team2 victoryPoints if score City3 cityOwnership matches 2 run scoreboard players add Team2 victoryPoints 1
 
 # resolve display names for announcements
 data modify storage mythcraft:temp team1Name set from storage mythcraft:config teams.Team1.name

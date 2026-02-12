@@ -18,8 +18,8 @@ execute if score QuestTracker questType matches 1 if score QuestTracker questWin
 execute if score QuestTracker questType matches 1 if score QuestTracker questWinner matches 0 if score QuestTracker questLocationOwner matches 1..2 run scoreboard players operation QuestTracker questWinner = QuestTracker questLocationOwner
 
 # kill quest winner calculator
-execute if score Team1 questKills > Team2 questKills run scoreboard players set QuestTracker questWinner 1
-execute if score Team1 questKills < Team2 questKills run scoreboard players set QuestTracker questWinner 2
+execute if score QuestTracker questType matches 2 if score Team1 questKills > Team2 questKills run scoreboard players set QuestTracker questWinner 1
+execute if score QuestTracker questType matches 2 if score Team1 questKills < Team2 questKills run scoreboard players set QuestTracker questWinner 2
 
 # announce winner
 execute if score QuestTracker questWinner matches 1 run function mythcraft:quests/quest_winteam {teamName:Team1}
@@ -27,10 +27,6 @@ execute if score QuestTracker questWinner matches 2 run function mythcraft:quest
 
 #tie
 execute if score QuestTracker questWinner matches 0 run tellraw @a [{bold:true,color:"#663399",text:"Quest End: "},{bold:false,color:"#FFD700",text:"No one won the quest due to a tie or unconquered city."}]
-
-# kill quest winner calculator
-execute if score QuestTracker questType matches 2 if score Team1 questKills > Team2 questKills run scoreboard players set QuestTracker questWinner 1
-execute if score QuestTracker questType matches 2 if score Team1 questKills < Team2 questKills run scoreboard players set QuestTracker questWinner 2
 
 # Log quest result to history
 function mythcraft:quests/logresult
