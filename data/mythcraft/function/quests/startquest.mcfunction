@@ -54,6 +54,12 @@ tellraw @a {bold:true,color:"#DDA0DD",text:"~~~~~~~~~~"}
 title @a title {bold:true,color:"#FFD700",text:"New Quest"}
 title @a subtitle [{nbt:"typeText",storage:"mythcraft:quest"},": ",{color:"red",nbt:"locationText",storage:"mythcraft:quest"},{text:" / Reward: "},{bold:true,color:"#663399",nbt:"rewardText",storage:"mythcraft:quest"}]
 
+# start quest countdown timer
+scoreboard players set QuestTracker questTimer 300
+scoreboard players set QuestTracker questTimerMin 5
+scoreboard players set QuestTracker questTimerSec 0
+schedule function mythcraft:quests/timer 1s
+
 # start actionbar loop
 function mythcraft:quests/actionbar
 

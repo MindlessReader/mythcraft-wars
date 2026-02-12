@@ -9,3 +9,9 @@ function mythcraft:quests/rewards/grant/master
 
 # announce
 $function mythcraft:quests/quest_winteam {teamName:$(teamName)}
+
+# log quest result immediately
+function mythcraft:quests/logresult
+
+# stop the quest timer
+schedule clear mythcraft:quests/timer

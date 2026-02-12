@@ -1,3 +1,7 @@
+# Clear any remaining quest display loops
+schedule clear mythcraft:quests/actionbar
+schedule clear mythcraft:quests/timer
+
 schedule function mythcraft:endgame 300s
 
 title @a title {bold:true,color:"#663399",text:"☠ Endgame ☠"}

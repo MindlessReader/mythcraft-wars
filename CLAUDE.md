@@ -46,7 +46,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 | **Config** | `config.mcfunction`, `config/`, `setup/` | World-level configuration, in-game dialog editor, and team/sidebar setup helpers |
 | **Conquest** | `conquer.mcfunction`, `kill/city/` | City capture via troop kills; threshold = marker count |
 | **Quests** | `quests/` | 10 randomized quests (conquer or kill type) with VP/buff/item rewards |
-| **Leveling** | `leveling/` | 4 skill locations, 5 levels each; team-wide progression via item modifiers |
+| **Leveling** | `leveling/` | Dual progression: team-wide skill levels (0-5) at 4 skill locations + per-player character level (1-5) from kill XP |
 | **Spells** | `spells/` | Seeking Breath spell (area_effect_cloud projectile), unlocked by Magic skill |
 | **Respawn** | `respawn/` | Troop spawning from markers; callback pattern for async marker loading |
 | **Equipment** | `kill/giveequipment/`, `rekit.mcfunction`, `rekit/` | City-specific bonuses + level-scaled gear via `item_modifier/` JSONs |
@@ -69,12 +69,14 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - City state: `cityOwnership`, `cityConquerProgress`, `cityConquerValue`
 - Quest state tracked on a `QuestTracker` entity: `questType` (1=conquer, 2=kill), `questRewardType` (1=item, 2=buff, 3=VP)
 - Player menu triggers: `openMenu` (1=main, 2=class select, 3=quest history), `teleportLocation` (1-7=cities, 8-11=skill locations)
+- Character level: `characterLevel` (per-player, 1-5), `characterXP`, `characterXPThresholds` (fake players `CharLvl2`-`CharLvl5`), `characterXPReward` (fake players `TroopKill`=1, `PlayerKill`=3)
 - Player death triggers rekit via `needsRekit` scoreboard checked in tick
 
 ### Key Patterns
 
 - **Advancement-driven events:** Kill advancements (`advancement/kill/`) trigger mcfunctions, then are revoked for reuse
-- **Item modifiers:** `item_modifier/*.json` files scale equipment stats by skill level using `set_components`
+- **Item modifiers:** `item_modifier/*.json` files scale equipment by skill level (sharpness, protection) and character level (lunge, density, quick_charge); some use score-based scaling, others use discrete conditional breakpoints
+- **Character leveling:** Per-player progression (levels 1-5) from troop/player kills. Affects armor/toughness attributes (per-class via `setattributes`), gear material tiers (iron→diamond at level 3, diamond→netherite at level 5), and weapon enchantments. `checklevel` runs after each kill XP gain; `onlevelup` applies in-place upgrades
 - **Troop slowness:** All troops spawn with Slowness IX (immobile); cleared when a team player is within 10 blocks
 - **Callback respawn:** `respawn/attemptrespawn` uses scheduled callbacks with 15s delays to wait for marker entities to load
 - **Lookup functions:** `lookup/` maps numeric IDs to city/location names for parameterized operations

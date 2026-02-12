@@ -46,15 +46,22 @@ execute if score @s characterLevel matches 5 run data modify storage mythcraft:t
 data modify storage mythcraft:temp questType set value "---"
 data modify storage mythcraft:temp questLocation set value "---"
 data modify storage mythcraft:temp questReward set value "---"
-data modify storage mythcraft:temp questNum set value 0
+data modify storage mythcraft:temp questNum set value "-"
+data modify storage mythcraft:temp questTimerDisplay set value "---"
 execute if score QuestTracker questWinner matches 0 run data modify storage mythcraft:temp questType set from storage mythcraft:quest typeText
 execute if score QuestTracker questWinner matches 0 run data modify storage mythcraft:temp questLocation set from storage mythcraft:quest locationText
 execute if score QuestTracker questWinner matches 0 run data modify storage mythcraft:temp questReward set from storage mythcraft:quest rewardText
 
-# Compute quest number: 11 - questsRemaining
+# Compute quest number: 11 - questsRemaining (only when quest is active)
 scoreboard players set @s mathCounter 11
 scoreboard players operation @s mathCounter -= QuestTracker questsRemaining
-execute store result storage mythcraft:temp questNum int 1 run scoreboard players get @s mathCounter
+execute if score QuestTracker questWinner matches 0 store result storage mythcraft:temp questNum int 1 run scoreboard players get @s mathCounter
+
+# Compute quest timer display (only when quest is active)
+execute if score QuestTracker questWinner matches 0 store result storage mythcraft:temp questTimerMin int 1 run scoreboard players get QuestTracker questTimerMin
+execute if score QuestTracker questWinner matches 0 store result storage mythcraft:temp questTimerSec int 1 run scoreboard players get QuestTracker questTimerSec
+execute if score QuestTracker questWinner matches 0 if score QuestTracker questTimerSec matches 10.. run function mythcraft:menu/helpers/format_timer with storage mythcraft:temp
+execute if score QuestTracker questWinner matches 0 if score QuestTracker questTimerSec matches ..9 run function mythcraft:menu/helpers/format_timer_padded with storage mythcraft:temp
 
 # Get city names for teleport button labels
 data modify storage mythcraft:temp city1 set from storage mythcraft:config cities.City1.name

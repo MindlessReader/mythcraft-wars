@@ -165,6 +165,7 @@ scoreboard players set QuestTracker endGame 0
 
 # set constants
 scoreboard players set C_0 mathCounter 0
+scoreboard players set C_60 mathCounter 60
 
 # quests
 scoreboard objectives add questKills dummy
@@ -173,6 +174,9 @@ scoreboard objectives add questType dummy
 scoreboard objectives add questRewardType dummy
 scoreboard objectives add questReward dummy
 scoreboard objectives add questLocation dummy
+scoreboard objectives add questTimer dummy
+scoreboard objectives add questTimerMin dummy
+scoreboard objectives add questTimerSec dummy
 scoreboard objectives add questLocationOwner dummy
 scoreboard objectives add victoryPointQuestsRemaining dummy
 scoreboard objectives add questsRemaining dummy
@@ -192,6 +196,9 @@ scoreboard players set QuestTracker questLocation 0
 
 scoreboard players set QuestTracker victoryPointQuestsRemaining 6
 scoreboard players set QuestTracker questsRemaining 10
+scoreboard players set QuestTracker questTimer 0
+scoreboard players set QuestTracker questTimerMin 0
+scoreboard players set QuestTracker questTimerSec 0
 
 # buff time remaining
 scoreboard objectives add BuffResistance dummy
