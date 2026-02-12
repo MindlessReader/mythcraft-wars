@@ -10,59 +10,125 @@ Switch class anytime: /trigger selectClass set <1/2/3>
   WARRIOR (Default)
   /trigger selectClass set 1
 ------------------------------------
-  Slot 1: Iron Sword
+  Slot 1: Sword (material scales with character level)
   Slot 2: Bow
-  Slot 3: Iron Spear
+  Slot 3: Spear (material scales with character level)
   Slot 8: Compass
   Slot 9: Steak x64
-  Armor:  Iron Helmet, Iron Chestplate, Leather Leggings, Leather Boots
+  Armor:  Mixed armor (material scales with character level)
+
+  Character Level Attributes:
+    Level 1: 10 armor, 0 toughness
+    Level 2: 12 armor, 1 toughness
+    Level 3: 14 armor, 2 toughness (Iron → Diamond)
+    Level 4: 16 armor, 3 toughness
+    Level 5: 18 armor, 4 toughness (Diamond → Netherite)
 
 
 ------------------------------------
   ASSASSIN
   /trigger selectClass set 2
 ------------------------------------
-  Slot 1: Iron Sword
+  Slot 1: Sword (material scales with character level)
   Slot 2: Bow
   Slot 3: Crossbow
   Slot 8: Compass
   Slot 9: Steak x64
   Offhand: Totem of Undying
-  Armor:   Full Leather
+  Armor:  Full Leather (material scales with character level)
+
+  Character Level Attributes:
+    Level 1: 6 armor, 0 toughness
+    Level 2: 7 armor, 0 toughness
+    Level 3: 9 armor, 1 toughness (Leather → Diamond)
+    Level 4: 11 armor, 2 toughness
+    Level 5: 13 armor, 3 toughness (Diamond → Netherite)
 
 
 ------------------------------------
   BASTION
   /trigger selectClass set 3
 ------------------------------------
-  Slot 1: Iron Axe
+  Slot 1: Axe (material scales with character level)
   Slot 2: Crossbow
   Slot 3: Mace
   Slot 8: Compass
   Slot 9: Steak x64
   Offhand: Shield
-  Armor:   Full Iron
+  Armor:  Full Iron (material scales with character level)
+
+  Character Level Attributes:
+    Level 1: 14 armor, 1 toughness
+    Level 2: 16 armor, 2 toughness
+    Level 3: 17 armor, 4 toughness (Iron → Diamond)
+    Level 4: 18 armor, 6 toughness
+    Level 5: 20 armor, 8 toughness (Diamond → Netherite)
 
 
 ====================================
-  SKILL PROGRESSION
+  PROGRESSION SYSTEM
 ====================================
-All classes share the same skill tree.
-Enchantments are applied automatically based on your team's skill levels.
+Mythcraft Wars has TWO progression systems that work together:
+
+1. CHARACTER LEVELS (Per-Player, Levels 1-5)
+   - Earned through combat XP
+   - XP Sources: +1 per troop kill, +3 per player kill
+   - Affects: Gear material tier (Iron/Diamond/Netherite),
+             armor & toughness attributes, and some enchantments
+
+2. TEAM SKILLS (Shared by Team, Levels 0-5)
+   - Four skill locations: Attack, Defense, Magic, Special
+   - Earned by your team capturing and holding skill locations
+   - Affects: Weapon & armor enchantments for all team members
+
+
+====================================
+  CHARACTER LEVEL ENCHANTMENTS
+====================================
+These enchantments scale with YOUR personal character level:
+
+------------------------------------
+  SPEAR (Warrior Only)
+------------------------------------
+  Levels 1-2: Lunge I
+  Levels 3-4: Lunge II
+  Level 5:    Lunge III
+
+------------------------------------
+  CROSSBOW (Warrior & Assassin)
+------------------------------------
+  Character level directly scales Quick Charge:
+    Level 1: Quick Charge I
+    Level 2: Quick Charge II
+    Level 3: Quick Charge III
+    Level 4: Quick Charge IV
+    Level 5: Quick Charge V
+
+------------------------------------
+  MACE (Bastion Only)
+------------------------------------
+  Levels 2-3: Density I
+  Level 4:    Density II
+  Level 5:    Density III
+
+
+====================================
+  TEAM SKILL ENCHANTMENTS
+====================================
+These enchantments are granted to ALL team members based on
+your team's skill levels at the four skill locations.
 
 
 ------------------------------------
   ATTACK (Levels 1-5)
 ------------------------------------
   Level 1-5:
-    Iron Sword    -> Sharpness I-V
-    Iron Axe      -> Sharpness I-V
-    Iron Spear    -> Sharpness I-V
+    Sword         -> Sharpness I-V
+    Axe           -> Sharpness I-V
+    Spear         -> Sharpness I-V
     Bow           -> Power I-V
-    Crossbow      -> Quick Charge I-V
-    Mace          -> Density I-V
   Level 3+:
-    Iron Sword    -> Sweeping Edge III
+    Sword         -> Sweeping Edge III
 
 
 ------------------------------------
@@ -81,8 +147,7 @@ Enchantments are applied automatically based on your team's skill levels.
   Level 1+:
     Seeking Breath spell unlocked
   Level 3+:
-    Iron Sword    -> Knockback II
-    Iron Spear    -> Lunge III
+    Sword         -> Knockback II
 
   Seeking Breath Cooldowns:
     Level 1: Cold      (30s)
@@ -106,7 +171,7 @@ Enchantments are applied automatically based on your team's skill levels.
     Bow           -> Flame
     Crossbow      -> Piercing IV
   Level 5:
-    Iron Sword    -> Fire Aspect II
+    Sword         -> Fire Aspect II
     Mace          -> Wind Burst III
 
 
@@ -115,5 +180,8 @@ Enchantments are applied automatically based on your team's skill levels.
 ====================================
 - Each weapon only appears for the classes that use it.
   Enchantments only apply if you have that weapon in your kit.
-- City bonuses and quest rewards stack on top of class gear.
-- Your class persists across deaths.
+- Character level affects YOUR gear quality and personal stats.
+- Team skills affect enchantments for your ENTIRE team.
+- City bonuses and quest rewards stack on top of everything.
+- Your class and character level persist across deaths.
+- Gear automatically upgrades when you reach character levels 3 and 5.
