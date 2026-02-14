@@ -1,6 +1,5 @@
-# level up, called when xp threshold is met. parameter $(locationName)
-$execute as @s[team=Team1] run scoreboard players add Team1 level$(locationName) 1
-$execute as @s[team=Team2] run scoreboard players add Team2 level$(locationName) 1
+# level up effects, called when level changed. parameter $(locationName)
+# Note: level is already set by checklevel.mcfunction, this function only handles effects
 
 # resolve team display names for announcement
 $data modify storage mythcraft:temp locationName set value "$(locationName)"

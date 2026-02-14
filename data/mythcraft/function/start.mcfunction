@@ -157,6 +157,13 @@ scoreboard objectives add _prevCharLevel dummy
 scoreboard players set TroopKill characterXPReward 1
 scoreboard players set PlayerKill characterXPReward 3
 
+# skill XP rewards (team-level progression at skill locations)
+scoreboard objectives add skillXPReward dummy
+scoreboard objectives add _prevSkillLevel dummy
+
+# tunable XP-per-kill values for skill locations (fake players, adjustable on the fly)
+scoreboard players set TroopKill skillXPReward 1
+
 # reset all players
 scoreboard players set @a characterXP 0
 scoreboard players set @a characterLevel 1
@@ -248,9 +255,9 @@ scoreboard players set City7 cityConquerValue 1
 # set xp thresholds (temporary for testing)
 scoreboard players set Threshold1 xpThresholds 1
 scoreboard players set Threshold2 xpThresholds 2
-scoreboard players set Threshold3 xpThresholds 3
-scoreboard players set Threshold4 xpThresholds 4
-scoreboard players set Threshold5 xpThresholds 5
+scoreboard players set Threshold3 xpThresholds 4
+scoreboard players set Threshold4 xpThresholds 6
+scoreboard players set Threshold5 xpThresholds 8
 
 # character level thresholds (temporary for testing)
 #scoreboard players set CharLvl2 characterXPThresholds 15
@@ -258,9 +265,9 @@ scoreboard players set Threshold5 xpThresholds 5
 #scoreboard players set CharLvl4 characterXPThresholds 50
 #scoreboard players set CharLvl5 characterXPThresholds 80
 scoreboard players set CharLvl2 characterXPThresholds 2
-scoreboard players set CharLvl3 characterXPThresholds 3
-scoreboard players set CharLvl4 characterXPThresholds 4
-scoreboard players set CharLvl5 characterXPThresholds 5
+scoreboard players set CharLvl3 characterXPThresholds 4
+scoreboard players set CharLvl4 characterXPThresholds 6
+scoreboard players set CharLvl5 characterXPThresholds 8
 
 #respawn all for testing
 function mythcraft:respawn/masterspawn

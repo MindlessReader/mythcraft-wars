@@ -70,6 +70,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - Quest state tracked on a `QuestTracker` entity: `questType` (1=conquer, 2=kill), `questRewardType` (1=item, 2=buff, 3=VP)
 - Player menu triggers: `openMenu` (1=main, 2=class select, 3=quest history), `teleportLocation` (1-7=cities, 8-11=skill locations)
 - Character level: `characterLevel` (per-player, 1-5), `characterXP`, `characterXPThresholds` (fake players `CharLvl2`-`CharLvl5`), `characterXPReward` (fake players `TroopKill`=1, `PlayerKill`=3)
+- Skill XP rewards: `skillXPReward` (fake player `TroopKill`=1) for team-level skill progression
 - Player death triggers rekit via `needsRekit` scoreboard checked in tick
 
 ### Key Patterns

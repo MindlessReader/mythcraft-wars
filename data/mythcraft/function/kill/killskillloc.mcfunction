@@ -2,20 +2,11 @@
 scoreboard players operation @s characterXP += TroopKill characterXPReward
 function mythcraft:leveling/character/checklevel
 
-$execute as @s[team=Team1] run scoreboard players add Team1 xp$(locationName) 1
-$execute as @s[team=Team2] run scoreboard players add Team2 xp$(locationName) 1
+$execute as @s[team=Team1] run scoreboard players operation Team1 xp$(locationName) += TroopKill skillXPReward
+$execute as @s[team=Team2] run scoreboard players operation Team2 xp$(locationName) += TroopKill skillXPReward
 
-# call levelup function at thresholds
-$execute as @s[team=Team1] if score Team1 xp$(locationName) = Threshold1 xpThresholds run function mythcraft:leveling/skills/levelup {locationName: $(locationName)}
-$execute as @s[team=Team2] if score Team2 xp$(locationName) = Threshold1 xpThresholds run function mythcraft:leveling/skills/levelup {locationName: $(locationName)}
-$execute as @s[team=Team1] if score Team1 xp$(locationName) = Threshold2 xpThresholds run function mythcraft:leveling/skills/levelup {locationName: $(locationName)}
-$execute as @s[team=Team2] if score Team2 xp$(locationName) = Threshold2 xpThresholds run function mythcraft:leveling/skills/levelup {locationName: $(locationName)}
-$execute as @s[team=Team1] if score Team1 xp$(locationName) = Threshold3 xpThresholds run function mythcraft:leveling/skills/levelup {locationName: $(locationName)}
-$execute as @s[team=Team2] if score Team2 xp$(locationName) = Threshold3 xpThresholds run function mythcraft:leveling/skills/levelup {locationName: $(locationName)}
-$execute as @s[team=Team1] if score Team1 xp$(locationName) = Threshold4 xpThresholds run function mythcraft:leveling/skills/levelup {locationName: $(locationName)}
-$execute as @s[team=Team2] if score Team2 xp$(locationName) = Threshold4 xpThresholds run function mythcraft:leveling/skills/levelup {locationName: $(locationName)}
-$execute as @s[team=Team1] if score Team1 xp$(locationName) = Threshold5 xpThresholds run function mythcraft:leveling/skills/levelup {locationName: $(locationName)}
-$execute as @s[team=Team2] if score Team2 xp$(locationName) = Threshold5 xpThresholds run function mythcraft:leveling/skills/levelup {locationName: $(locationName)}
+# check for level-ups (uses >= instead of = to handle skipped thresholds)
+$function mythcraft:leveling/skills/checklevel {locationName: $(locationName)}
 
 # if current quest is here, add to kill counter
 $execute if score $(locationName) locationId = QuestTracker questLocation as @s[team=Team1] run scoreboard players add Team1 questKills 1
