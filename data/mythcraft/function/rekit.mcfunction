@@ -1,3 +1,6 @@
+# cancel totem stealth if active
+execute if score @s totemInvisTimer matches 1.. run function mythcraft:totem/cancel_invis
+
 # clear items
 clear @s
 

@@ -1,0 +1,33 @@
+{
+	"criteria": {
+		"requirement": {
+			"trigger": "minecraft:using_item",
+			"conditions": {
+				"player": [
+					{
+						"condition": "minecraft:entity_properties",
+						"entity": "this",
+						"predicate": {
+							"equipment": {
+								"mainhand": {
+									"items": "#minecraft:swords"
+								}
+							}
+						}
+					}
+				],
+				"item": {
+					"items": "minecraft:totem_of_undying",
+					"predicates": {
+						"minecraft:custom_data": {
+							"mythcraft_totem": true
+						}
+					}
+				}
+			}
+		}
+	},
+	"rewards": {
+		"function": "mythcraft:totem/use"
+	}
+}

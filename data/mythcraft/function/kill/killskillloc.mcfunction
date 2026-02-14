@@ -1,6 +1,8 @@
 # character XP for individual progression
 scoreboard players operation @s characterXP += TroopKill characterXPReward
 function mythcraft:leveling/character/checklevel
+# assassin totem charge (+1 for troop kills)
+execute if score @s playerClass matches 2 run function mythcraft:totem/charge {amount:1}
 
 $execute as @s[team=Team1] run scoreboard players operation Team1 xp$(locationName) += TroopKill skillXPReward
 $execute as @s[team=Team2] run scoreboard players operation Team2 xp$(locationName) += TroopKill skillXPReward

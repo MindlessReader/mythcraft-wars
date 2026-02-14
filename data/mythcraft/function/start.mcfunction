@@ -95,7 +95,13 @@ scoreboard objectives add xpSpecial dummy
 scoreboard objectives add levelSpecial dummy
 scoreboard objectives add xpThresholds dummy
 
-# set xp thresholds
+# set character xp thresholds
+#scoreboard players set CharLvl2 characterXPThresholds 15
+#scoreboard players set CharLvl3 characterXPThresholds 30
+#scoreboard players set CharLvl4 characterXPThresholds 50
+#scoreboard players set CharLvl5 characterXPThresholds 80
+
+# set skill xp thresholds
 #scoreboard players set Threshold1 xpThresholds 40
 #scoreboard players set Threshold2 xpThresholds 100
 #scoreboard players set Threshold3 xpThresholds 180
@@ -152,6 +158,13 @@ scoreboard objectives add characterLevel dummy
 scoreboard objectives add characterXPThresholds dummy
 scoreboard objectives add characterXPReward dummy
 scoreboard objectives add _prevCharLevel dummy
+
+# assassin totem charge (per-player, persists through death)
+scoreboard objectives add totemCharge dummy
+scoreboard objectives add totemCooldown dummy
+scoreboard objectives add _totemMax dummy
+scoreboard objectives add _totemDmg dummy
+scoreboard objectives add totemInvisTimer dummy
 
 # tunable XP-per-kill values (fake players, adjustable on the fly)
 scoreboard players set TroopKill characterXPReward 1
@@ -260,10 +273,6 @@ scoreboard players set Threshold4 xpThresholds 6
 scoreboard players set Threshold5 xpThresholds 8
 
 # character level thresholds (temporary for testing)
-#scoreboard players set CharLvl2 characterXPThresholds 15
-#scoreboard players set CharLvl3 characterXPThresholds 30
-#scoreboard players set CharLvl4 characterXPThresholds 50
-#scoreboard players set CharLvl5 characterXPThresholds 80
 scoreboard players set CharLvl2 characterXPThresholds 2
 scoreboard players set CharLvl3 characterXPThresholds 4
 scoreboard players set CharLvl4 characterXPThresholds 6

@@ -54,6 +54,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 | **Compass** | `compass/` | Lodestone compass that reveals nearest enemy troop; shift+right-click opens player menu |
 | **Player Menu** | `menu/` | Dialog showing game state (skills, character, quests) with class selection and teleport buttons |
 | **Quest History** | `quests/logresult*` | Logs each quest result to `mythcraft:questhistory` storage for display in the player menu |
+| **Totem** | `totem/` | Assassin chargeable totem: scoreboard-backed charge with durability visual, right-click activation via `using_item` advancement, death save detection in tick |
 
 ### Teams and Cities
 
@@ -72,12 +73,13 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - Character level: `characterLevel` (per-player, 1-5), `characterXP`, `characterXPThresholds` (fake players `CharLvl2`-`CharLvl5`), `characterXPReward` (fake players `TroopKill`=1, `PlayerKill`=3)
 - Skill XP rewards: `skillXPReward` (fake player `TroopKill`=1) for team-level skill progression
 - Player death triggers rekit via `needsRekit` scoreboard checked in tick
+- Assassin totem charge: `totemCharge` (per-player, persists through death; reset on class change). Temp objectives: `_totemMax`, `_totemDmg`. Stealth timer: `totemInvisTimer` (ticks remaining of armor/totem invisibility)
 
 ### Key Patterns
 
 - **Advancement-driven events:** Kill advancements (`advancement/kill/`) trigger mcfunctions, then are revoked for reuse
 - **Item modifiers:** `item_modifier/*.json` files scale equipment by skill level (sharpness, protection) and character level (lunge, density, quick_charge); some use score-based scaling, others use discrete conditional breakpoints
-- **Character leveling:** Per-player progression (levels 1-5) from troop/player kills. Affects armor/toughness attributes (per-class via `setattributes`), gear material tiers (iron→diamond at level 3, diamond→netherite at level 5), and weapon enchantments. `checklevel` runs after each kill XP gain; `onlevelup` applies in-place upgrades
+- **Character leveling:** Per-player progression (levels 1-5) from troop/player kills. Affects armor/toughness attributes (per-class via `setattributes`), gear material tiers (iron→diamond at level 3, diamond→netherite at level 5), weapon enchantments, and assassin totem max charge. `checklevel` runs after each kill XP gain; `onlevelup` applies in-place upgrades
 - **Troop slowness:** All troops spawn with Slowness IX (immobile); cleared when a team player is within 10 blocks
 - **Callback respawn:** `respawn/attemptrespawn` uses scheduled callbacks with 15s delays to wait for marker entities to load
 - **Lookup functions:** `lookup/` maps numeric IDs to city/location names for parameterized operations
@@ -90,6 +92,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - **Trigger-based dialog buttons:** Player menu buttons use `/trigger` commands (not `/function`) so non-op players can use them; triggers are enabled and detected in `tick.mcfunction`
 - **Quest history logging:** `quests/endquest` calls `logresult` which appends a formatted string to `mythcraft:questhistory log[]` array; displayed in the quest history dialog via index-based reads into macro params
 - **Predicate files:** `predicate/is_sneaking.json` for detecting player sneaking state (NBT `Crouching` is unreliable; use `entity_properties` predicates instead)
+- **Chargeable totem:** Assassin-only. Scoreboard `totemCharge` is authoritative; totem `damage`/`max_damage` components are visual (durability bar). `totem/update` syncs display from scoreboard. Right-click detected via `using_item` advancement on totem with `consumable` component (same pattern as compass). `totem_charged`/`totem_uncharged` item modifiers toggle `death_protection` + glint. Death save detected via luck amplifier 99 marker effect in `death_protection.death_effects`, checked by `predicate/totem_death_save.json` in tick. Tick also validates charged totems held by wrong players (non-assassins or insufficient charge) via `totem/validate`. Activation (25% charge) grants Speed 2 (30s) to team + Invisibility (15s) + stealth visuals. Death save grants same personal effects + Resistance 2 + Absorption 2 + Regen 1. Stealth hides armor via `equippable.asset_id:"mythcraft:invisible"` and totem via `item_model:"mythcraft:invisible"` (requires resource pack). `totemInvisTimer` scoreboard drives 15s stealth duration; `end_stealth` restores visuals, `cancel_invis` handles rekit/class switch cleanup
 
 ## Conventions
 

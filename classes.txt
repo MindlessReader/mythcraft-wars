@@ -34,8 +34,23 @@ Switch class anytime: /trigger selectClass set <1/2/3>
   Slot 3: Crossbow
   Slot 8: Compass
   Slot 9: Steak x64
-  Offhand: Totem of Undying
+  Offhand: Chargeable Totem of Undying
   Armor:  Full Leather (material scales with character level)
+
+  Chargeable Totem:
+    - Starts at 0 charge (durability bar shows progress)
+    - Charge by killing: +1 per troop kill, +3 per player kill
+    - Max charge decreases with character level:
+        Level 1: 64  |  Level 2: 48  |  Level 3: 36
+        Level 4: 24  |  Level 5: 16
+    - Fully charged: grants death protection (saves from lethal damage)
+      Death save effects: Regen 1 (10s), Absorption 2 (5s), Speed 2 (30s),
+      Invisibility (15s), Resistance 2 (10s). Charge resets to 0.
+    - At 25%+ charge: right-click with sword to consume 25% charge
+      Activation effects: Speed 2 (30s) to self + allies within 10 blocks,
+      Invisibility (15s) to self only, armor + totem hidden for 15s
+    - Charge persists through death, resets on class change
+    - Requires Mythcraft resource pack for invisible armor/totem models
 
   Character Level Attributes:
     Level 1: 6 armor, 0 toughness
