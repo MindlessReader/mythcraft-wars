@@ -9,10 +9,13 @@ execute as @a unless score @s playerClass matches 1..3 run scoreboard players se
 execute as @a unless score @s selectClass matches 0.. run scoreboard players enable @s selectClass
 
 #Spell Rekit/Cooldown/Function
-scoreboard players remove @a[scores={SpellBreathCooldown=1..}] SpellBreathCooldown 1
+scoreboard players remove @a[scores={magicSpellCooldown=1..}] magicSpellCooldown 1
 scoreboard players remove @a[scores={totemCooldown=1..}] totemCooldown 1
-execute as @a[scores={levelMagic=1..5,SpellBreathCooldown=0}] run function mythcraft:leveling/refill_breath
-execute as @e[type=area_effect_cloud,tag=breath_spell] at @s run function mythcraft:spells/breathseek
+execute as @a[scores={levelMagic=1..5,magicSpellCooldown=0}] run function mythcraft:leveling/refill_fireball
+# LEGACY - Dragon's breath tracking (preserved; won't trigger without dragon_breath items)
+# execute as @e[type=area_effect_cloud,tag=breath_spell] at @s run function mythcraft:spells/breathseek
+# Fireball tracking
+execute as @e[type=area_effect_cloud,tag=fireball_spell] at @s run function mythcraft:spells/fireballtrack
 #Markers
 execute as @e[type=marker,tag=setmarker] at @s run function mythcraft:markers/setcity
 

@@ -13,7 +13,7 @@
 					}
 				],
 				"item": {
-					"items": "minecraft:dragon_breath",
+					"items": "minecraft:blaze_rod",
 					"count": 1,
 					"components": {
 						"minecraft:food": {
@@ -25,13 +25,13 @@
 							"consume_seconds": 999
 						},
 						"minecraft:max_stack_size": 1,
-						"minecraft:custom_data": "{mythcraft_breathspell:1b}"
+						"minecraft:custom_data": "{mythcraft_fireballspell:1b}"
 					}
 				}
 			}
 		}
 	},
 	"rewards": {
-		"function": "mythcraft:spells/breathcast"
+		"function": "mythcraft:spells/fireballcast"
 	}
 }

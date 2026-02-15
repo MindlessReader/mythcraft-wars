@@ -1,0 +1,235 @@
+[
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:food": {
+				"nutrition": 0,
+				"saturation": 0,
+				"can_always_eat": true
+			},
+			"minecraft:consumable": {
+				"consume_seconds": 999
+			},
+			"minecraft:max_stack_size": 1,
+			"minecraft:custom_data": {
+				"mythcraft_fireballspell": 1
+			},
+			"minecraft:enchantments": {
+			"minecraft:vanishing_curse": 1
+		},
+			"minecraft:tooltip_display": {
+				"hidden_components": ["minecraft:enchantments"]
+			}
+		}
+	},
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:enchantment_glint_override": true
+		},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"magicSpellCooldown": 0
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": [
+				{
+					"color": "gold",
+					"italic": false,
+					"text": "Fireball"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Tier I]"
+				}
+			],
+			"minecraft:lore": [
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Cooldown: 30s",
+					"underlined": true
+				},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Damage: 6 | Radius: 3.0 | Fire: 5s"
+				}
+			]
+		},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelMagic": 1
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": [
+				{
+					"color": "gold",
+					"italic": false,
+					"text": "Fireball"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Tier II]"
+				}
+			],
+			"minecraft:lore": [
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Cooldown: 25s",
+					"underlined": true
+				},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Damage: 8 | Radius: 3.5 | Fire: 7s"
+				}
+			]
+		},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelMagic": 2
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": [
+				{
+					"color": "gold",
+					"italic": false,
+					"text": "Fireball"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Tier III]"
+				}
+			],
+			"minecraft:lore": [
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Cooldown: 20s",
+					"underlined": true
+				},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Damage: 10 | Radius: 4.0 | Fire: 9s"
+				}
+			]
+		},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelMagic": 3
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": [
+				{
+					"color": "gold",
+					"italic": false,
+					"text": "Fireball"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Tier IV]"
+				}
+			],
+			"minecraft:lore": [
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Cooldown: 15s",
+					"underlined": true
+				},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Damage: 12 | Radius: 4.5 | Fire: 11s"
+				}
+			]
+		},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelMagic": 4
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": [
+				{
+					"color": "gold",
+					"italic": false,
+					"text": "Fireball"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Tier V]"
+				}
+			],
+			"minecraft:lore": [
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Cooldown: 10s",
+					"underlined": true
+				},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Damage: 14 | Radius: 5.0 | Fire: 13s"
+				}
+			]
+		},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelMagic": 5
+				}
+			}
+		]
+	}
+]

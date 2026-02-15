@@ -13,7 +13,8 @@
       "Read(//c/Users/Fabian/AppData/Roaming/.minecraft/saves/**)",
       "WebFetch(domain:minecraft.fandom.com)",
       "WebFetch(domain:mc-datapacks.github.io)",
-      "WebSearch(*)"
+      "WebSearch(*)",
+      "Bash(xargs ls:*)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Fabian\\AppData\\Roaming\\.minecraft\\saves\\Mythcraft 10th Anniversary Dev\\datapacks\\mythcraft-wars\\.claude"
