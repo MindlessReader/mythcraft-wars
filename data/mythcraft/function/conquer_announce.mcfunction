@@ -5,7 +5,7 @@ $tellraw @a [{color:"#FFD700",text:"The "},{bold:true,color:"$(teamColor)",text:
 
 $execute if score $(cityId) cityOwnership matches 2 as @s[team=Team1] as @a[team=Team1] run title @p title [{color:"dark_red",text:"Lost $(cityDisplayName)"}]
 $execute if score $(cityId) cityOwnership matches 1 as @s[team=Team2] as @a[team=Team2] run title @p title [{color:"dark_red",text:"Lost $(cityDisplayName)"}]
-$execute if score $(cityId) cityOwnership matches 2 if score QuestTracker endGame matches 0 as @a[team=Team1] run title @s subtitle {color:"#663399",text:"Enemy troops in the city will be invulnerable for 1 minute"}
-$execute if score $(cityId) cityOwnership matches 1 if score QuestTracker endGame matches 0 as @a[team=Team2] run title @s subtitle {color:"#663399",text:"Enemy troops in the city will be invulnerable for 1 minute"}
-$execute if score $(cityId) cityOwnership matches 2 if score QuestTracker endGame matches 1 as @a[team=Team1] run title @s subtitle {color:"#663399",text:"Enemy troops in the city can be killed again immediately"}
-$execute if score $(cityId) cityOwnership matches 1 if score QuestTracker endGame matches 1 as @a[team=Team2] run title @s subtitle {color:"#663399",text:"Enemy troops in the city can be killed again immediately"}
+$execute if score $(cityId) cityOwnership matches 2 if score QuestTracker endGame matches 0 as @a[team=Team1] run title @s subtitle {color:"light_purple",text:"Enemy troops in the city will be invulnerable for 1 minute"}
+$execute if score $(cityId) cityOwnership matches 1 if score QuestTracker endGame matches 0 as @a[team=Team2] run title @s subtitle {color:"light_purple",text:"Enemy troops in the city will be invulnerable for 1 minute"}
+$execute if score $(cityId) cityOwnership matches 2 if score QuestTracker endGame matches 1 as @a[team=Team1] run title @s subtitle {color:"light_purple",text:"Enemy troops in the city can be killed again immediately"}
+$execute if score $(cityId) cityOwnership matches 1 if score QuestTracker endGame matches 1 as @a[team=Team2] run title @s subtitle {color:"light_purple",text:"Enemy troops in the city can be killed again immediately"}

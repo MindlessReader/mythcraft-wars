@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Mythcraft Wars is a Minecraft datapack for a team-based PvP conquest game. Two teams compete across 7 cities and 4 skill locations through quests, city conquest, and leveling. The game runs 10 timed quests (5 min each), then a 5-minute endgame where victory points from city ownership determine the winner.
+Mythcraft Wars is a Minecraft datapack for a team-based PvP conquest game. Two teams compete across 7 cities and 4 skill locations through quests, city conquest, and leveling. The game runs configurable timed quests (default: 10 quests, 5 min each), then a configurable endgame where victory points from city ownership determine the winner.
 
 - **Pack format:** 94 (Minecraft 1.21.11)
 - **Namespace:** `mythcraft` (custom), `minecraft` (vanilla hooks only)
@@ -25,6 +25,7 @@ Config fields in `mythcraft:config` storage:
 - **Team display names/colors:** `teams.Team1.name`, `.color`
 - **Team armor trims:** `teams.TeamN.trimMaterial`, `.trimPattern`, `.trimPatternHead`
 - **Tiebreak city:** `tiebreakCity`
+- **Game timing:** `game.questCount`, `game.questDuration`, `game.betweenQuestDelay`, `game.preGameDuration`, `game.endgameDuration`, `game.vpQuestCount`
 
 Display text uses the "resolve into temp, call helper with macros" pattern: values are read from `mythcraft:config` into `mythcraft:temp` storage via `data modify`, then passed to helper functions via `function ... with storage mythcraft:temp` so they become `$(paramName)` macro parameters. This avoids `{nbt:...,storage:...,interpret:true}` which does not work reliably for bossbars, titles, or entity CustomName.
 
@@ -35,7 +36,7 @@ All config fields are editable in-game via `/function mythcraft:config/open`. Us
 Cities and skill locations use the **menu → individual editor** pattern: a navigation menu (`show/cities_menu`, `show/skills_menu`) lists items, clicking one opens an individual editor (`edit/city`, `edit/skill`) with name input, Teleport Config button, and Save/Back. Teleport editing uses `mythcraft:nav` storage for back-navigation context since it can be reached from either editor type.
 
 ### Game Flow
-`start.mcfunction` (on load) → `config.mcfunction` (conditional, first run only) → `startgame.mcfunction` → 10 quest cycles via `quests/startquest` → `beginendgame` → `endgame` (victory calculation)
+`start.mcfunction` (on load) → `config.mcfunction` (conditional, first run only) → `startgame.mcfunction` → N quest cycles via `quests/startquest` → `beginendgame` → `endgame` (victory calculation). All timing (quest count, duration, delays, endgame) driven by `game.*` config values.
 
 The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown ticking, troop activation/deactivation by player proximity, buff reapplication, and trigger detection for the player menu and teleport systems.
 
@@ -45,7 +46,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 |-----------|-----------|---------|
 | **Config** | `config.mcfunction`, `config/`, `setup/` | World-level configuration, in-game dialog editor, and team/sidebar setup helpers |
 | **Conquest** | `conquer.mcfunction`, `kill/city/` | City capture via troop kills; threshold = marker count |
-| **Quests** | `quests/` | 10 randomized quests (conquer or kill type) with VP/buff/item rewards |
+| **Quests** | `quests/`, `schedule/` | Configurable randomized quests (conquer or kill type) with VP/buff/item rewards; `schedule/` has macro helpers for dynamic `schedule` commands |
 | **Leveling** | `leveling/` | Dual progression: team-wide skill levels (0-5) at 4 skill locations + per-player character level (1-5) from kill XP |
 | **Spells** | `spells/` | Seeking Breath spell (area_effect_cloud projectile), unlocked by Magic skill |
 | **Respawn** | `respawn/` | Troop spawning from markers; callback pattern for async marker loading |
@@ -90,7 +91,8 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - **`\u0024` escape trick:** In dialog `show/*.mcfunction` files, dialog template `$(key)` refs use `\u0024(key)` to survive mcfunction macro resolution
 - **Player menu via compass:** `compass/use.mcfunction` checks `execute if predicate mythcraft:is_sneaking` at top — if crouching, opens menu and returns early; otherwise falls through to normal troop-tracking behavior
 - **Trigger-based dialog buttons:** Player menu buttons use `/trigger` commands (not `/function`) so non-op players can use them; triggers are enabled and detected in `tick.mcfunction`
-- **Quest history logging:** `quests/endquest` calls `logresult` which appends a formatted string to `mythcraft:questhistory log[]` array; displayed in the quest history dialog via index-based reads into macro params
+- **Quest history logging:** `quests/endquest` calls `logresult` which appends a formatted entry to `mythcraft:questhistory log[]` array; displayed via recursive loop (`menu/questhistory_loop` → `questhistory_loadentry` → `questhistory_addentry`) that builds a text component array in `mythcraft:temp historyBody`, supporting any quest count
+- **Schedule macro helpers:** `schedule/` directory contains one-line macro functions (`$schedule function mythcraft:X $(duration)s`) since `schedule` requires literal time values — bridges config-driven durations to schedule commands
 - **Predicate files:** `predicate/is_sneaking.json` for detecting player sneaking state (NBT `Crouching` is unreliable; use `entity_properties` predicates instead)
 - **Chargeable totem:** Assassin-only. Scoreboard `totemCharge` is authoritative; totem `damage`/`max_damage` components are visual (durability bar). `totem/update` syncs display from scoreboard. Right-click detected via `using_item` advancement on totem with `consumable` component (same pattern as compass). `totem_charged`/`totem_uncharged` item modifiers toggle `death_protection` + glint. Death save detected via luck amplifier 99 marker effect in `death_protection.death_effects`, checked by `predicate/totem_death_save.json` in tick. Tick also validates charged totems held by wrong players (non-assassins or insufficient charge) via `totem/validate`. Activation (25% charge) grants Speed 2 (30s) to team + Invisibility (15s) + stealth visuals. Death save grants same personal effects + Resistance 2 + Absorption 2 + Regen 1. Stealth hides armor via `equippable.asset_id:"mythcraft:invisible"` and totem via `item_model:"mythcraft:invisible"` (requires resource pack). `totemInvisTimer` scoreboard drives 15s stealth duration; `end_stealth` restores visuals, `cancel_invis` handles rekit/class switch cleanup
 

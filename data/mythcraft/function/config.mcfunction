@@ -44,6 +44,14 @@ data modify storage mythcraft:config cityCount set value 7
 # Tiebreak city (if VP tied at endgame, owner of this city gets +1 VP)
 data modify storage mythcraft:config tiebreakCity set value "City3"
 
+# Game timing defaults (durations in seconds)
+data modify storage mythcraft:config game.questCount set value 10
+data modify storage mythcraft:config game.questDuration set value 300
+data modify storage mythcraft:config game.betweenQuestDelay set value 10
+data modify storage mythcraft:config game.preGameDuration set value 300
+data modify storage mythcraft:config game.endgameDuration set value 300
+data modify storage mythcraft:config game.vpQuestCount set value 6
+
 # Unaligned (initial state for unclaimed cities)
 data modify storage mythcraft:config teams.Unaligned.name set value "Unaligned"
 data modify storage mythcraft:config teams.Unaligned.color set value "#FFD700"

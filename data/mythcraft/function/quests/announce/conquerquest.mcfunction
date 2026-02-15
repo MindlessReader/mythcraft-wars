@@ -18,5 +18,6 @@ execute if score QuestTracker questLocationOwner matches 2 run data modify stora
 execute if score QuestTracker questLocationOwner matches 2 run data modify storage mythcraft:temp attackerColor set from storage mythcraft:temp team1Color
 execute if score QuestTracker questLocationOwner matches 2 run function mythcraft:quests/announce/conquerquest_owned with storage mythcraft:temp
 
-# text if city is unclaimed
-execute if score QuestTracker questLocationOwner matches 0 run tellraw @a "The first team to conquer this city within the next 5 minutes wins the reward!"
+# text if city is unclaimed (dynamic timer)
+execute if score QuestTracker questLocationOwner matches 0 if score QuestTracker questTimerSec matches 10.. run tellraw @a ["The first team to conquer this city within the next ",{score:{name:"QuestTracker",objective:"questTimerMin"}},":",{score:{name:"QuestTracker",objective:"questTimerSec"}}," wins the reward!"]
+execute if score QuestTracker questLocationOwner matches 0 if score QuestTracker questTimerSec matches ..9 run tellraw @a ["The first team to conquer this city within the next ",{score:{name:"QuestTracker",objective:"questTimerMin"}},":0",{score:{name:"QuestTracker",objective:"questTimerSec"}}," wins the reward!"]

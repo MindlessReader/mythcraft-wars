@@ -3,6 +3,8 @@ say starting!
 execute unless data storage mythcraft:config cities run function mythcraft:config
 # initialize teleport coordinates if missing (for worlds created before this feature)
 execute unless data storage mythcraft:config cities.City1.teleport run function mythcraft:config/init_teleports
+# initialize game timing config if missing (for worlds created before this feature)
+execute unless data storage mythcraft:config game run function mythcraft:config/init_game
 
 # add teams
 team add Team1
@@ -228,8 +230,8 @@ scoreboard players set QuestTracker questRewardType 0
 scoreboard players set QuestTracker questReward 0
 scoreboard players set QuestTracker questLocation 0
 
-scoreboard players set QuestTracker victoryPointQuestsRemaining 6
-scoreboard players set QuestTracker questsRemaining 10
+execute store result score QuestTracker victoryPointQuestsRemaining run data get storage mythcraft:config game.vpQuestCount
+execute store result score QuestTracker questsRemaining run data get storage mythcraft:config game.questCount
 scoreboard players set QuestTracker questTimer 0
 scoreboard players set QuestTracker questTimerMin 0
 scoreboard players set QuestTracker questTimerSec 0

@@ -13,10 +13,18 @@ $function mythcraft:quests/quest_winteam {teamName:$(teamName)}
 # log quest result immediately
 function mythcraft:quests/logresult
 
-# switch actionbar from quest info to next-quest countdown
-# add 10s for the gap between endquest and next quest start, so the countdown is seamless
+# Decrement quests remaining and schedule what comes next
+# (done here instead of endquest so the actionbar sees the correct questsRemaining)
+scoreboard players remove QuestTracker questsRemaining 1
+data modify storage mythcraft:temp duration set from storage mythcraft:config game.betweenQuestDelay
+execute if score QuestTracker questsRemaining matches 1.. run function mythcraft:schedule/startquest with storage mythcraft:temp
+execute if score QuestTracker questsRemaining matches 0 run function mythcraft:schedule/beginendgame with storage mythcraft:temp
+
+# switch actionbar from quest info to next-quest/endgame countdown
+# add between-quest delay so the countdown is seamless
 schedule clear mythcraft:quests/actionbar
-scoreboard players add QuestTracker questTimer 10
+execute store result score _betweenDelay mathCounter run data get storage mythcraft:config game.betweenQuestDelay
+scoreboard players operation QuestTracker questTimer += _betweenDelay mathCounter
 scoreboard players operation QuestTracker questTimerMin = QuestTracker questTimer
 scoreboard players operation QuestTracker questTimerMin /= C_60 mathCounter
 scoreboard players operation QuestTracker questTimerSec = QuestTracker questTimer

@@ -47,27 +47,29 @@ execute store result storage mythcraft:getlocation id int 1 run scoreboard playe
 data modify storage mythcraft:getlocation locationPath set value "mythcraft:quest locationText"
 function mythcraft:lookup/locationbyid with storage mythcraft:getlocation
 
+# Initialize quest countdown timer from config (BEFORE announcements so scores are available)
+execute store result score QuestTracker questTimer run data get storage mythcraft:config game.questDuration
+scoreboard players operation QuestTracker questTimerMin = QuestTracker questTimer
+scoreboard players operation QuestTracker questTimerMin /= C_60 mathCounter
+scoreboard players operation QuestTracker questTimerSec = QuestTracker questTimer
+scoreboard players operation QuestTracker questTimerSec %= C_60 mathCounter
+schedule function mythcraft:quests/timer 1s
+
 # announce and call relevant announcement function for detailed description
 tellraw @a {bold:true,color:"#DDA0DD",text:"~~~~~~~~~~"}
-tellraw @a [{nbt:"typeText",storage:"mythcraft:quest"},": ",{color:"red",nbt:"locationText",storage:"mythcraft:quest"},{text:"\nReward: "},{bold:true,color:"#663399",nbt:"rewardText",storage:"mythcraft:quest"}]
+tellraw @a [{nbt:"typeText",storage:"mythcraft:quest"},": ",{color:"red",nbt:"locationText",storage:"mythcraft:quest"},{text:"\nReward: "},{bold:true,color:"light_purple",nbt:"rewardText",storage:"mythcraft:quest"}]
 execute if score QuestTracker questType matches 1 run function mythcraft:quests/announce/conquerquest
 execute if score QuestTracker questType matches 2 run function mythcraft:quests/announce/killquest
 tellraw @a {bold:true,color:"#DDA0DD",text:"~~~~~~~~~~"}
 
 title @a title {bold:true,color:"#FFD700",text:"New Quest"}
-title @a subtitle [{nbt:"typeText",storage:"mythcraft:quest"},": ",{color:"red",nbt:"locationText",storage:"mythcraft:quest"},{text:" / Reward: "},{bold:true,color:"#663399",nbt:"rewardText",storage:"mythcraft:quest"}]
-
-# start quest countdown timer
-scoreboard players set QuestTracker questTimer 300
-scoreboard players set QuestTracker questTimerMin 5
-scoreboard players set QuestTracker questTimerSec 0
-schedule function mythcraft:quests/timer 1s
+title @a subtitle [{nbt:"typeText",storage:"mythcraft:quest"},": ",{color:"red",nbt:"locationText",storage:"mythcraft:quest"},{text:" / Reward: "},{bold:true,color:"light_purple",nbt:"rewardText",storage:"mythcraft:quest"}]
 
 # start actionbar loop
 function mythcraft:quests/actionbar
 
-
 execute as @a at @s run playsound block.note_block.chime master @s ~ ~ ~
 
-#schedule end of quest
-schedule function mythcraft:quests/endquest 300s
+# Schedule end of quest from config
+data modify storage mythcraft:temp duration set from storage mythcraft:config game.questDuration
+function mythcraft:schedule/endquest with storage mythcraft:temp

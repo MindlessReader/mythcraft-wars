@@ -52,8 +52,9 @@ execute if score QuestTracker questWinner matches 0 run data modify storage myth
 execute if score QuestTracker questWinner matches 0 run data modify storage mythcraft:temp questLocation set from storage mythcraft:quest locationText
 execute if score QuestTracker questWinner matches 0 run data modify storage mythcraft:temp questReward set from storage mythcraft:quest rewardText
 
-# Compute quest number: 11 - questsRemaining (only when quest is active)
-scoreboard players set @s mathCounter 11
+# Compute quest number: (questCount + 1) - questsRemaining (only when quest is active)
+execute store result score @s mathCounter run data get storage mythcraft:config game.questCount
+scoreboard players add @s mathCounter 1
 scoreboard players operation @s mathCounter -= QuestTracker questsRemaining
 execute if score QuestTracker questWinner matches 0 store result storage mythcraft:temp questNum int 1 run scoreboard players get @s mathCounter
 
@@ -90,6 +91,9 @@ data modify storage mythcraft:temp playerName set from entity @s equipment.head.
 # Clean up: clear custom_name from helmet, or remove temp item
 execute if items entity @s armor.head stone_button run item replace entity @s armor.head with air
 execute unless items entity @s armor.head stone_button run item modify entity @s armor.head mythcraft:clear_custom_name
+
+# Store quest total for display
+execute store result storage mythcraft:temp questTotal int 1 run data get storage mythcraft:config game.questCount
 
 # Show the dialog
 function mythcraft:menu/show with storage mythcraft:temp
