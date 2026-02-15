@@ -184,6 +184,13 @@ scoreboard objectives add _wasBlocking dummy
 scoreboard objectives add parryWindow dummy
 scoreboard objectives add parryCooldown dummy
 
+# bastion mortar shot
+scoreboard objectives add mortarCooldown dummy
+scoreboard objectives add _crossbowLoaded dummy
+scoreboard objectives add _mortarLoaded dummy
+scoreboard objectives add mortarCharLevel dummy
+scoreboard objectives add mortarFieldLife dummy
+
 # tunable XP-per-kill values (fake players, adjustable on the fly)
 scoreboard players set TroopKill characterXPReward 1
 scoreboard players set PlayerKill characterXPReward 3
@@ -202,6 +209,9 @@ scoreboard players set @a characterXP 0
 scoreboard players set @a characterLevel 1
 scoreboard players reset * totemCharge
 scoreboard players set @a totemCharge 0
+
+# clean up mortar entities and scores
+function mythcraft:mortar/cleanup
 
 scoreboard players set QuestTracker endGame 0
 

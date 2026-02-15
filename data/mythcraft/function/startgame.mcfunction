@@ -60,6 +60,9 @@ scoreboard players set @a parryCooldown 0
 scoreboard players set @a _shieldTick 0
 scoreboard players set @a _wasBlocking 0
 
+# reset bastion mortar state
+function mythcraft:mortar/cleanup
+
 tag @a[team=Team1] add enableTroops
 tag @a[team=Team2] add enableTroops
 

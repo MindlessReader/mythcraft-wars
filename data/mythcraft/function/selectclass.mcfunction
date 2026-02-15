@@ -12,6 +12,10 @@ scoreboard players set @s parryWindow 0
 scoreboard players set @s parryCooldown 0
 scoreboard players set @s _shieldTick 0
 scoreboard players set @s _wasBlocking 0
+# Reset mortar state on class change
+scoreboard players set @s mortarCooldown 0
+scoreboard players set @s _crossbowLoaded 0
+scoreboard players set @s _mortarLoaded 0
 function mythcraft:rekit
 scoreboard players set @s selectClass 0
 scoreboard players enable @s selectClass

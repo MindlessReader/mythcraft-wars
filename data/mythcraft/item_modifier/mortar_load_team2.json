@@ -1,0 +1,227 @@
+[
+  {
+    "function": "minecraft:set_components",
+    "components": {
+      "minecraft:charged_projectiles": [
+        {
+          "id": "minecraft:firework_rocket",
+          "components": {
+            "minecraft:fireworks": {
+              "flight_duration": 2,
+              "explosions": [
+                {
+                  "shape": "large_ball",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "burst",
+                  "colors": [3949738]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "conditions": [
+      {
+        "condition": "minecraft:entity_scores",
+        "entity": "this",
+        "scores": {
+          "characterLevel": {
+            "min": 1,
+            "max": 1
+          }
+        }
+      }
+    ]
+  },
+  {
+    "function": "minecraft:set_components",
+    "components": {
+      "minecraft:charged_projectiles": [
+        {
+          "id": "minecraft:firework_rocket",
+          "components": {
+            "minecraft:fireworks": {
+              "flight_duration": 2,
+              "explosions": [
+                {
+                  "shape": "large_ball",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "burst",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "star",
+                  "colors": [3949738]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "conditions": [
+      {
+        "condition": "minecraft:entity_scores",
+        "entity": "this",
+        "scores": {
+          "characterLevel": {
+            "min": 2,
+            "max": 2
+          }
+        }
+      }
+    ]
+  },
+  {
+    "function": "minecraft:set_components",
+    "components": {
+      "minecraft:charged_projectiles": [
+        {
+          "id": "minecraft:firework_rocket",
+          "components": {
+            "minecraft:fireworks": {
+              "flight_duration": 2,
+              "explosions": [
+                {
+                  "shape": "large_ball",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "burst",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "star",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "large_ball",
+                  "colors": [3949738]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "conditions": [
+      {
+        "condition": "minecraft:entity_scores",
+        "entity": "this",
+        "scores": {
+          "characterLevel": {
+            "min": 3,
+            "max": 3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "function": "minecraft:set_components",
+    "components": {
+      "minecraft:charged_projectiles": [
+        {
+          "id": "minecraft:firework_rocket",
+          "components": {
+            "minecraft:fireworks": {
+              "flight_duration": 2,
+              "explosions": [
+                {
+                  "shape": "large_ball",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "burst",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "star",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "large_ball",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "burst",
+                  "colors": [3949738]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "conditions": [
+      {
+        "condition": "minecraft:entity_scores",
+        "entity": "this",
+        "scores": {
+          "characterLevel": {
+            "min": 4,
+            "max": 4
+          }
+        }
+      }
+    ]
+  },
+  {
+    "function": "minecraft:set_components",
+    "components": {
+      "minecraft:charged_projectiles": [
+        {
+          "id": "minecraft:firework_rocket",
+          "components": {
+            "minecraft:fireworks": {
+              "flight_duration": 2,
+              "explosions": [
+                {
+                  "shape": "large_ball",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "burst",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "star",
+                  "colors": [3949738],
+                  "has_twinkle": true
+                },
+                {
+                  "shape": "large_ball",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "burst",
+                  "colors": [3949738]
+                },
+                {
+                  "shape": "star",
+                  "colors": [3949738]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "conditions": [
+      {
+        "condition": "minecraft:entity_scores",
+        "entity": "this",
+        "scores": {
+          "characterLevel": {
+            "min": 5
+          }
+        }
+      }
+    ]
+  }
+]

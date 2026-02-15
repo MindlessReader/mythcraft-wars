@@ -1,0 +1,10 @@
+{
+	"criteria": {
+		"requirement": {
+			"trigger": "minecraft:shot_crossbow"
+		}
+	},
+	"rewards": {
+		"function": "mythcraft:mortar/on_shoot"
+	}
+}

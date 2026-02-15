@@ -45,6 +45,17 @@ execute as @a[scores={_shieldTick=1}] run scoreboard players set @s _wasBlocking
 execute as @a[scores={_shieldTick=0,_wasBlocking=1}] run scoreboard players set @s _wasBlocking 0
 scoreboard players set @a[scores={_shieldTick=1}] _shieldTick 0
 
+# bastion mortar shot — override detection
+execute as @a[scores={playerClass=3,_crossbowLoaded=0,mortarCooldown=0,_mortarLoaded=0}] if items entity @s hotbar.1 crossbow[!charged_projectiles=[]] if predicate mythcraft:is_sneaking at @s run function mythcraft:mortar/override_load
+execute as @a[scores={playerClass=3}] if items entity @s hotbar.1 crossbow[!charged_projectiles=[]] run scoreboard players set @s _crossbowLoaded 1
+execute as @a[scores={playerClass=3}] unless items entity @s hotbar.1 crossbow[!charged_projectiles=[]] run scoreboard players set @s _crossbowLoaded 0
+execute as @a[scores={playerClass=3,mortarCooldown=1}] at @s run playsound minecraft:entity.firework_rocket.launch master @s ~ ~ ~ 1.0 1.2
+scoreboard players remove @a[scores={mortarCooldown=1..}] mortarCooldown 1
+# mortar tracker teleportation and orphan detection
+execute as @e[type=marker,tag=mortarTracker] at @s run function mythcraft:mortar/track_firework
+# mortar field tick
+execute as @e[type=marker,tag=mortarField] at @s run function mythcraft:mortar/field_tick
+
 # activate mobs
 execute as @a[tag=enableTroops,team=Team1] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team1] slowness
 execute as @a[tag=enableTroops,team=Team2] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team2] slowness
