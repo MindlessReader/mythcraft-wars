@@ -72,6 +72,18 @@ Switch class anytime: /trigger selectClass set <1/2/3>
   Offhand: Shield
   Armor:  Full Iron (material scales with character level)
 
+  Perfect Parry:
+    - Raise shield then block within 0.5s for a Perfect Parry
+    - Blocking outside the window triggers a lesser Normal Parry
+    - Perfect: damage + Slowness II (3s) on attacker, Resistance I (1s) self
+    - Normal: lesser damage, no debuffs
+    - Damage scales with character level:
+        Perfect:  Level 1-2: 3 hearts | Level 3-4: 4 hearts | Level 5: 5 hearts
+        Normal:   Level 1-2: 1.5 hearts | Level 3-4: 2 hearts | Level 5: 2.5 hearts
+    - Cooldown: 2.5 seconds (shared between both parry types)
+    - Only reflects to enemies within 5 blocks (melee range)
+    - Bastion-only (other classes with Defense shields cannot parry)
+
   Character Level Attributes:
     Level 1: 14 armor, 1 toughness
     Level 2: 16 armor, 2 toughness

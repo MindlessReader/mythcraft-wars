@@ -11,10 +11,16 @@
       "WebFetch(domain:docs.smithed.dev)",
       "Bash(find:*)",
       "Read(//c/Users/Fabian/AppData/Roaming/.minecraft/saves/**)",
-      "WebFetch(domain:minecraft.fandom.com)"
+      "WebFetch(domain:minecraft.fandom.com)",
+      "WebFetch(domain:mc-datapacks.github.io)",
+      "WebSearch(*)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Fabian\\AppData\\Roaming\\.minecraft\\saves\\Mythcraft 10th Anniversary Dev\\datapacks\\mythcraft-wars\\.claude"
+    ],
+    "allowedTools": [
+      "WebFetch",
+      "WebSearch"
     ]
   }
 }

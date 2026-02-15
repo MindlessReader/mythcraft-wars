@@ -7,6 +7,11 @@ execute if score @s playerClass matches 3 run tellraw @s {color:"blue",text:"Cla
 # Cancel totem stealth if active + reset charge on class change
 execute if score @s totemInvisTimer matches 1.. run function mythcraft:totem/cancel_invis
 scoreboard players set @s totemCharge 0
+# Reset parry state on class change
+scoreboard players set @s parryWindow 0
+scoreboard players set @s parryCooldown 0
+scoreboard players set @s _shieldTick 0
+scoreboard players set @s _wasBlocking 0
 function mythcraft:rekit
 scoreboard players set @s selectClass 0
 scoreboard players enable @s selectClass

@@ -50,6 +50,16 @@ function mythcraft:schedule/startquest with storage mythcraft:temp
 scoreboard players reset * totemCharge
 scoreboard players set @a totemCharge 0
 
+# reset bastion parry state
+scoreboard players reset * parryWindow
+scoreboard players reset * parryCooldown
+scoreboard players reset * _shieldTick
+scoreboard players reset * _wasBlocking
+scoreboard players set @a parryWindow 0
+scoreboard players set @a parryCooldown 0
+scoreboard players set @a _shieldTick 0
+scoreboard players set @a _wasBlocking 0
+
 tag @a[team=Team1] add enableTroops
 tag @a[team=Team2] add enableTroops
 

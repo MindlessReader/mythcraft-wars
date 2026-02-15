@@ -37,6 +37,14 @@ execute as @a[scores={playerClass=2}] if items entity @s weapon.mainhand totem_o
 execute as @a[scores={totemInvisTimer=1}] run function mythcraft:totem/end_stealth
 scoreboard players remove @a[scores={totemInvisTimer=1..}] totemInvisTimer 1
 
+# bastion parry — shield tracking and cooldown
+scoreboard players remove @a[scores={parryWindow=1..}] parryWindow 1
+execute as @a[scores={playerClass=3,parryCooldown=1}] at @s run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~ 1.0 1.0
+scoreboard players remove @a[scores={parryCooldown=1..}] parryCooldown 1
+execute as @a[scores={_shieldTick=1}] run scoreboard players set @s _wasBlocking 1
+execute as @a[scores={_shieldTick=0,_wasBlocking=1}] run scoreboard players set @s _wasBlocking 0
+scoreboard players set @a[scores={_shieldTick=1}] _shieldTick 0
+
 # activate mobs
 execute as @a[tag=enableTroops,team=Team1] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team1] slowness
 execute as @a[tag=enableTroops,team=Team2] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team2] slowness

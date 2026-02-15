@@ -178,6 +178,12 @@ scoreboard objectives add _totemMax dummy
 scoreboard objectives add _totemDmg dummy
 scoreboard objectives add totemInvisTimer dummy
 
+# bastion parry
+scoreboard objectives add _shieldTick dummy
+scoreboard objectives add _wasBlocking dummy
+scoreboard objectives add parryWindow dummy
+scoreboard objectives add parryCooldown dummy
+
 # tunable XP-per-kill values (fake players, adjustable on the fly)
 scoreboard players set TroopKill characterXPReward 1
 scoreboard players set PlayerKill characterXPReward 3

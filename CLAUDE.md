@@ -56,6 +56,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 | **Player Menu** | `menu/` | Dialog showing game state (skills, character, quests) with class selection and teleport buttons |
 | **Quest History** | `quests/logresult*` | Logs each quest result to `mythcraft:questhistory` storage for display in the player menu |
 | **Totem** | `totem/` | Assassin chargeable totem: scoreboard-backed charge with durability visual, right-click activation via `using_item` advancement, death save detection in tick |
+| **Parry** | `parry/` | Bastion perfect parry: timed shield block reflects damage to attacker; `using_item` detects shield raise, `entity_hurt_player` detects block; scoreboard-based window + cooldown |
 
 ### Teams and Cities
 
@@ -75,6 +76,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - Skill XP rewards: `skillXPReward` (fake player `TroopKill`=1) for team-level skill progression
 - Player death triggers rekit via `needsRekit` scoreboard checked in tick
 - Assassin totem charge: `totemCharge` (per-player, persists through death; reset on class change). Temp objectives: `_totemMax`, `_totemDmg`. Stealth timer: `totemInvisTimer` (ticks remaining of armor/totem invisibility)
+- Bastion parry: `parryWindow` (ticks remaining in perfect parry window), `parryCooldown` (ticks remaining on cooldown). Temp: `_shieldTick` (blocking this tick), `_wasBlocking` (was blocking last tick)
 
 ### Key Patterns
 
@@ -94,6 +96,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - **Quest history logging:** `quests/endquest` calls `logresult` which appends a formatted entry to `mythcraft:questhistory log[]` array; displayed via recursive loop (`menu/questhistory_loop` → `questhistory_loadentry` → `questhistory_addentry`) that builds a text component array in `mythcraft:temp historyBody`, supporting any quest count
 - **Schedule macro helpers:** `schedule/` directory contains one-line macro functions (`$schedule function mythcraft:X $(duration)s`) since `schedule` requires literal time values — bridges config-driven durations to schedule commands
 - **Predicate files:** `predicate/is_sneaking.json` for detecting player sneaking state (NBT `Crouching` is unreliable; use `entity_properties` predicates instead)
+- **Perfect parry:** Bastion-only. Two advancement triggers: `using_item` on shield (fires every tick while held, `_shieldTick`/`_wasBlocking` tracking detects first tick of new block → sets `parryWindow=10`), and `entity_hurt_player` with `blocked:true` (checks `parryWindow` for perfect vs normal parry). Perfect parry: damage + Slowness II (3s) on nearest enemy within 5 blocks, Resistance I (1s) self. Normal parry: lesser damage only. Damage scales with character level (3-5 hearts perfect, 1.5-2.5 hearts normal). Shared 50-tick (2.5s) cooldown via `parryCooldown`. Sound cue (`experience_orb.pickup`) when cooldown expires. Class-gated in handler functions (`playerClass=3`). Targeting uses tag-based approach: `parryTarget` tag applied to enemy players (`@a`) and troops (`@e[tag=cityTroop]`) within 5 blocks matching `team=!$(myTeam)`, then nearest tagged entity is damaged via `minecraft:thorns` type. Non-`$` lines must be used for commands without `$(...)` macros in macro functions. Resets on class change and game start.
 - **Chargeable totem:** Assassin-only. Scoreboard `totemCharge` is authoritative; totem `damage`/`max_damage` components are visual (durability bar). `totem/update` syncs display from scoreboard. Right-click detected via `using_item` advancement on totem with `consumable` component (same pattern as compass). `totem_charged`/`totem_uncharged` item modifiers toggle `death_protection` + glint. Death save detected via luck amplifier 99 marker effect in `death_protection.death_effects`, checked by `predicate/totem_death_save.json` in tick. Tick also validates charged totems held by wrong players (non-assassins or insufficient charge) via `totem/validate`. Activation (25% charge) grants Speed 2 (30s) to team + Invisibility (15s) + stealth visuals. Death save grants same personal effects + Resistance 2 + Absorption 2 + Regen 1. Stealth hides armor via `equippable.asset_id:"mythcraft:invisible"` and totem via `item_model:"mythcraft:invisible"` (requires resource pack). `totemInvisTimer` scoreboard drives 15s stealth duration; `end_stealth` restores visuals, `cancel_invis` handles rekit/class switch cleanup
 
 ## Conventions
