@@ -1,3 +1,6 @@
+# Clear pre-quest countdown display
+schedule clear mythcraft:quests/nextquest_actionbar
+
 #reset values from previous quest
 scoreboard players set Team1 questKills 0
 scoreboard players set Team2 questKills 0

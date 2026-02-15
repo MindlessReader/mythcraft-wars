@@ -1,3 +1,7 @@
+# Clear endgame display loops
+schedule clear mythcraft:endgame_actionbar
+schedule clear mythcraft:quests/timer
+
 # Disable enableTroops
 tag @a remove enableTroops
 

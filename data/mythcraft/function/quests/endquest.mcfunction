@@ -12,6 +12,7 @@ execute if score QuestTracker questsRemaining matches 0 run schedule function my
 execute if score QuestTracker questType matches 1 if score QuestTracker questWinner matches 1.. run schedule clear mythcraft:quests/timer
 execute if score QuestTracker questType matches 1 if score QuestTracker questWinner matches 1.. run schedule clear mythcraft:quests/actionbar
 execute if score QuestTracker questType matches 1 if score QuestTracker questWinner matches 1.. run scoreboard players set QuestTracker questWinner -1
+execute if score QuestTracker questType matches 1 if score QuestTracker questWinner matches ..-1 if score QuestTracker questsRemaining matches 1.. run function mythcraft:quests/start_nextquest_timer
 execute if score QuestTracker questType matches 1 if score QuestTracker questWinner matches ..-1 run return 1
 
 # conquer quest defense winner calculator; if attackers won, winner was handled immediately via conquer event (conquerquestattackreward.mcfunction), not here
@@ -37,3 +38,6 @@ execute if score QuestTracker questWinner matches 1..2 run function mythcraft:qu
 schedule clear mythcraft:quests/timer
 schedule clear mythcraft:quests/actionbar
 scoreboard players set QuestTracker questWinner -1
+
+# Start "Next Quest" countdown for the between-quest gap
+execute if score QuestTracker questsRemaining matches 1.. run function mythcraft:quests/start_nextquest_timer
