@@ -12,6 +12,10 @@ scoreboard players set QuestTracker questTimerSec 0
 schedule function mythcraft:quests/timer 1s
 function mythcraft:quests/nextquest_actionbar
 
+# reset assassin totem charge
+scoreboard players reset * totemCharge
+scoreboard players set @a totemCharge 0
+
 tag @a[team=Team1] add enableTroops
 tag @a[team=Team2] add enableTroops
 

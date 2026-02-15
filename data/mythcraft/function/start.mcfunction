@@ -114,6 +114,16 @@ scoreboard players set Defense locationId 9
 scoreboard players set Magic locationId 10
 scoreboard players set Special locationId 11
 
+# reset all skill levels and xp (includes offline players)
+scoreboard players reset * xpAttack
+scoreboard players reset * xpDefense
+scoreboard players reset * xpMagic
+scoreboard players reset * xpSpecial
+scoreboard players reset * levelAttack
+scoreboard players reset * levelDefense
+scoreboard players reset * levelMagic
+scoreboard players reset * levelSpecial
+
 # set xp and levels for teams
 scoreboard players set Team1 xpAttack 0
 scoreboard players set Team1 xpDefense 0
@@ -133,7 +143,7 @@ scoreboard players set Team2 levelDefense 0
 scoreboard players set Team2 levelMagic 0
 scoreboard players set Team2 levelSpecial 0
 
-# reset player levels
+# set player levels for online players
 scoreboard players set @a levelAttack 0
 scoreboard players set @a levelDefense 0
 scoreboard players set @a levelMagic 0
@@ -178,8 +188,12 @@ scoreboard objectives add _prevSkillLevel dummy
 scoreboard players set TroopKill skillXPReward 1
 
 # reset all players
+scoreboard players reset * characterXP
+scoreboard players reset * characterLevel
 scoreboard players set @a characterXP 0
 scoreboard players set @a characterLevel 1
+scoreboard players reset * totemCharge
+scoreboard players set @a totemCharge 0
 
 scoreboard players set QuestTracker endGame 0
 
