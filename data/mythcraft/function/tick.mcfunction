@@ -39,7 +39,7 @@ scoreboard players remove @a[scores={totemInvisTimer=1..}] totemInvisTimer 1
 
 # bastion parry — shield tracking and cooldown
 scoreboard players remove @a[scores={parryWindow=1..}] parryWindow 1
-execute as @a[scores={playerClass=3,parryCooldown=1}] at @s run playsound minecraft:entity.experience_orb.pickup master @s ~ ~ ~ 1.0 1.0
+execute as @a[scores={playerClass=3,parryCooldown=1}] at @s run playsound minecraft:block.anvil.land master @s ~ ~ ~ 0.8 1.5
 scoreboard players remove @a[scores={parryCooldown=1..}] parryCooldown 1
 execute as @a[scores={_shieldTick=1}] run scoreboard players set @s _wasBlocking 1
 execute as @a[scores={_shieldTick=0,_wasBlocking=1}] run scoreboard players set @s _wasBlocking 0
