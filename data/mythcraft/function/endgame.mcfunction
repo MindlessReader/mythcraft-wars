@@ -2,6 +2,10 @@
 schedule clear mythcraft:endgame_actionbar
 schedule clear mythcraft:quests/timer
 
+# Mark game as fully over (endGame: 0=not started, 1=endgame running, 2=game over)
+scoreboard players set QuestTracker endGame 2
+scoreboard players set QuestTracker questTimer 0
+
 # Disable enableTroops
 tag @a remove enableTroops
 
@@ -34,6 +38,9 @@ data modify storage mythcraft:temp cityId set value "City7"
 data modify storage mythcraft:temp vpValue set from storage mythcraft:config cities.City7.vpValue
 function mythcraft:endgame_addvp with storage mythcraft:temp
 
+# Tiebreak: set flag before incrementing VP so announce function can detect it
+data modify storage mythcraft:temp tiebreakApplied set value 0
+execute if score Team1 victoryPoints = Team2 victoryPoints if score City3 cityOwnership matches 1..2 run data modify storage mythcraft:temp tiebreakApplied set value 1
 execute if score Team1 victoryPoints = Team2 victoryPoints if score City3 cityOwnership matches 1 run scoreboard players add Team1 victoryPoints 1
 execute if score Team1 victoryPoints = Team2 victoryPoints if score City3 cityOwnership matches 2 run scoreboard players add Team2 victoryPoints 1
 

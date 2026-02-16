@@ -62,3 +62,7 @@ execute as @e[type=marker,tag=mortarField] at @s run function mythcraft:mortar/f
 # activate mobs
 execute as @a[tag=enableTroops,team=Team1] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team1] slowness
 execute as @a[tag=enableTroops,team=Team2] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team2] slowness
+
+# god mode: one-hit strength + bypass troop grace period resistance (separate from debugMode to avoid log spam)
+execute as @a[tag=godMode] run effect give @s minecraft:strength infinite 100 true
+execute if entity @a[tag=godMode] run effect clear @e[type=!player] minecraft:resistance

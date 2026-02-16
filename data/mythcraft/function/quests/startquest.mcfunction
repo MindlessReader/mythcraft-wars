@@ -61,6 +61,7 @@ tellraw @a [{nbt:"typeText",storage:"mythcraft:quest"},": ",{color:"red",nbt:"lo
 execute if score QuestTracker questType matches 1 run function mythcraft:quests/announce/conquerquest
 execute if score QuestTracker questType matches 2 run function mythcraft:quests/announce/killquest
 tellraw @a {bold:true,color:"#DDA0DD",text:"~~~~~~~~~~"}
+function mythcraft:debug/quest_start with storage mythcraft:quest
 
 title @a title {bold:true,color:"#FFD700",text:"New Quest"}
 title @a subtitle [{nbt:"typeText",storage:"mythcraft:quest"},": ",{color:"red",nbt:"locationText",storage:"mythcraft:quest"},{text:" / Reward: "},{bold:true,color:"light_purple",nbt:"rewardText",storage:"mythcraft:quest"}]

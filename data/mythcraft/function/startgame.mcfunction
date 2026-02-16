@@ -41,6 +41,7 @@ function mythcraft:quests/nextquest_actionbar
 execute if score QuestTracker questTimerSec matches 10.. run tellraw @a [{bold:false,color:"light_purple",text:"Mythcraft Wars Start!\nQuests begin in "},{score:{name:"QuestTracker",objective:"questTimerMin"}},{text:":"},{score:{name:"QuestTracker",objective:"questTimerSec"}},{text:"."}]
 execute if score QuestTracker questTimerSec matches ..9 run tellraw @a [{bold:false,color:"light_purple",text:"Mythcraft Wars Start!\nQuests begin in "},{score:{name:"QuestTracker",objective:"questTimerMin"}},{text:":0"},{score:{name:"QuestTracker",objective:"questTimerSec"}},{text:"."}]
 execute as @a at @s run playsound ui.toast.challenge_complete master @s ~ ~ ~
+execute if entity @a[tag=debugMode] run say [DEBUG] Game started
 
 # Schedule first quest start from config
 data modify storage mythcraft:temp duration set from storage mythcraft:config game.preGameDuration

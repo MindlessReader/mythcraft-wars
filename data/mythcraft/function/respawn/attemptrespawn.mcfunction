@@ -12,6 +12,7 @@ $execute if score $(cityName) cityOwnership matches 2 run function mythcraft:res
 
 # announce regrouping - unaligned uses literal text
 $execute if score $(cityName) cityOwnership matches 0 run tellraw @a [{color:"#FFD700",bold:false,text:"Unaligned"},{color:"#FFD700",text:" troops have regrouped in "},{bold:false,color:"white",text:"$(cityDisplayName)"},{color:"#FFD700",text:"!"}]
+$execute if score $(cityName) cityOwnership matches 0 if entity @a[tag=debugMode] run say [DEBUG] Unaligned troops regrouped in $(cityDisplayName)
 
 # announce regrouping - team-owned cities need resolved team display name
 $data modify storage mythcraft:temp cityDisplayName set value "$(cityDisplayName)"

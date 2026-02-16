@@ -25,3 +25,4 @@ execute if score QuestTracker questTimerSec matches ..9 run tellraw @a [{bold:tr
 tellraw @a [{text:"GRACE PERIOD ABOLISHED: Troops can be killed immediately after a city has been conquered.",color:"dark_red"}]
 
 scoreboard players set QuestTracker endGame 1
+execute if entity @a[tag=debugMode] run say [DEBUG] Endgame started

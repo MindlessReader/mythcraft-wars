@@ -28,6 +28,7 @@ execute if score QuestTracker questWinner matches 2 run function mythcraft:quest
 
 #tie
 execute if score QuestTracker questWinner matches 0 run tellraw @a [{bold:true,color:"light_purple",text:"Quest End: "},{bold:false,color:"#FFD700",text:"No one won the quest due to a tie or unconquered city."}]
+execute if score QuestTracker questWinner matches 0 if entity @a[tag=debugMode] run say [DEBUG] Quest ended: tie or unconquered
 
 # Log quest result to history
 function mythcraft:quests/logresult
