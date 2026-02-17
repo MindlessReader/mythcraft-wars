@@ -59,6 +59,10 @@ execute as @e[type=marker,tag=mortarTracker] at @s run function mythcraft:mortar
 # mortar field tick
 execute as @e[type=marker,tag=mortarField] at @s run function mythcraft:mortar/field_tick
 
+# troop indicator — show nearby city troop count on XP bar; kill XP orbs to prevent interference
+kill @e[type=experience_orb]
+execute as @a at @s run function mythcraft:troop_indicator/update
+
 # activate mobs
 execute as @a[tag=enableTroops,team=Team1] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team1] slowness
 execute as @a[tag=enableTroops,team=Team2] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team2] slowness

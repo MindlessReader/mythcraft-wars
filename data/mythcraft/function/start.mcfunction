@@ -182,6 +182,11 @@ scoreboard objectives add _mortarLoaded dummy
 scoreboard objectives add mortarCharLevel dummy
 scoreboard objectives add mortarFieldLife dummy
 
+# troop indicator (XP bar shows nearby city troop count)
+scoreboard objectives add _troopTotal dummy
+scoreboard objectives add _troopCap dummy
+scoreboard objectives add _xpFill dummy
+
 # tunable XP-per-kill values (fake players, adjustable on the fly)
 scoreboard players set TroopKill characterXPReward 1
 scoreboard players set PlayerKill characterXPReward 3
