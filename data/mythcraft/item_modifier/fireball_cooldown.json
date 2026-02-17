@@ -1,0 +1,197 @@
+[
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": [
+				{
+					"color": "gold",
+					"italic": false,
+					"text": "Fireball"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Tier I]"
+				}
+			],
+			"minecraft:lore": [
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "On Cooldown",
+					"underlined": true
+				},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Damage: 6 | Radius: 3.0 | Fire: 5s"
+				}
+			]
+		},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelMagic": 1
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": [
+				{
+					"color": "gold",
+					"italic": false,
+					"text": "Fireball"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Tier II]"
+				}
+			],
+			"minecraft:lore": [
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "On Cooldown",
+					"underlined": true
+				},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Damage: 8 | Radius: 3.5 | Fire: 7s"
+				}
+			]
+		},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelMagic": 2
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": [
+				{
+					"color": "gold",
+					"italic": false,
+					"text": "Fireball"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Tier III]"
+				}
+			],
+			"minecraft:lore": [
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "On Cooldown",
+					"underlined": true
+				},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Damage: 10 | Radius: 4.0 | Fire: 9s"
+				}
+			]
+		},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelMagic": 3
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": [
+				{
+					"color": "gold",
+					"italic": false,
+					"text": "Fireball"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Tier IV]"
+				}
+			],
+			"minecraft:lore": [
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "On Cooldown",
+					"underlined": true
+				},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Damage: 12 | Radius: 4.5 | Fire: 11s"
+				}
+			]
+		},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelMagic": 4
+				}
+			}
+		]
+	},
+	{
+		"function": "minecraft:set_components",
+		"components": {
+			"minecraft:custom_name": [
+				{
+					"color": "gold",
+					"italic": false,
+					"text": "Fireball"
+				},
+				{
+					"color": "white",
+					"italic": false,
+					"text": " [Tier V]"
+				}
+			],
+			"minecraft:lore": [
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "On Cooldown",
+					"underlined": true
+				},
+				{
+					"color": "gray",
+					"italic": false,
+					"text": "Damage: 14 | Radius: 5.0 | Fire: 13s"
+				}
+			]
+		},
+		"conditions": [
+			{
+				"condition": "minecraft:entity_scores",
+				"entity": "this",
+				"scores": {
+					"levelMagic": 5
+				}
+			}
+		]
+	}
+]

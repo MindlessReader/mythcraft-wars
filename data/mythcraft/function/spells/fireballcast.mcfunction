@@ -13,4 +13,5 @@ data modify entity @e[tag=newFireball,limit=1,sort=nearest] Rotation set from en
 scoreboard players operation @e[tag=newFireball,limit=1,sort=nearest] levelMagic = @s levelMagic
 tag @e[tag=newFireball] remove newFireball
 #replace hand with cooldown indicator
-item replace entity @s weapon.mainhand with breeze_rod[enchantments={"minecraft:vanishing_curse":1},max_stack_size=1,custom_name=[{color:"gold",italic:false,text:"Fireball"},{color:"gray",italic:false,text:" [Cooling Down]"}],lore=[{color:"gray",italic:false,text:"On Cooldown",underlined:true}],tooltip_display={hidden_components:["minecraft:enchantments"]},custom_data={mythcraft_fireballempty:1b}] 1
+item replace entity @s weapon.mainhand with breeze_rod[enchantments={"minecraft:vanishing_curse":1},max_stack_size=1,tooltip_display={hidden_components:["minecraft:enchantments"]},custom_data={mythcraft_fireballempty:1b}] 1
+item modify entity @s weapon.mainhand mythcraft:fireball_cooldown
