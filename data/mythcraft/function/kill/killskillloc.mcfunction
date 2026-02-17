@@ -16,7 +16,6 @@ $execute if score $(locationName) locationId = QuestTracker questLocation as @s[
 
 $advancement revoke @s only mythcraft:kill/skilllocations/$(advancementName)
 
-# respawn troops if not many left
-$scoreboard players reset $(locationName) mathCounter
-$execute as @e[tag=cityTroop,tag=$(locationName)] run scoreboard players add $(locationName) mathCounter 1
-$execute if score $(locationName) mathCounter matches ..3 run function mythcraft:respawn/spawnall {cityName:$(locationName), teamName:Unaligned, cityDisplayName:$(locationDisplayName)}
+# decrement the correct troop count based on category (respawn pass handles actual spawning)
+$execute if data storage mythcraft:temp {troopCategory:"regular"} run scoreboard players remove $(locationName) troopCount 1
+$execute if data storage mythcraft:temp {troopCategory:"boss"} run scoreboard players remove $(locationName) bossCount 1

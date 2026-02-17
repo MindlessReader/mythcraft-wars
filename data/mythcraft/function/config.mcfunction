@@ -44,6 +44,54 @@ data modify storage mythcraft:config cityCount set value 7
 # Tiebreak city (if VP tied at endgame, owner of this city gets +1 VP)
 data modify storage mythcraft:config tiebreakCity set value "City3"
 
+# Troop configuration per city (troopCap = regular marker count, bossCap = boss marker count)
+data modify storage mythcraft:config cities.City1.troopCap set value 3
+data modify storage mythcraft:config cities.City1.bossCap set value 1
+data modify storage mythcraft:config cities.City1.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
+data modify storage mythcraft:config cities.City1.bossPool set value ["bosszombie","bossskeleton","bosswitch","blaze","breeze","illusioner"]
+data modify storage mythcraft:config cities.City2.troopCap set value 3
+data modify storage mythcraft:config cities.City2.bossCap set value 1
+data modify storage mythcraft:config cities.City2.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
+data modify storage mythcraft:config cities.City2.bossPool set value ["bosszombie","bossskeleton","bosswitch","blaze","breeze","illusioner"]
+data modify storage mythcraft:config cities.City3.troopCap set value 1
+data modify storage mythcraft:config cities.City3.bossCap set value 0
+data modify storage mythcraft:config cities.City3.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
+data modify storage mythcraft:config cities.City3.bossPool set value []
+data modify storage mythcraft:config cities.City4.troopCap set value 1
+data modify storage mythcraft:config cities.City4.bossCap set value 0
+data modify storage mythcraft:config cities.City4.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
+data modify storage mythcraft:config cities.City4.bossPool set value []
+data modify storage mythcraft:config cities.City5.troopCap set value 1
+data modify storage mythcraft:config cities.City5.bossCap set value 0
+data modify storage mythcraft:config cities.City5.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
+data modify storage mythcraft:config cities.City5.bossPool set value []
+data modify storage mythcraft:config cities.City6.troopCap set value 1
+data modify storage mythcraft:config cities.City6.bossCap set value 0
+data modify storage mythcraft:config cities.City6.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
+data modify storage mythcraft:config cities.City6.bossPool set value []
+data modify storage mythcraft:config cities.City7.troopCap set value 1
+data modify storage mythcraft:config cities.City7.bossCap set value 0
+data modify storage mythcraft:config cities.City7.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
+data modify storage mythcraft:config cities.City7.bossPool set value []
+
+# Skill location troop configuration
+data modify storage mythcraft:config skillLocations.Attack.troopCap set value 5
+data modify storage mythcraft:config skillLocations.Attack.bossCap set value 0
+data modify storage mythcraft:config skillLocations.Attack.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
+data modify storage mythcraft:config skillLocations.Attack.bossPool set value []
+data modify storage mythcraft:config skillLocations.Defense.troopCap set value 5
+data modify storage mythcraft:config skillLocations.Defense.bossCap set value 0
+data modify storage mythcraft:config skillLocations.Defense.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
+data modify storage mythcraft:config skillLocations.Defense.bossPool set value []
+data modify storage mythcraft:config skillLocations.Magic.troopCap set value 5
+data modify storage mythcraft:config skillLocations.Magic.bossCap set value 0
+data modify storage mythcraft:config skillLocations.Magic.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
+data modify storage mythcraft:config skillLocations.Magic.bossPool set value []
+data modify storage mythcraft:config skillLocations.Special.troopCap set value 5
+data modify storage mythcraft:config skillLocations.Special.bossCap set value 0
+data modify storage mythcraft:config skillLocations.Special.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
+data modify storage mythcraft:config skillLocations.Special.bossPool set value []
+
 # Game timing defaults (durations in seconds)
 data modify storage mythcraft:config game.questCount set value 10
 data modify storage mythcraft:config game.questDuration set value 300
@@ -51,6 +99,11 @@ data modify storage mythcraft:config game.betweenQuestDelay set value 10
 data modify storage mythcraft:config game.preGameDuration set value 300
 data modify storage mythcraft:config game.endgameDuration set value 300
 data modify storage mythcraft:config game.vpQuestCount set value 6
+
+# Troop regen timing (durations in seconds)
+data modify storage mythcraft:config game.regenCheckInterval set value 60
+data modify storage mythcraft:config game.regenInterval set value 20
+data modify storage mythcraft:config game.skillRegenInterval set value 20
 
 # Unaligned (initial state for unclaimed cities)
 data modify storage mythcraft:config teams.Unaligned.name set value "Unaligned"

@@ -2,6 +2,8 @@
 # Called with: {cityId:City1, cityNum:1}
 $data modify storage mythcraft:temp currentName set from storage mythcraft:config cities.$(cityId).name
 $data modify storage mythcraft:temp currentVp set from storage mythcraft:config cities.$(cityId).vpValue
+$data modify storage mythcraft:temp currentTroopCap set from storage mythcraft:config cities.$(cityId).troopCap
+$data modify storage mythcraft:temp currentBossCap set from storage mythcraft:config cities.$(cityId).bossCap
 $data modify storage mythcraft:temp cityId set value "$(cityId)"
 $data modify storage mythcraft:temp cityNum set value "$(cityNum)"
 function mythcraft:config/show/city with storage mythcraft:temp

@@ -26,6 +26,9 @@ Config fields in `mythcraft:config` storage:
 - **Team armor trims:** `teams.TeamN.trimMaterial`, `.trimPattern`, `.trimPatternHead`
 - **Tiebreak city:** `tiebreakCity`
 - **Game timing:** `game.questCount`, `game.questDuration`, `game.betweenQuestDelay`, `game.preGameDuration`, `game.endgameDuration`, `game.vpQuestCount`
+- **Troop config per city:** `cities.CityN.troopCap`, `.bossCap`, `.regularPool` (string list), `.bossPool` (string list)
+- **Troop config per skill:** `skillLocations.X.troopCap`, `.regularPool` (string list)
+- **Regen timing:** `game.regenCheckInterval` (60s), `game.regenInterval` (20s), `game.skillRegenInterval` (20s)
 
 Display text uses the "resolve into temp, call helper with macros" pattern: values are read from `mythcraft:config` into `mythcraft:temp` storage via `data modify`, then passed to helper functions via `function ... with storage mythcraft:temp` so they become `$(paramName)` macro parameters. This avoids `{nbt:...,storage:...,interpret:true}` which does not work reliably for bossbars, titles, or entity CustomName.
 
@@ -45,13 +48,13 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 | Subsystem | Directory | Purpose |
 |-----------|-----------|---------|
 | **Config** | `config.mcfunction`, `config/`, `setup/` | World-level configuration, in-game dialog editor, and team/sidebar setup helpers |
-| **Conquest** | `conquer.mcfunction`, `kill/city/` | City capture via troop kills; threshold = marker count |
+| **Conquest** | `conquer.mcfunction`, `kill/city/` | City capture via troop depletion (troopCount + bossCount = 0); dual advancements per city (regular/boss) |
 | **Quests** | `quests/`, `schedule/` | Configurable randomized quests (conquer or kill type) with VP/buff/item rewards; `schedule/` has macro helpers for dynamic `schedule` commands |
 | **Leveling** | `leveling/` | Dual progression: team-wide skill levels (0-5) at 4 skill locations + per-player character level (1-5) from kill XP |
 | **Spells** | `spells/` | Seeking Breath spell (area_effect_cloud projectile), unlocked by Magic skill |
-| **Respawn** | `respawn/` | Troop spawning from markers; callback pattern for async marker loading |
+| **Respawn** | `respawn/` | Dynamic troop spawning from configurable pools; two marker types (regular/boss); scoreboard-based population tracking with load validation; time-based regen with quiet period |
 | **Equipment** | `kill/giveequipment/`, `rekit.mcfunction`, `rekit/` | City-specific bonuses + level-scaled gear via `item_modifier/` JSONs |
-| **Markers** | `markers/` | Admin tools for placing/configuring city spawn points |
+| **Markers** | `markers/` | Admin tools for placing spawn markers (2 types: `spawnmarker_regular`, `spawnmarker_boss`); migration function for old typed markers |
 | **Compass** | `compass/` | Lodestone compass that reveals nearest enemy troop; shift+right-click opens player menu |
 | **Player Menu** | `menu/` | Dialog showing game state (skills, character, quests) with class selection and teleport buttons |
 | **Quest History** | `quests/logresult*` | Logs each quest result to `mythcraft:questhistory` storage for display in the player menu |
@@ -71,7 +74,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 
 - Team skill levels: `levelAttack`, `levelDefense`, `levelMagic`, `levelSpecial`
 - Team XP: `xpAttack`, `xpDefense`, etc. (fake player names: `Team1`, `Team2`)
-- City state: `cityOwnership`, `cityConquerProgress`, `cityConquerValue`
+- City state: `cityOwnership`; troop population: `troopCount`, `bossCount`, `troopCap`, `bossCap` (per-city fake players); regen: `regenActive` (0/1), `troopCountLastChecked`, `bossCountLastChecked`
 - Quest state tracked on a `QuestTracker` entity: `questType` (1=conquer, 2=kill), `questRewardType` (1=item, 2=buff, 3=VP), `endGame` (0=not started, 1=endgame running, 2=game over)
 - Player menu triggers: `openMenu` (1=main, 2=class select, 3=quest history), `teleportLocation` (1-7=cities, 8-11=skill locations)
 - Character level: `characterLevel` (per-player, 1-5), `characterXP`, `characterXPThresholds` (fake players `CharLvl2`-`CharLvl5`), `characterXPReward` (fake players `TroopKill`=1, `PlayerKill`=3)
@@ -87,7 +90,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - **Item modifiers:** `item_modifier/*.json` files scale equipment by skill level (sharpness, protection) and character level (lunge, density, quick_charge); some use score-based scaling, others use discrete conditional breakpoints
 - **Character leveling:** Per-player progression (levels 1-5) from troop/player kills. Affects armor/toughness attributes (per-class via `setattributes`), gear material tiers (iron→diamond at level 3, diamond→netherite at level 5), weapon enchantments, and assassin totem max charge. `checklevel` runs after each kill XP gain; `onlevelup` applies in-place upgrades
 - **Troop slowness:** All troops spawn with Slowness IX (immobile); cleared when a team player is within 10 blocks
-- **Callback respawn:** `respawn/attemptrespawn` uses scheduled callbacks with 15s delays to wait for marker entities to load
+- **Dynamic troop spawning:** Two marker types (`spawnmarker_regular`, `spawnmarker_boss`); troop type chosen randomly from per-city configurable pools; `$function .../spawn/$(troopType)` dispatches pool string directly to function filename. Scoreboard counts (`troopCount`/`bossCount`) are "floating memory" — updated immediately on kills/regen regardless of chunk load; entity sync deferred until load validation passes (marker count == config cap). Full spawns (`spawnall`) iterate markers directly; incremental spawns (`spawn_loop`) prefer unoccupied markers (tag `_availableSpawn`, remove if troop within 2 blocks, fallback to random). Conquest triggers when both counts reach 0. Friendly fire replaces killed troop with random-from-pool (no count change). Regen: `regen_check` activates after quiet period (configurable interval); `regen_tick` increments one count per city per tick (regulars first, then bosses); kills directly deactivate regen via `decrement_count`. Skill locations use `regen_skill_tick` (no quiet period). `respawn_pass` (every 5s) syncs entities to scoreboards via `sync_city`/`sync_skill` with load validation gate
 - **Lookup functions:** `lookup/` maps numeric IDs to city/location names for parameterized operations
 - **Config-driven display:** City/team/skill location names resolved from `mythcraft:config` into `mythcraft:temp`, then passed as macro params to helper functions (never use `interpret:true` or nbt storage refs in display contexts)
 - **Armor trims from config:** `rekit/applyarmor.mcfunction` reads trim material/pattern from storage macros

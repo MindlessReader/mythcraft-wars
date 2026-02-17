@@ -5,4 +5,7 @@ data modify storage mythcraft:temp currentBetweenQuestDelay set from storage myt
 data modify storage mythcraft:temp currentPreGameDuration set from storage mythcraft:config game.preGameDuration
 data modify storage mythcraft:temp currentEndgameDuration set from storage mythcraft:config game.endgameDuration
 data modify storage mythcraft:temp currentVPQuestCount set from storage mythcraft:config game.vpQuestCount
+data modify storage mythcraft:temp currentRegenCheckInterval set from storage mythcraft:config game.regenCheckInterval
+data modify storage mythcraft:temp currentRegenInterval set from storage mythcraft:config game.regenInterval
+data modify storage mythcraft:temp currentSkillRegenInterval set from storage mythcraft:config game.skillRegenInterval
 function mythcraft:config/show/game with storage mythcraft:temp

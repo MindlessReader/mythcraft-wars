@@ -5,6 +5,11 @@ execute unless data storage mythcraft:config cities run function mythcraft:confi
 execute unless data storage mythcraft:config cities.City1.teleport run function mythcraft:config/init_teleports
 # initialize game timing config if missing (for worlds created before this feature)
 execute unless data storage mythcraft:config game run function mythcraft:config/init_game
+# initialize troop config if missing (for worlds created before dynamic spawn system)
+execute unless data storage mythcraft:config cities.City1.troopCap run function mythcraft:config/init_troops
+execute unless data storage mythcraft:config game.regenCheckInterval run function mythcraft:config/init_regen
+# add boss support to skill locations (for worlds created before this feature)
+execute unless data storage mythcraft:config skillLocations.Attack.bossPool run function mythcraft:config/init_skill_boss
 
 # add teams
 team add Team1
@@ -45,6 +50,15 @@ scoreboard objectives add cityOwnership dummy
 scoreboard objectives add cityConquerProgress dummy
 scoreboard objectives add cityConquerValue dummy
 
+# dynamic troop system scoreboards
+scoreboard objectives add troopCount dummy
+scoreboard objectives add bossCount dummy
+scoreboard objectives add troopCap dummy
+scoreboard objectives add bossCap dummy
+scoreboard objectives add troopCountLastChecked dummy
+scoreboard objectives add bossCountLastChecked dummy
+scoreboard objectives add regenActive dummy
+
 # set city IDs
 scoreboard players set City1 locationId 1
 scoreboard players set City2 locationId 2
@@ -61,30 +75,7 @@ scoreboard players set City4 cityOwnership 0
 scoreboard players set City5 cityOwnership 0
 scoreboard players set City6 cityOwnership 0
 scoreboard players set City7 cityOwnership 0
-# set conquer progress
-scoreboard players set City1 cityConquerProgress 0
-scoreboard players set City2 cityConquerProgress 0
-scoreboard players set City3 cityConquerProgress 0
-scoreboard players set City4 cityConquerProgress 0
-scoreboard players set City5 cityConquerProgress 0
-scoreboard players set City6 cityConquerProgress 0
-scoreboard players set City7 cityConquerProgress 0
-# set needed conquer value (same as number of markers and troops in that city)
-#scoreboard players set City1 cityConquerValue 3
-#scoreboard players set City2 cityConquerValue 3
-#scoreboard players set City3 cityConquerValue 1
-#scoreboard players set City4 cityConquerValue 1
-#scoreboard players set City5 cityConquerValue 1
-#scoreboard players set City6 cityConquerValue 1
-#scoreboard players set City7 cityConquerValue 1
-# set last checked conquer progress
-scoreboard players set City1LastChecked cityConquerProgress 0
-scoreboard players set City2LastChecked cityConquerProgress 0
-scoreboard players set City3LastChecked cityConquerProgress 0
-scoreboard players set City4LastChecked cityConquerProgress 0
-scoreboard players set City5LastChecked cityConquerProgress 0
-scoreboard players set City6LastChecked cityConquerProgress 0
-scoreboard players set City7LastChecked cityConquerProgress 0
+# (cityConquerProgress/cityConquerValue no longer used — dynamic troop system uses troopCount/bossCount)
 
 # add team xp and levels
 scoreboard objectives add xpAttack dummy
@@ -287,16 +278,18 @@ function mythcraft:setup/sidebar_city {cityId:City5, displayScore:-6}
 function mythcraft:setup/sidebar_city {cityId:City6, displayScore:-7}
 function mythcraft:setup/sidebar_city {cityId:City7, displayScore:-8}
 
-# TESTING AREA      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# thresholds
-scoreboard players set City1 cityConquerValue 3
-scoreboard players set City2 cityConquerValue 3
-scoreboard players set City3 cityConquerValue 1
-scoreboard players set City4 cityConquerValue 1
-scoreboard players set City5 cityConquerValue 1
-scoreboard players set City6 cityConquerValue 1
-scoreboard players set City7 cityConquerValue 1
+# Start respawn/regen loops (run always, not just during game)
+schedule clear mythcraft:respawn/respawn_pass
+schedule clear mythcraft:respawn/regen_check
+schedule clear mythcraft:respawn/regen_tick
+schedule clear mythcraft:respawn/regen_skill_tick
+function mythcraft:respawn/init_counts
+function mythcraft:respawn/respawn_pass
+function mythcraft:respawn/regen_check
+function mythcraft:respawn/regen_tick
+function mythcraft:respawn/regen_skill_tick
 
+# TESTING AREA      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # set xp thresholds (temporary for testing)
 scoreboard players set Threshold1 xpThresholds 1
 scoreboard players set Threshold2 xpThresholds 2

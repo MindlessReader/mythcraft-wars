@@ -6,5 +6,8 @@ $data modify storage mythcraft:config game.questDuration set value $(questDurati
 $data modify storage mythcraft:config game.betweenQuestDelay set value $(betweenQuestDelay)
 $data modify storage mythcraft:config game.preGameDuration set value $(preGameDuration)
 $data modify storage mythcraft:config game.endgameDuration set value $(endgameDuration)
+$data modify storage mythcraft:config game.regenCheckInterval set value $(regenCheckInterval)
+$data modify storage mythcraft:config game.regenInterval set value $(regenInterval)
+$data modify storage mythcraft:config game.skillRegenInterval set value $(skillRegenInterval)
 # Navigate back to main menu
 function mythcraft:config/open

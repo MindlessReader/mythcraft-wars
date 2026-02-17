@@ -9,12 +9,15 @@ $execute as @a[team=$(teamName)] run function mythcraft:kill/giveequipment/$(rew
 $execute if score QuestTracker questWinner matches 0 if score QuestTracker questLocation = $(cityId) locationId run function mythcraft:quests/conquerquestattackreward {cityName:$(cityId), teamId:$(teamId), teamName:$(teamName)}
 
 # respawn troops
-$function mythcraft:respawn/spawnall {cityName:$(cityId), teamName:$(teamName), cityDisplayName:$(cityDisplayName)}
+$function mythcraft:respawn/spawnall {cityId:$(cityId), cityName:$(cityId), teamName:$(teamName), cityDisplayName:$(cityDisplayName)}
 $execute if score QuestTracker endGame matches 0 run effect give @e[type=!marker,tag=$(cityId)] resistance 60 4
 
-# reset conquer score
-$scoreboard players set $(cityId) cityConquerProgress 0
-$scoreboard players set $(cityId)LastChecked cityConquerProgress 0
+# reset troop counts to full caps
+$scoreboard players operation $(cityId) troopCount = $(cityId) troopCap
+$scoreboard players operation $(cityId) bossCount = $(cityId) bossCap
+$scoreboard players operation $(cityId) troopCountLastChecked = $(cityId) troopCap
+$scoreboard players operation $(cityId) bossCountLastChecked = $(cityId) bossCap
+$scoreboard players set $(cityId) regenActive 0
 
 # resolve team display name for announcements
 $data modify storage mythcraft:temp teamDisplayName set from storage mythcraft:config teams.$(teamName).name

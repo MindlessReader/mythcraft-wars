@@ -7,6 +7,10 @@ schedule clear mythcraft:quests/nextquest_actionbar
 schedule clear mythcraft:beginendgame
 schedule clear mythcraft:endgame
 schedule clear mythcraft:endgame_actionbar
+schedule clear mythcraft:respawn/respawn_pass
+schedule clear mythcraft:respawn/regen_check
+schedule clear mythcraft:respawn/regen_tick
+schedule clear mythcraft:respawn/regen_skill_tick
 
 # Reset quest history and quest state
 data remove storage mythcraft:questhistory log
@@ -67,5 +71,9 @@ function mythcraft:mortar/cleanup
 tag @a[team=Team1] add enableTroops
 tag @a[team=Team2] add enableTroops
 
-function mythcraft:respawn/respawnchecker
+function mythcraft:respawn/init_counts
+function mythcraft:respawn/respawn_pass
+function mythcraft:respawn/regen_check
+function mythcraft:respawn/regen_tick
+function mythcraft:respawn/regen_skill_tick
 function mythcraft:quests/buffloop

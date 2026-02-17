@@ -37,19 +37,7 @@ data modify storage mythcraft:temp rewardFunction set value "city7"
 data modify storage mythcraft:temp cityDisplayName set from storage mythcraft:config cities.City7.name
 function mythcraft:conquer with storage mythcraft:temp
 
-data modify storage mythcraft:temp cityName set value "Attack"
-data modify storage mythcraft:temp teamName set value "Unaligned"
-data modify storage mythcraft:temp cityDisplayName set from storage mythcraft:config skillLocations.Attack.name
-function mythcraft:respawn/spawnall with storage mythcraft:temp
-
-data modify storage mythcraft:temp cityName set value "Defense"
-data modify storage mythcraft:temp cityDisplayName set from storage mythcraft:config skillLocations.Defense.name
-function mythcraft:respawn/spawnall with storage mythcraft:temp
-
-data modify storage mythcraft:temp cityName set value "Special"
-data modify storage mythcraft:temp cityDisplayName set from storage mythcraft:config skillLocations.Special.name
-function mythcraft:respawn/spawnall with storage mythcraft:temp
-
-data modify storage mythcraft:temp cityName set value "Magic"
-data modify storage mythcraft:temp cityDisplayName set from storage mythcraft:config skillLocations.Magic.name
-function mythcraft:respawn/spawnall with storage mythcraft:temp
+function mythcraft:respawn/spawnall_skill {locationName:Attack, locationId:Attack}
+function mythcraft:respawn/spawnall_skill {locationName:Defense, locationId:Defense}
+function mythcraft:respawn/spawnall_skill {locationName:Special, locationId:Special}
+function mythcraft:respawn/spawnall_skill {locationName:Magic, locationId:Magic}

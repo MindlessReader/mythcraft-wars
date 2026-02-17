@@ -46,13 +46,86 @@ data modify storage mythcraft:config cityCount set value 7
 # Tiebreak city
 data modify storage mythcraft:config tiebreakCity set value "City3"
 
+# City troop configuration
+# City1 (Celak): Vindicators, Archers, Breeze
+data modify storage mythcraft:config cities.City1.troopCap set value 4
+data modify storage mythcraft:config cities.City1.bossCap set value 0
+data modify storage mythcraft:config cities.City1.regularPool set value ["vindicator","skeleton"]
+data modify storage mythcraft:config cities.City1.bossPool set value ["breeze"]
+
+# City2 (Kings-Port): Vindicators, Pillagers, Illusioners
+data modify storage mythcraft:config cities.City2.troopCap set value 2
+data modify storage mythcraft:config cities.City2.bossCap set value 1
+data modify storage mythcraft:config cities.City2.regularPool set value ["vindicator","pillager"]
+data modify storage mythcraft:config cities.City2.bossPool set value ["illusioner"]
+
+# City3 (Athens): Undead, Archers, Large Archers, Breeze
+data modify storage mythcraft:config cities.City3.troopCap set value 0
+data modify storage mythcraft:config cities.City3.bossCap set value 1
+data modify storage mythcraft:config cities.City3.regularPool set value ["zombie","skeleton"]
+data modify storage mythcraft:config cities.City3.bossPool set value ["bossskeleton","breeze"]
+
+# City4 (Delphi): Witch, Large Undead, Blaze
+data modify storage mythcraft:config cities.City4.troopCap set value 0
+data modify storage mythcraft:config cities.City4.bossCap set value 1
+data modify storage mythcraft:config cities.City4.regularPool set value ["witch"]
+data modify storage mythcraft:config cities.City4.bossPool set value ["bosszombie","blaze"]
+
+# City5 (Loserville): Vindicators, Archers, Large Witch, Illusioner
+data modify storage mythcraft:config cities.City5.troopCap set value 0
+data modify storage mythcraft:config cities.City5.bossCap set value 1
+data modify storage mythcraft:config cities.City5.regularPool set value ["vindicator","skeleton"]
+data modify storage mythcraft:config cities.City5.bossPool set value ["bosswitch","illusioner"]
+
+# City6 (Amnis): Pillagers, Large Undead, Breeze
+data modify storage mythcraft:config cities.City6.troopCap set value 0
+data modify storage mythcraft:config cities.City6.bossCap set value 1
+data modify storage mythcraft:config cities.City6.regularPool set value ["pillager"]
+data modify storage mythcraft:config cities.City6.bossPool set value ["bosszombie","breeze"]
+
+# City7 (Fronteria): Witch, Large Archers, Blaze
+data modify storage mythcraft:config cities.City7.troopCap set value 1
+data modify storage mythcraft:config cities.City7.bossCap set value 0
+data modify storage mythcraft:config cities.City7.regularPool set value ["witch"]
+data modify storage mythcraft:config cities.City7.bossPool set value ["bossskeleton","blaze"]
+
+# Skill location troop configuration
+# Attack (Colosseum): Vindicators, Pillagers, Large Archer, Large Undead
+data modify storage mythcraft:config skillLocations.Attack.troopCap set value 5
+data modify storage mythcraft:config skillLocations.Attack.bossCap set value 0
+data modify storage mythcraft:config skillLocations.Attack.regularPool set value ["vindicator","pillager"]
+data modify storage mythcraft:config skillLocations.Attack.bossPool set value ["bossskeleton","bosszombie"]
+
+# Defense (Fort Reference): Vindicators, Pillagers, Large Archer, Large Undead
+data modify storage mythcraft:config skillLocations.Defense.troopCap set value 5
+data modify storage mythcraft:config skillLocations.Defense.bossCap set value 0
+data modify storage mythcraft:config skillLocations.Defense.regularPool set value ["vindicator","pillager"]
+data modify storage mythcraft:config skillLocations.Defense.bossPool set value ["bossskeleton","bosszombie"]
+
+# Magic (Thoth University): Witch, Undead, Archer, Illusioner, Blaze
+data modify storage mythcraft:config skillLocations.Magic.troopCap set value 5
+data modify storage mythcraft:config skillLocations.Magic.bossCap set value 0
+data modify storage mythcraft:config skillLocations.Magic.regularPool set value ["witch","zombie","skeleton"]
+data modify storage mythcraft:config skillLocations.Magic.bossPool set value ["illusioner","blaze"]
+
+# Special (Athena Library): Witch, Archer, Large Witch, Breeze
+data modify storage mythcraft:config skillLocations.Special.troopCap set value 5
+data modify storage mythcraft:config skillLocations.Special.bossCap set value 0
+data modify storage mythcraft:config skillLocations.Special.regularPool set value ["witch","skeleton"]
+data modify storage mythcraft:config skillLocations.Special.bossPool set value ["bosswitch","breeze"]
+
 # Game timing (durations in seconds)
-data modify storage mythcraft:config game.questCount set value 1
-data modify storage mythcraft:config game.questDuration set value 30
-data modify storage mythcraft:config game.betweenQuestDelay set value 50
-data modify storage mythcraft:config game.preGameDuration set value 1
-data modify storage mythcraft:config game.endgameDuration set value 100
-data modify storage mythcraft:config game.vpQuestCount set value 1
+data modify storage mythcraft:config game.questCount set value 5
+data modify storage mythcraft:config game.questDuration set value 300
+data modify storage mythcraft:config game.betweenQuestDelay set value 10
+data modify storage mythcraft:config game.preGameDuration set value 300
+data modify storage mythcraft:config game.endgameDuration set value 300
+data modify storage mythcraft:config game.vpQuestCount set value 2
+
+# Regen timing
+data modify storage mythcraft:config game.regenCheckInterval set value 60
+data modify storage mythcraft:config game.regenInterval set value 20
+data modify storage mythcraft:config game.skillRegenInterval set value 20
 
 # Unaligned
 data modify storage mythcraft:config teams.Unaligned.name set value "Unaligned"
