@@ -8,10 +8,6 @@ execute as @s[team=Team2] run scoreboard players operation @s levelAttack = Team
 execute as @s[team=Team2] run scoreboard players operation @s levelDefense = Team2 levelDefense
 execute as @s[team=Team2] run scoreboard players operation @s levelMagic = Team2 levelMagic
 execute as @s[team=Team2] run scoreboard players operation @s levelSpecial = Team2 levelSpecial
-
-# give shield if they don't have one
-execute store result score @s mathCounter run clear @s shield 0
-execute as @s[scores={mathCounter=0}] run give @s[scores={levelDefense=1..}] shield[unbreakable={},enchantments={"minecraft:vanishing_curse":1},enchantment_glint_override=true,tooltip_display={hidden_components:["minecraft:enchantments"]}] 1
 #give Fireball spell from magic leveling if they dont have one
 execute unless items entity @s[scores={levelMagic=1..5}] container.* blaze_rod unless items entity @s container.* breeze_rod run give @s[scores={levelMagic=1..5}] blaze_rod[enchantments={"minecraft:vanishing_curse":1},enchantment_glint_override=true,max_stack_size=1,custom_name=[{color:"gold",italic:false,text:"Fireball"},{color:"white",italic:false,text:" [Tier I]"}],lore=[{color:"gray",italic:false,text:"Ready",underlined:true},{color:"gray",italic:false,text:"Damage: 6 | Radius: 3.0 | Fire: 5s"}],tooltip_display={hidden_components:["minecraft:enchantments"]},custom_data={mythcraft_fireballspell:1b},food={nutrition:0,saturation:0,can_always_eat:true},consumable={consume_seconds:999}] 1
 
