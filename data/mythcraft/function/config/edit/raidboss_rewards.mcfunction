@@ -1,0 +1,41 @@
+# Reads which rewards are in the raid boss pool and opens the editor
+
+# Default all to false (stored as strings so macro substitution produces bare true/false for dialog initial:)
+data modify storage mythcraft:temp hasVictoryPoint set value "false"
+data modify storage mythcraft:temp hasGoldenApple set value "false"
+data modify storage mythcraft:temp hasEnderPearls set value "false"
+data modify storage mythcraft:temp hasWindCharges set value "false"
+data modify storage mythcraft:temp hasStrengthPowder set value "false"
+data modify storage mythcraft:temp hasHarmingPotions set value "false"
+data modify storage mythcraft:temp hasTrident set value "false"
+data modify storage mythcraft:temp hasInvisKelp set value "false"
+data modify storage mythcraft:temp hasWindArrows set value "false"
+data modify storage mythcraft:temp hasLevitationArrows set value "false"
+data modify storage mythcraft:temp hasPoisonPotions set value "false"
+data modify storage mythcraft:temp hasRegenTear set value "false"
+data modify storage mythcraft:temp hasBuffResistance set value "false"
+data modify storage mythcraft:temp hasBuffSpeed set value "false"
+data modify storage mythcraft:temp hasBuffHealthBoost set value "false"
+data modify storage mythcraft:temp hasBuffStrength set value "false"
+data modify storage mythcraft:temp hasNourishingBread set value "false"
+
+# Check raid boss reward pool (array-contains matching)
+execute if data storage mythcraft:config {rewards:{raidBossPool:["victory_point"]}} run data modify storage mythcraft:temp hasVictoryPoint set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["golden_apple"]}} run data modify storage mythcraft:temp hasGoldenApple set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["ender_pearls"]}} run data modify storage mythcraft:temp hasEnderPearls set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["wind_charges"]}} run data modify storage mythcraft:temp hasWindCharges set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["strength_powder"]}} run data modify storage mythcraft:temp hasStrengthPowder set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["harming_potions"]}} run data modify storage mythcraft:temp hasHarmingPotions set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["trident"]}} run data modify storage mythcraft:temp hasTrident set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["invis_kelp"]}} run data modify storage mythcraft:temp hasInvisKelp set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["wind_arrows"]}} run data modify storage mythcraft:temp hasWindArrows set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["levitation_arrows"]}} run data modify storage mythcraft:temp hasLevitationArrows set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["poison_potions"]}} run data modify storage mythcraft:temp hasPoisonPotions set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["regen_tear"]}} run data modify storage mythcraft:temp hasRegenTear set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["buff_resistance"]}} run data modify storage mythcraft:temp hasBuffResistance set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["buff_speed"]}} run data modify storage mythcraft:temp hasBuffSpeed set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["buff_health_boost"]}} run data modify storage mythcraft:temp hasBuffHealthBoost set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["buff_strength"]}} run data modify storage mythcraft:temp hasBuffStrength set value "true"
+execute if data storage mythcraft:config {rewards:{raidBossPool:["nourishing_bread"]}} run data modify storage mythcraft:temp hasNourishingBread set value "true"
+
+function mythcraft:config/show/raidboss_rewards with storage mythcraft:temp

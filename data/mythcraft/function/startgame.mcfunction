@@ -11,6 +11,11 @@ schedule clear mythcraft:respawn/respawn_pass
 schedule clear mythcraft:respawn/regen_check
 schedule clear mythcraft:respawn/regen_tick
 schedule clear mythcraft:respawn/regen_skill_tick
+schedule clear mythcraft:raidboss/try_spawn
+schedule clear mythcraft:raidboss/monitor
+schedule clear mythcraft:raidboss/cleanup_splits
+schedule clear mythcraft:raidboss/clear_transition_flag
+schedule clear mythcraft:raidboss/spawn_loop
 
 # Reset quest history and quest state
 data remove storage mythcraft:questhistory log
@@ -67,6 +72,17 @@ scoreboard players set @a _wasBlocking 0
 
 # reset bastion mortar state
 function mythcraft:mortar/cleanup
+
+# reset raid boss state and schedule spawn
+kill @e[tag=raidBoss]
+scoreboard players set RaidBoss raidBossState 0
+scoreboard players set RaidBoss raidBossHP 0
+scoreboard players set RaidBoss raidBossMaxHP 0
+scoreboard players set RaidBoss raidBossLastHit 0
+data modify storage mythcraft:raidboss recentTransition set value 0b
+data modify storage mythcraft:raidboss spawnPending set value 0b
+data modify storage mythcraft:raidboss rewardText set value ""
+function mythcraft:raidboss/schedule_spawn
 
 # reset city buff flags and recompute from config
 function mythcraft:rewards/update_city_buffs

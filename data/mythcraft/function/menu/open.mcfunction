@@ -95,5 +95,34 @@ execute unless items entity @s armor.head stone_button run item modify entity @s
 # Store quest total for display
 execute store result storage mythcraft:temp questTotal int 1 run data get storage mythcraft:config game.questCount
 
+# Raid boss status
+data modify storage mythcraft:temp raidBossLine1 set value "Not Yet Spawned"
+data modify storage mythcraft:temp raidBossLine2 set value ""
+data modify storage mythcraft:temp raidBossWinnerText set value ""
+data modify storage mythcraft:temp raidBossWinnerColor set value "yellow"
+data modify storage mythcraft:temp raidBossRewardsHeader set value ""
+data modify storage mythcraft:temp raidBossRewardsList set value ""
+# State 1 (active) or pending spawn (announced but entity not yet placed)
+execute if score RaidBoss raidBossState matches 1 run data modify storage mythcraft:temp raidBossLine1 set from storage mythcraft:raidboss bossDisplayName
+execute if score RaidBoss raidBossState matches 0 if data storage mythcraft:raidboss {spawnPending:1b} run data modify storage mythcraft:temp raidBossLine1 set from storage mythcraft:raidboss bossDisplayName
+execute if score RaidBoss raidBossState matches 1 run data modify storage mythcraft:temp raidBossLocation set from storage mythcraft:raidboss cityDisplayName
+execute if score RaidBoss raidBossState matches 0 if data storage mythcraft:raidboss {spawnPending:1b} run data modify storage mythcraft:temp raidBossLocation set from storage mythcraft:raidboss cityDisplayName
+execute if score RaidBoss raidBossState matches 1 run function mythcraft:menu/helpers/raidboss_location with storage mythcraft:temp
+execute if score RaidBoss raidBossState matches 0 if data storage mythcraft:raidboss {spawnPending:1b} run function mythcraft:menu/helpers/raidboss_location with storage mythcraft:temp
+execute if score RaidBoss raidBossState matches 1 run data modify storage mythcraft:temp raidBossRewardsHeader set value "\nRewards:\n"
+execute if score RaidBoss raidBossState matches 0 if data storage mythcraft:raidboss {spawnPending:1b} run data modify storage mythcraft:temp raidBossRewardsHeader set value "\nRewards:\n"
+execute if score RaidBoss raidBossState matches 1 run data modify storage mythcraft:temp raidBossRewardsList set from storage mythcraft:raidboss rewardText
+execute if score RaidBoss raidBossState matches 0 if data storage mythcraft:raidboss {spawnPending:1b} run data modify storage mythcraft:temp raidBossRewardsList set from storage mythcraft:raidboss rewardText
+# State 2: defeated — resolve winner team name + color
+execute if score RaidBoss raidBossState matches 2 run data modify storage mythcraft:temp raidBossLine1 set from storage mythcraft:raidboss bossDisplayName
+execute if score RaidBoss raidBossState matches 2 run data modify storage mythcraft:temp raidBossLine2 set value "DEFEATED - "
+execute if score RaidBoss raidBossState matches 2 if score RaidBoss raidBossLastHit matches 1 run data modify storage mythcraft:temp raidBossWinnerName set from storage mythcraft:config teams.Team1.name
+execute if score RaidBoss raidBossState matches 2 if score RaidBoss raidBossLastHit matches 1 run data modify storage mythcraft:temp raidBossWinnerColor set from storage mythcraft:config teams.Team1.color
+execute if score RaidBoss raidBossState matches 2 if score RaidBoss raidBossLastHit matches 2 run data modify storage mythcraft:temp raidBossWinnerName set from storage mythcraft:config teams.Team2.name
+execute if score RaidBoss raidBossState matches 2 if score RaidBoss raidBossLastHit matches 2 run data modify storage mythcraft:temp raidBossWinnerColor set from storage mythcraft:config teams.Team2.color
+execute if score RaidBoss raidBossState matches 2 run function mythcraft:menu/helpers/raidboss_winner with storage mythcraft:temp
+execute if score RaidBoss raidBossState matches 2 run data modify storage mythcraft:temp raidBossRewardsHeader set value "\nRewards:\n"
+execute if score RaidBoss raidBossState matches 2 run data modify storage mythcraft:temp raidBossRewardsList set from storage mythcraft:raidboss rewardText
+
 # Show the dialog
 function mythcraft:menu/show with storage mythcraft:temp

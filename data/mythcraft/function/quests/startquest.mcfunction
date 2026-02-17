@@ -72,3 +72,8 @@ execute as @a at @s run playsound block.note_block.chime master @s ~ ~ ~
 # Schedule end of quest from config
 data modify storage mythcraft:temp duration set from storage mythcraft:config game.questDuration
 function mythcraft:schedule/endquest with storage mythcraft:temp
+
+# Raid boss: transition flag (15s safety window) + check if this quest triggers spawn
+data modify storage mythcraft:raidboss recentTransition set value 1b
+schedule function mythcraft:raidboss/clear_transition_flag 15s
+function mythcraft:raidboss/check_spawn

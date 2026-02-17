@@ -9,6 +9,16 @@ scoreboard players set QuestTracker questTimer 0
 # Disable enableTroops
 tag @a remove enableTroops
 
+# Clean up raid boss if still alive
+kill @e[tag=raidBoss]
+schedule clear mythcraft:raidboss/monitor
+schedule clear mythcraft:raidboss/try_spawn
+schedule clear mythcraft:raidboss/clear_transition_flag
+schedule clear mythcraft:raidboss/cleanup_splits
+schedule clear mythcraft:raidboss/spawn_loop
+execute if score RaidBoss raidBossState matches 1 run scoreboard players set RaidBoss raidBossState 2
+data modify storage mythcraft:raidboss spawnPending set value 0b
+
 # Calculate victory points from config vpValues
 data modify storage mythcraft:temp cityId set value "City1"
 data modify storage mythcraft:temp vpValue set from storage mythcraft:config cities.City1.vpValue

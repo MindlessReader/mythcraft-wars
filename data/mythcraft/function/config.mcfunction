@@ -95,6 +95,9 @@ data modify storage mythcraft:config skillLocations.Special.bossPool set value [
 # Quest reward pool (items + buffs that can appear as quest rewards)
 data modify storage mythcraft:config rewards.questPool set value ["golden_apple","ender_pearls","wind_charges","strength_powder","harming_potions","trident","buff_resistance","buff_speed","buff_health_boost","buff_strength"]
 
+# Raid boss reward pool (ALL enabled rewards granted to killing team)
+data modify storage mythcraft:config rewards.raidBossPool set value ["victory_point","golden_apple","ender_pearls","buff_speed"]
+
 # City reward pools (rewards granted by owning each city)
 data modify storage mythcraft:config cities.City1.rewardPool set value ["invis_kelp","wind_arrows"]
 data modify storage mythcraft:config cities.City2.rewardPool set value []
@@ -103,6 +106,21 @@ data modify storage mythcraft:config cities.City4.rewardPool set value ["levitat
 data modify storage mythcraft:config cities.City5.rewardPool set value ["poison_potions"]
 data modify storage mythcraft:config cities.City6.rewardPool set value ["nourishing_bread"]
 data modify storage mythcraft:config cities.City7.rewardPool set value ["regen_tear"]
+
+# Raid boss pools per city (which boss types can spawn; empty = disabled)
+data modify storage mythcraft:config cities.City1.raidBossPool set value ["giant_slime"]
+data modify storage mythcraft:config cities.City2.raidBossPool set value ["giant_slime"]
+data modify storage mythcraft:config cities.City3.raidBossPool set value []
+data modify storage mythcraft:config cities.City4.raidBossPool set value []
+data modify storage mythcraft:config cities.City5.raidBossPool set value []
+data modify storage mythcraft:config cities.City6.raidBossPool set value ["giant_slime"]
+data modify storage mythcraft:config cities.City7.raidBossPool set value []
+
+# Raid boss pools per skill location (which boss types can spawn; empty = disabled)
+data modify storage mythcraft:config skillLocations.Attack.raidBossPool set value []
+data modify storage mythcraft:config skillLocations.Defense.raidBossPool set value []
+data modify storage mythcraft:config skillLocations.Magic.raidBossPool set value []
+data modify storage mythcraft:config skillLocations.Special.raidBossPool set value []
 
 # Game timing defaults (durations in seconds)
 data modify storage mythcraft:config game.questCount set value 10

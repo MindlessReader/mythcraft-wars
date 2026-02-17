@@ -12,9 +12,16 @@ execute unless data storage mythcraft:config game.regenCheckInterval run functio
 execute unless data storage mythcraft:config skillLocations.Attack.bossPool run function mythcraft:config/init_skill_boss
 # initialize reward config if missing (for worlds created before configurable rewards)
 execute unless data storage mythcraft:config rewards run function mythcraft:config/init_rewards
+# initialize raid boss config if missing (for worlds created before raid boss feature)
+execute unless data storage mythcraft:config cities.City1.raidBossPool run function mythcraft:config/init_raidboss
 
-# initialize reward display name lookup (runs every load)
+# initialize display name lookups (runs every load)
 function mythcraft:rewards/init_names
+function mythcraft:raidboss/init_names
+
+# initialize raid boss flags
+data modify storage mythcraft:raidboss recentTransition set value 0b
+data modify storage mythcraft:raidboss spawnPending set value 0b
 
 # add teams
 team add Team1
@@ -192,6 +199,12 @@ scoreboard objectives add _troopTotal dummy
 scoreboard objectives add _troopCap dummy
 scoreboard objectives add _xpFill dummy
 
+# raid boss
+scoreboard objectives add raidBossHP dummy
+scoreboard objectives add raidBossMaxHP dummy
+scoreboard objectives add raidBossState dummy
+scoreboard objectives add raidBossLastHit dummy
+
 # tunable XP-per-kill values (fake players, adjustable on the fly)
 scoreboard players set TroopKill characterXPReward 1
 scoreboard players set PlayerKill characterXPReward 3
@@ -218,6 +231,9 @@ scoreboard players set QuestTracker endGame 0
 
 # set constants
 scoreboard players set C_0 mathCounter 0
+scoreboard players set C_2 mathCounter 2
+scoreboard players set C_3 mathCounter 3
+scoreboard players set C_4 mathCounter 4
 scoreboard players set C_60 mathCounter 60
 
 # quests

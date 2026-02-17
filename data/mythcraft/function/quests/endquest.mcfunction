@@ -43,3 +43,7 @@ scoreboard players set QuestTracker questWinner -1
 # Start countdown for the between-quest (or before-endgame) gap
 # nextquest_actionbar auto-detects last quest and shows "Endgame begins" instead of "Next Quest"
 function mythcraft:quests/start_nextquest_timer
+
+# Raid boss: transition flag (15s safety window for spawn timing)
+data modify storage mythcraft:raidboss recentTransition set value 1b
+schedule function mythcraft:raidboss/clear_transition_flag 15s
