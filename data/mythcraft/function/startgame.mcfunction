@@ -68,6 +68,9 @@ scoreboard players set @a _wasBlocking 0
 # reset bastion mortar state
 function mythcraft:mortar/cleanup
 
+# reset city buff flags and recompute from config
+function mythcraft:rewards/update_city_buffs
+
 tag @a[team=Team1] add enableTroops
 tag @a[team=Team2] add enableTroops
 

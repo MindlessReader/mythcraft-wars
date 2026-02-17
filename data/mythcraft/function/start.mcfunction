@@ -10,6 +10,11 @@ execute unless data storage mythcraft:config cities.City1.troopCap run function 
 execute unless data storage mythcraft:config game.regenCheckInterval run function mythcraft:config/init_regen
 # add boss support to skill locations (for worlds created before this feature)
 execute unless data storage mythcraft:config skillLocations.Attack.bossPool run function mythcraft:config/init_skill_boss
+# initialize reward config if missing (for worlds created before configurable rewards)
+execute unless data storage mythcraft:config rewards run function mythcraft:config/init_rewards
+
+# initialize reward display name lookup (runs every load)
+function mythcraft:rewards/init_names
 
 # add teams
 team add Team1
@@ -248,11 +253,17 @@ scoreboard players set QuestTracker questTimer 0
 scoreboard players set QuestTracker questTimerMin 0
 scoreboard players set QuestTracker questTimerSec 0
 
-# buff time remaining
+# buff time remaining (quest rewards)
 scoreboard objectives add BuffResistance dummy
 scoreboard objectives add BuffSpeed dummy
 scoreboard objectives add BuffHealthBoost dummy
 scoreboard objectives add BuffStrength dummy
+
+# city ownership buff flags (permanent while team owns a city with the buff)
+scoreboard objectives add CityBuffResistance dummy
+scoreboard objectives add CityBuffSpeed dummy
+scoreboard objectives add CityBuffHealthBoost dummy
+scoreboard objectives add CityBuffStrength dummy
 
 # rng scoreboards
 scoreboard objectives add RNG_Constant dummy

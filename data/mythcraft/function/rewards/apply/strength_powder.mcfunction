@@ -1,0 +1,1 @@
+give @s blaze_powder[custom_name={italic:false,text:"Blaze Powder of Strength II"},lore=[{color:"blue",italic:false,text:"Strength II (1:30)"},"Like a potion but more fun"],food={nutrition:0,saturation:0,can_always_eat:true},consumable={on_consume_effects:[{type:"minecraft:apply_effects",effects:[{id:"minecraft:strength",amplifier:1,duration:1800}],probability:1.0}]}] 1

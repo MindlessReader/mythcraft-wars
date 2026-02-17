@@ -1,5 +1,5 @@
 # Handle city troop kill
-# Params: $(cityName), $(advancementName), $(rewardFunction), $(troopCategory), $(cityDisplayName)
+# Params: $(cityName), $(advancementName), $(troopCategory), $(cityDisplayName)
 
 # Character XP for individual progression (only for enemy troop kills)
 $execute unless score $(cityName) cityOwnership matches 1 as @s[team=Team1] run scoreboard players operation @s characterXP += TroopKill characterXPReward
@@ -19,8 +19,8 @@ $execute unless score $(cityName) cityOwnership matches 1 as @s[team=Team1] run 
 $execute unless score $(cityName) cityOwnership matches 2 as @s[team=Team2] run function mythcraft:kill/decrement_count {cityName:$(cityName)}
 
 # Check for conquest (both troopCount and bossCount at 0)
-$execute unless score $(cityName) cityOwnership matches 1 if score $(cityName) troopCount matches ..0 if score $(cityName) bossCount matches ..0 as @s[team=Team1] run function mythcraft:conquer {cityId:$(cityName), teamId:1, teamName:Team1, rewardFunction:$(rewardFunction), cityDisplayName:$(cityDisplayName)}
-$execute unless score $(cityName) cityOwnership matches 2 if score $(cityName) troopCount matches ..0 if score $(cityName) bossCount matches ..0 as @s[team=Team2] run function mythcraft:conquer {cityId:$(cityName), teamId:2, teamName:Team2, rewardFunction:$(rewardFunction), cityDisplayName:$(cityDisplayName)}
+$execute unless score $(cityName) cityOwnership matches 1 if score $(cityName) troopCount matches ..0 if score $(cityName) bossCount matches ..0 as @s[team=Team1] run function mythcraft:conquer {cityId:$(cityName), teamId:1, teamName:Team1, cityDisplayName:$(cityDisplayName)}
+$execute unless score $(cityName) cityOwnership matches 2 if score $(cityName) troopCount matches ..0 if score $(cityName) bossCount matches ..0 as @s[team=Team2] run function mythcraft:conquer {cityId:$(cityName), teamId:2, teamName:Team2, cityDisplayName:$(cityDisplayName)}
 
 # Revoke advancement for reuse
 $advancement revoke @s only mythcraft:kill/city/$(advancementName)

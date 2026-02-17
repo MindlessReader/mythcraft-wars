@@ -92,6 +92,18 @@ data modify storage mythcraft:config skillLocations.Special.bossCap set value 0
 data modify storage mythcraft:config skillLocations.Special.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
 data modify storage mythcraft:config skillLocations.Special.bossPool set value []
 
+# Quest reward pool (items + buffs that can appear as quest rewards)
+data modify storage mythcraft:config rewards.questPool set value ["golden_apple","ender_pearls","wind_charges","strength_powder","harming_potions","trident","buff_resistance","buff_speed","buff_health_boost","buff_strength"]
+
+# City reward pools (rewards granted by owning each city)
+data modify storage mythcraft:config cities.City1.rewardPool set value ["invis_kelp","wind_arrows"]
+data modify storage mythcraft:config cities.City2.rewardPool set value []
+data modify storage mythcraft:config cities.City3.rewardPool set value []
+data modify storage mythcraft:config cities.City4.rewardPool set value ["levitation_arrows"]
+data modify storage mythcraft:config cities.City5.rewardPool set value ["poison_potions"]
+data modify storage mythcraft:config cities.City6.rewardPool set value ["nourishing_bread"]
+data modify storage mythcraft:config cities.City7.rewardPool set value ["regen_tear"]
+
 # Game timing defaults (durations in seconds)
 data modify storage mythcraft:config game.questCount set value 10
 data modify storage mythcraft:config game.questDuration set value 300

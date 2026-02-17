@@ -29,17 +29,15 @@ execute if score QuestTracker questType matches 1 run function mythcraft:lookup/
 execute if score QuestTracker questType matches 2 store result score QuestTracker questLocation run function mythcraft:getrandomnumber {max:4}
 execute if score QuestTracker questType matches 2 run scoreboard players add QuestTracker questLocation 7
 
-# determine reward based on remaining victory point quests scheduled. victory point = 3, buff = 2, item = 1
+# determine reward based on remaining victory point quests scheduled. victory point = 3, pool = 1
 execute store result storage mythcraft:params/getrandomnumber max int 1 run scoreboard players get QuestTracker questsRemaining
 execute store result score QuestTracker mathCounter run function mythcraft:getrandomnumber with storage mythcraft:params/getrandomnumber
 execute if score QuestTracker mathCounter <= QuestTracker victoryPointQuestsRemaining run scoreboard players set QuestTracker questRewardType 3
 
-# if not victory point reward, choose from other 2 at random
-execute unless score QuestTracker mathCounter <= QuestTracker victoryPointQuestsRemaining store result score QuestTracker questRewardType run function mythcraft:getrandomnumber {max:2}
-
-# generate which questReward will be given from buff list or item list, or set to victory point reward
-execute if score QuestTracker questRewardType matches 1 run function mythcraft:quests/rewards/generate/item
-execute if score QuestTracker questRewardType matches 2 run function mythcraft:quests/rewards/generate/buff
+# if not victory point reward, pick from configurable quest reward pool
+execute unless score QuestTracker mathCounter <= QuestTracker victoryPointQuestsRemaining run scoreboard players set QuestTracker questRewardType 1
+execute if score QuestTracker questRewardType matches 1 run data modify storage mythcraft:temp questPool set from storage mythcraft:config rewards.questPool
+execute if score QuestTracker questRewardType matches 1 run function mythcraft:rewards/pick_quest_reward
 execute if score QuestTracker questRewardType matches 3 run data modify storage mythcraft:quest rewardText set value "1 Victory Point"
 
 # store location name

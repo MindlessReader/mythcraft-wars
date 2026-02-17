@@ -5,6 +5,7 @@ execute if score QuestTracker questWinner matches 2 run tag @a[team=Team2] add w
 execute as @a[tag=wonLastQuest] at @s run playsound minecraft:ui.toast.challenge_complete master @s ~ ~ ~
 
 # grant rewards
-execute if score QuestTracker questRewardType matches 1 run function mythcraft:quests/rewards/grant/item
-execute if score QuestTracker questRewardType matches 2 run function mythcraft:quests/rewards/grant/buff
+execute if score QuestTracker questRewardType matches 1 as @a[tag=wonLastQuest] run function mythcraft:rewards/grant_quest_reward with storage mythcraft:quest
 execute if score QuestTracker questRewardType matches 3 run function mythcraft:quests/rewards/grant/victorypoint
+
+tag @a remove wonLastQuest

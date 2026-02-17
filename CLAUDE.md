@@ -29,6 +29,8 @@ Config fields in `mythcraft:config` storage:
 - **Troop config per city:** `cities.CityN.troopCap`, `.bossCap`, `.regularPool` (string list), `.bossPool` (string list)
 - **Troop config per skill:** `skillLocations.X.troopCap`, `.regularPool` (string list)
 - **Regen timing:** `game.regenCheckInterval` (60s), `game.regenInterval` (20s), `game.skillRegenInterval` (20s)
+- **Quest reward pool:** `rewards.questPool` (string list of reward IDs eligible for quest rewards)
+- **City reward pools:** `cities.CityN.rewardPool` (string list of reward IDs granted by owning each city)
 
 Display text uses the "resolve into temp, call helper with macros" pattern: values are read from `mythcraft:config` into `mythcraft:temp` storage via `data modify`, then passed to helper functions via `function ... with storage mythcraft:temp` so they become `$(paramName)` macro parameters. This avoids `{nbt:...,storage:...,interpret:true}` which does not work reliably for bossbars, titles, or entity CustomName.
 
@@ -53,7 +55,8 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 | **Leveling** | `leveling/` | Dual progression: team-wide skill levels (0-5) at 4 skill locations + per-player character level (1-5) from kill XP |
 | **Spells** | `spells/` | Seeking Breath spell (area_effect_cloud projectile), unlocked by Magic skill |
 | **Respawn** | `respawn/` | Dynamic troop spawning from configurable pools; two marker types (regular/boss); scoreboard-based population tracking with load validation; time-based regen with quiet period |
-| **Equipment** | `kill/giveequipment/`, `rekit.mcfunction`, `rekit/` | City-specific bonuses + level-scaled gear via `item_modifier/` JSONs |
+| **Rewards** | `rewards/`, `config/edit/quest_rewards`, `config/edit/city_rewards` | Configurable reward system: 15 reward types (10 items, 4 buffs, 1 equipment) assignable to quests or cities via checkbox config dialogs; city buffs permanent while owned |
+| **Equipment** | `rekit.mcfunction`, `rekit/` | Level-scaled gear via `item_modifier/` JSONs |
 | **Markers** | `markers/` | Admin tools for placing spawn markers (2 types: `spawnmarker_regular`, `spawnmarker_boss`); migration function for old typed markers |
 | **Compass** | `compass/` | Lodestone compass that reveals nearest enemy troop; shift+right-click opens player menu |
 | **Player Menu** | `menu/` | Dialog showing game state (skills, character, quests) with class selection and teleport buttons |
@@ -76,7 +79,8 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - Team skill levels: `levelAttack`, `levelDefense`, `levelMagic`, `levelSpecial`
 - Team XP: `xpAttack`, `xpDefense`, etc. (fake player names: `Team1`, `Team2`)
 - City state: `cityOwnership`; troop population: `troopCount`, `bossCount`, `troopCap`, `bossCap` (per-city fake players); regen: `regenActive` (0/1), `troopCountLastChecked`, `bossCountLastChecked`
-- Quest state tracked on a `QuestTracker` entity: `questType` (1=conquer, 2=kill), `questRewardType` (1=item, 2=buff, 3=VP), `endGame` (0=not started, 1=endgame running, 2=game over)
+- Quest state tracked on a `QuestTracker` entity: `questType` (1=conquer, 2=kill), `questRewardType` (1=pool reward, 3=VP), `endGame` (0=not started, 1=endgame running, 2=game over)
+- City ownership buffs: `CityBuffResistance`, `CityBuffSpeed`, `CityBuffHealthBoost`, `CityBuffStrength` (fake players `Team1`/`Team2`, 0 or 1 flag — recomputed on conquest/config change)
 - Player menu triggers: `openMenu` (1=main, 2=class select, 3=quest history), `teleportLocation` (1-7=cities, 8-11=skill locations)
 - Character level: `characterLevel` (per-player, 1-5), `characterXP`, `characterXPThresholds` (fake players `CharLvl2`-`CharLvl5`), `characterXPReward` (fake players `TroopKill`=1, `PlayerKill`=3)
 - Skill XP rewards: `skillXPReward` (fake player `TroopKill`=1) for team-level skill progression

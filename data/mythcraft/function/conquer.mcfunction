@@ -2,8 +2,9 @@
 $scoreboard players set $(cityId) cityOwnership $(teamId)
 $function mythcraft:setup/sidebar_color {cityId:$(cityId), teamName:$(teamName)}
 
-# grant benefits
-$execute as @a[team=$(teamName)] run function mythcraft:kill/giveequipment/$(rewardFunction)
+# grant city rewards from config
+$execute as @a[team=$(teamName)] run function mythcraft:rewards/grant_city_rewards {cityId:$(cityId)}
+function mythcraft:rewards/update_city_buffs
 
 # if current quest is to capture this city and is active, set current quest winner to this team and call quest end
 $execute if score QuestTracker questWinner matches 0 if score QuestTracker questLocation = $(cityId) locationId run function mythcraft:quests/conquerquestattackreward {cityName:$(cityId), teamId:$(teamId), teamName:$(teamName)}

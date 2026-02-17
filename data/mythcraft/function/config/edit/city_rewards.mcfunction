@@ -1,0 +1,42 @@
+# Reads which rewards are in this city's reward pool and opens the city rewards editor
+# Params: $(cityId), $(cityNum)
+
+# Default all to false (stored as strings so macro substitution produces bare true/false for dialog initial:)
+data modify storage mythcraft:temp hasGoldenApple set value "false"
+data modify storage mythcraft:temp hasEnderPearls set value "false"
+data modify storage mythcraft:temp hasWindCharges set value "false"
+data modify storage mythcraft:temp hasStrengthPowder set value "false"
+data modify storage mythcraft:temp hasHarmingPotions set value "false"
+data modify storage mythcraft:temp hasTrident set value "false"
+data modify storage mythcraft:temp hasInvisKelp set value "false"
+data modify storage mythcraft:temp hasWindArrows set value "false"
+data modify storage mythcraft:temp hasLevitationArrows set value "false"
+data modify storage mythcraft:temp hasPoisonPotions set value "false"
+data modify storage mythcraft:temp hasRegenTear set value "false"
+data modify storage mythcraft:temp hasNourishingBread set value "false"
+data modify storage mythcraft:temp hasBuffResistance set value "false"
+data modify storage mythcraft:temp hasBuffSpeed set value "false"
+data modify storage mythcraft:temp hasBuffHealthBoost set value "false"
+data modify storage mythcraft:temp hasBuffStrength set value "false"
+
+# Check reward pool (array-contains matching)
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["golden_apple"]}}} run data modify storage mythcraft:temp hasGoldenApple set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["ender_pearls"]}}} run data modify storage mythcraft:temp hasEnderPearls set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["wind_charges"]}}} run data modify storage mythcraft:temp hasWindCharges set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["strength_powder"]}}} run data modify storage mythcraft:temp hasStrengthPowder set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["harming_potions"]}}} run data modify storage mythcraft:temp hasHarmingPotions set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["trident"]}}} run data modify storage mythcraft:temp hasTrident set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["invis_kelp"]}}} run data modify storage mythcraft:temp hasInvisKelp set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["wind_arrows"]}}} run data modify storage mythcraft:temp hasWindArrows set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["levitation_arrows"]}}} run data modify storage mythcraft:temp hasLevitationArrows set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["poison_potions"]}}} run data modify storage mythcraft:temp hasPoisonPotions set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["regen_tear"]}}} run data modify storage mythcraft:temp hasRegenTear set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["nourishing_bread"]}}} run data modify storage mythcraft:temp hasNourishingBread set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["buff_resistance"]}}} run data modify storage mythcraft:temp hasBuffResistance set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["buff_speed"]}}} run data modify storage mythcraft:temp hasBuffSpeed set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["buff_health_boost"]}}} run data modify storage mythcraft:temp hasBuffHealthBoost set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{rewardPool:["buff_strength"]}}} run data modify storage mythcraft:temp hasBuffStrength set value "true"
+
+$data modify storage mythcraft:temp cityId set value "$(cityId)"
+$data modify storage mythcraft:temp cityNum set value "$(cityNum)"
+function mythcraft:config/show/city_rewards with storage mythcraft:temp
