@@ -16,15 +16,21 @@ function mythcraft:quests/logresult
 # Decrement quests remaining and schedule what comes next
 # (done here instead of endquest so the actionbar sees the correct questsRemaining)
 scoreboard players remove QuestTracker questsRemaining 1
-data modify storage mythcraft:temp duration set from storage mythcraft:config game.betweenQuestDelay
-execute if score QuestTracker questsRemaining matches 1.. run function mythcraft:schedule/startquest with storage mythcraft:temp
-execute if score QuestTracker questsRemaining matches 0 run function mythcraft:schedule/beginendgame with storage mythcraft:temp
+
+# Clear stale schedules from the original quest
+schedule clear mythcraft:quests/endquest
 
 # switch actionbar from quest info to next-quest/endgame countdown
 # add between-quest delay so the countdown is seamless
 schedule clear mythcraft:quests/actionbar
 execute store result score _betweenDelay mathCounter run data get storage mythcraft:config game.betweenQuestDelay
 scoreboard players operation QuestTracker questTimer += _betweenDelay mathCounter
+
+# Schedule next quest/endgame using full remaining time (remaining quest time + betweenQuestDelay)
+execute store result storage mythcraft:temp duration int 1 run scoreboard players get QuestTracker questTimer
+execute if score QuestTracker questsRemaining matches 1.. run function mythcraft:schedule/startquest with storage mythcraft:temp
+execute if score QuestTracker questsRemaining matches 0 run function mythcraft:schedule/beginendgame with storage mythcraft:temp
+
 scoreboard players operation QuestTracker questTimerMin = QuestTracker questTimer
 scoreboard players operation QuestTracker questTimerMin /= C_60 mathCounter
 scoreboard players operation QuestTracker questTimerSec = QuestTracker questTimer
