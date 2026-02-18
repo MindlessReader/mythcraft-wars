@@ -1,12 +1,12 @@
 # Initialize raid boss config for existing worlds (migration)
 
 # Raid boss pools per city (which boss types can spawn; empty = disabled)
-data modify storage mythcraft:config cities.City1.raidBossPool set value ["giant_slime"]
-data modify storage mythcraft:config cities.City2.raidBossPool set value ["giant_slime"]
+data modify storage mythcraft:config cities.City1.raidBossPool set value ["giant_slime","warden","the_twins"]
+data modify storage mythcraft:config cities.City2.raidBossPool set value ["giant_slime","warden","the_twins"]
 data modify storage mythcraft:config cities.City3.raidBossPool set value []
 data modify storage mythcraft:config cities.City4.raidBossPool set value []
 data modify storage mythcraft:config cities.City5.raidBossPool set value []
-data modify storage mythcraft:config cities.City6.raidBossPool set value ["giant_slime"]
+data modify storage mythcraft:config cities.City6.raidBossPool set value ["giant_slime","warden","the_twins"]
 data modify storage mythcraft:config cities.City7.raidBossPool set value []
 
 # Raid boss pools per skill location

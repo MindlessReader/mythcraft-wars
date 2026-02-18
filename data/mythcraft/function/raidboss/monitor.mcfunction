@@ -23,5 +23,8 @@ execute if score _raidBossMissing mathCounter matches 5.. run return 0
 # Tether check: if boss is >50 blocks from its spawn marker, teleport back
 execute as @e[tag=raidBoss] at @s unless entity @e[type=marker,tag=spawnmarker_raidboss,distance=..50] run function mythcraft:raidboss/tether
 
+# Warden anti-dig: refresh dig_cooldown memory so it never digs underground (MC-252659 workaround)
+execute as @e[type=warden,tag=raidBoss] run data merge entity @s {Brain:{memories:{"minecraft:dig_cooldown":{value:{},ttl:1200L}}}}
+
 # Reschedule
 schedule function mythcraft:raidboss/monitor 1s

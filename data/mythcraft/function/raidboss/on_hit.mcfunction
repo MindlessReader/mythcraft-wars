@@ -9,7 +9,9 @@ execute if entity @s[team=Team1] run scoreboard players set RaidBoss raidBossLas
 execute if entity @s[team=Team2] run scoreboard players set RaidBoss raidBossLastHit 2
 
 # Sync HP from entity into scoreboard
-execute store result score RaidBoss raidBossHP run data get entity @e[tag=raidBoss,limit=1] Health 1
+# For twins: read both, use lower (just-damaged), sync other to match
+execute if entity @e[tag=raidBossTwin] run function mythcraft:raidboss/sync_twins
+execute unless entity @e[tag=raidBossTwin] store result score RaidBoss raidBossHP run data get entity @e[tag=raidBoss,limit=1] Health 1
 
 # Debug: log HP after hit
 execute store result storage mythcraft:temp hp int 1 run scoreboard players get RaidBoss raidBossHP

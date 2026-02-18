@@ -18,6 +18,9 @@ function mythcraft:raidboss/grant_skill_xp {amount:10}
 # Assassin totem: fully charge on raid boss kill (large value, clamped to max by charge function)
 execute if score @s playerClass matches 2 run function mythcraft:totem/charge {amount:999}
 
+# Kill surviving twin (if this is a twin boss)
+kill @e[tag=raidBossTwin]
+
 execute if entity @a[tag=debugMode] run say [DEBUG] Raid Boss killed by player
 
 # Process death (VP, rewards, announcements, cleanup)

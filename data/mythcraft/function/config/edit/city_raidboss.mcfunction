@@ -3,9 +3,13 @@
 
 # Default all to false (stored as strings so macro substitution produces bare true/false for dialog initial:)
 data modify storage mythcraft:temp hasGiantSlime set value "false"
+data modify storage mythcraft:temp hasWarden set value "false"
+data modify storage mythcraft:temp hasTheTwins set value "false"
 
 # Check raid boss pool (array-contains matching)
 $execute if data storage mythcraft:config {cities:{$(cityId):{raidBossPool:["giant_slime"]}}} run data modify storage mythcraft:temp hasGiantSlime set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{raidBossPool:["warden"]}}} run data modify storage mythcraft:temp hasWarden set value "true"
+$execute if data storage mythcraft:config {cities:{$(cityId):{raidBossPool:["the_twins"]}}} run data modify storage mythcraft:temp hasTheTwins set value "true"
 
 $data modify storage mythcraft:temp cityId set value "$(cityId)"
 $data modify storage mythcraft:temp cityNum set value "$(cityNum)"
