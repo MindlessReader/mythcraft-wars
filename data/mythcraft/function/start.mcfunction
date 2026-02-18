@@ -167,6 +167,10 @@ scoreboard objectives add selectClass trigger
 scoreboard objectives add openMenu trigger
 scoreboard objectives add teleportLocation trigger
 
+# admin menu
+scoreboard objectives add adminAction trigger
+scoreboard objectives add markerCount dummy "Marker Counts"
+
 # character leveling (per-player progression)
 scoreboard objectives add characterXP dummy
 scoreboard objectives add characterLevel dummy

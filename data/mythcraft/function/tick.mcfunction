@@ -29,6 +29,27 @@ execute as @a[scores={openMenu=3}] run function mythcraft:menu/questhistory_open
 scoreboard players enable @a teleportLocation
 execute as @a[scores={teleportLocation=1..11}] run function mythcraft:menu/teleport
 
+# Admin menu
+execute as @a[tag=admin,scores={openMenu=4}] run function mythcraft:admin/open
+execute as @a[tag=!admin,scores={openMenu=4}] run scoreboard players set @s openMenu 0
+scoreboard players enable @a[tag=admin] adminAction
+execute as @a[tag=admin,scores={adminAction=1}] run function mythcraft:config/open
+execute as @a[tag=admin,scores={adminAction=1}] run scoreboard players set @s adminAction 0
+execute as @a[tag=admin,scores={adminAction=2}] run function mythcraft:admin/conquer/open
+execute as @a[tag=admin,scores={adminAction=3}] run function mythcraft:admin/marker/start
+execute as @a[tag=admin,scores={adminAction=4}] run function mythcraft:admin/toggle_debug
+execute as @a[tag=admin,scores={adminAction=5}] run function mythcraft:admin/toggle_godmode
+execute as @a[tag=admin,scores={adminAction=6}] run function mythcraft:admin/start_game
+execute as @a[tag=admin,scores={adminAction=7}] run function mythcraft:admin/respawn_all
+execute as @a[tag=admin,scores={adminAction=8}] run function mythcraft:admin/give_markers
+execute as @a[tag=admin,scores={adminAction=9}] run function mythcraft:admin/delete_markers
+execute as @a[tag=admin,scores={adminAction=10}] run function mythcraft:admin/delete_markers_confirm
+execute as @a[tag=admin,scores={adminAction=20}] run function mythcraft:admin/marker/stop
+execute as @a[tag=admin,scores={adminAction=21}] run function mythcraft:admin/marker/confirm
+
+# Marker helper live update
+execute if entity @a[tag=markerHelperActive] run function mythcraft:admin/marker/update
+
 # assassin totem — actual death save (marker effect from death_protection)
 execute as @a[scores={playerClass=2}] if predicate mythcraft:totem_death_save run function mythcraft:totem/on_death_save
 # totem validation: strip death_protection from charged totems held by wrong player (offhand + mainhand)

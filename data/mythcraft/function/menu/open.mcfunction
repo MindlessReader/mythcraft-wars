@@ -124,5 +124,13 @@ execute if score RaidBoss raidBossState matches 2 run function mythcraft:menu/he
 execute if score RaidBoss raidBossState matches 2 run data modify storage mythcraft:temp raidBossRewardsHeader set value "\nRewards:\n"
 execute if score RaidBoss raidBossState matches 2 run data modify storage mythcraft:temp raidBossRewardsList set from storage mythcraft:raidboss rewardText
 
+# Admin button: visible for admins, invisible spacer for non-admins
+data modify storage mythcraft:temp adminLabel set value " "
+data modify storage mythcraft:temp adminColor set value "white"
+data modify storage mythcraft:temp adminCommand set value "trigger openMenu set 1"
+execute if entity @s[tag=admin] run data modify storage mythcraft:temp adminLabel set value "Admin Menu"
+execute if entity @s[tag=admin] run data modify storage mythcraft:temp adminColor set value "red"
+execute if entity @s[tag=admin] run data modify storage mythcraft:temp adminCommand set value "trigger openMenu set 4"
+
 # Show the dialog
 function mythcraft:menu/show with storage mythcraft:temp
