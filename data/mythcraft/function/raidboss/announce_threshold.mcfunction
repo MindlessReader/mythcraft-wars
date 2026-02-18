@@ -14,6 +14,12 @@ execute if data storage mythcraft:temp {percent:"25%"} run data modify storage m
 scoreboard players add @s characterXP 5
 function mythcraft:leveling/character/checklevel
 
+# Grant 5 skill XP if boss is at a skill location
+function mythcraft:raidboss/grant_skill_xp {amount:5}
+
+# Assassin totem charge (+5 per threshold)
+execute if score @s playerClass matches 2 run function mythcraft:totem/charge {amount:5}
+
 # Resolve last-hit team display info
 execute if score RaidBoss raidBossLastHit matches 1 run data modify storage mythcraft:temp teamName set from storage mythcraft:config teams.Team1.name
 execute if score RaidBoss raidBossLastHit matches 1 run data modify storage mythcraft:temp teamColor set from storage mythcraft:config teams.Team1.color

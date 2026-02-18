@@ -12,8 +12,11 @@ execute if entity @s[team=Team2] run scoreboard players set RaidBoss raidBossLas
 scoreboard players add @s characterXP 10
 function mythcraft:leveling/character/checklevel
 
-# Assassin totem charge (+3 for kill, like player kill)
-execute if score @s playerClass matches 2 run function mythcraft:totem/charge {amount:3}
+# Skill XP if boss is at a skill location
+function mythcraft:raidboss/grant_skill_xp {amount:10}
+
+# Assassin totem: fully charge on raid boss kill (large value, clamped to max by charge function)
+execute if score @s playerClass matches 2 run function mythcraft:totem/charge {amount:999}
 
 execute if entity @a[tag=debugMode] run say [DEBUG] Raid Boss killed by player
 

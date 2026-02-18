@@ -19,8 +19,5 @@ execute if entity @a[tag=debugMode] run function mythcraft:debug/raidboss_hit wi
 # Check HP thresholds for announcements
 function mythcraft:raidboss/check_thresholds
 
-# Assassin totem charge (+1 per hit)
-execute if score @s playerClass matches 2 run function mythcraft:totem/charge {amount:1}
-
 # Revoke advancement for reuse
 advancement revoke @s only mythcraft:kill/raidboss_hit
