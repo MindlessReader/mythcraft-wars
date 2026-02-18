@@ -14,6 +14,8 @@ execute unless data storage mythcraft:config skillLocations.Attack.bossPool run 
 execute unless data storage mythcraft:config rewards run function mythcraft:config/init_rewards
 # initialize raid boss config if missing (for worlds created before raid boss feature)
 execute unless data storage mythcraft:config cities.City1.raidBossPool run function mythcraft:config/init_raidboss
+# initialize grace period duration if missing (for worlds created before configurable grace period)
+execute unless data storage mythcraft:config game.gracePeriodDuration run data modify storage mythcraft:config game.gracePeriodDuration set value 60
 
 # initialize display name lookups (runs every load)
 function mythcraft:rewards/init_names
@@ -209,6 +211,9 @@ scoreboard objectives add raidBossMaxHP dummy
 scoreboard objectives add raidBossState dummy
 scoreboard objectives add raidBossLastHit dummy
 
+# grace period (invulnerability timer per city after conquest)
+scoreboard objectives add graceTimer dummy
+
 # tunable XP-per-kill values (fake players, adjustable on the fly)
 scoreboard players set TroopKill characterXPReward 1
 scoreboard players set PlayerKill characterXPReward 3
@@ -320,6 +325,17 @@ schedule clear mythcraft:respawn/respawn_pass
 schedule clear mythcraft:respawn/regen_check
 schedule clear mythcraft:respawn/regen_tick
 schedule clear mythcraft:respawn/regen_skill_tick
+schedule clear mythcraft:respawn/grace_tick
+
+# Restart grace tick loop if any timers are active (handles reload mid-grace)
+execute if score City1 graceTimer matches 1.. run schedule function mythcraft:respawn/grace_tick 1s
+execute if score City2 graceTimer matches 1.. run schedule function mythcraft:respawn/grace_tick 1s
+execute if score City3 graceTimer matches 1.. run schedule function mythcraft:respawn/grace_tick 1s
+execute if score City4 graceTimer matches 1.. run schedule function mythcraft:respawn/grace_tick 1s
+execute if score City5 graceTimer matches 1.. run schedule function mythcraft:respawn/grace_tick 1s
+execute if score City6 graceTimer matches 1.. run schedule function mythcraft:respawn/grace_tick 1s
+execute if score City7 graceTimer matches 1.. run schedule function mythcraft:respawn/grace_tick 1s
+
 function mythcraft:respawn/init_counts
 function mythcraft:respawn/respawn_pass
 function mythcraft:respawn/regen_check

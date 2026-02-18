@@ -9,5 +9,6 @@ $data modify storage mythcraft:config game.endgameDuration set value $(endgameDu
 $data modify storage mythcraft:config game.regenCheckInterval set value $(regenCheckInterval)
 $data modify storage mythcraft:config game.regenInterval set value $(regenInterval)
 $data modify storage mythcraft:config game.skillRegenInterval set value $(skillRegenInterval)
+$data modify storage mythcraft:config game.gracePeriodDuration set value $(gracePeriodDuration)
 # Navigate back to main menu
 function mythcraft:config/open

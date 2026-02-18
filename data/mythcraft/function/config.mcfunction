@@ -53,22 +53,22 @@ data modify storage mythcraft:config cities.City2.troopCap set value 3
 data modify storage mythcraft:config cities.City2.bossCap set value 1
 data modify storage mythcraft:config cities.City2.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
 data modify storage mythcraft:config cities.City2.bossPool set value ["bosszombie","bossskeleton","bosswitch","blaze","breeze","illusioner"]
-data modify storage mythcraft:config cities.City3.troopCap set value 1
-data modify storage mythcraft:config cities.City3.bossCap set value 0
-data modify storage mythcraft:config cities.City3.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
-data modify storage mythcraft:config cities.City3.bossPool set value []
-data modify storage mythcraft:config cities.City4.troopCap set value 1
-data modify storage mythcraft:config cities.City4.bossCap set value 0
-data modify storage mythcraft:config cities.City4.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
-data modify storage mythcraft:config cities.City4.bossPool set value []
-data modify storage mythcraft:config cities.City5.troopCap set value 1
-data modify storage mythcraft:config cities.City5.bossCap set value 0
-data modify storage mythcraft:config cities.City5.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
-data modify storage mythcraft:config cities.City5.bossPool set value []
-data modify storage mythcraft:config cities.City6.troopCap set value 1
-data modify storage mythcraft:config cities.City6.bossCap set value 0
-data modify storage mythcraft:config cities.City6.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
-data modify storage mythcraft:config cities.City6.bossPool set value []
+data modify storage mythcraft:config cities.City3.troopCap set value 0
+data modify storage mythcraft:config cities.City3.bossCap set value 1
+data modify storage mythcraft:config cities.City3.regularPool set value []
+data modify storage mythcraft:config cities.City3.bossPool set value ["bosszombie","bossskeleton","bosswitch","blaze","breeze","illusioner"]
+data modify storage mythcraft:config cities.City4.troopCap set value 0
+data modify storage mythcraft:config cities.City4.bossCap set value 1
+data modify storage mythcraft:config cities.City4.regularPool set value []
+data modify storage mythcraft:config cities.City4.bossPool set value ["bosszombie","bossskeleton","bosswitch","blaze","breeze","illusioner"]
+data modify storage mythcraft:config cities.City5.troopCap set value 0
+data modify storage mythcraft:config cities.City5.bossCap set value 1
+data modify storage mythcraft:config cities.City5.regularPool set value []
+data modify storage mythcraft:config cities.City5.bossPool set value ["bosszombie","bossskeleton","bosswitch","blaze","breeze","illusioner"]
+data modify storage mythcraft:config cities.City6.troopCap set value 0
+data modify storage mythcraft:config cities.City6.bossCap set value 1
+data modify storage mythcraft:config cities.City6.regularPool set value []
+data modify storage mythcraft:config cities.City6.bossPool set value ["bosszombie","bossskeleton","bosswitch","blaze","breeze","illusioner"]
 data modify storage mythcraft:config cities.City7.troopCap set value 1
 data modify storage mythcraft:config cities.City7.bossCap set value 0
 data modify storage mythcraft:config cities.City7.regularPool set value ["pillager","vindicator","zombie","skeleton","witch"]
@@ -134,6 +134,9 @@ data modify storage mythcraft:config game.vpQuestCount set value 6
 data modify storage mythcraft:config game.regenCheckInterval set value 60
 data modify storage mythcraft:config game.regenInterval set value 20
 data modify storage mythcraft:config game.skillRegenInterval set value 20
+
+# Grace period duration after conquest (seconds)
+data modify storage mythcraft:config game.gracePeriodDuration set value 60
 
 # Unaligned (initial state for unclaimed cities)
 data modify storage mythcraft:config teams.Unaligned.name set value "Unaligned"

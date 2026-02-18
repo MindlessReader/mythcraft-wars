@@ -11,7 +11,7 @@ $execute if score QuestTracker questWinner matches 0 if score QuestTracker quest
 
 # respawn troops
 $function mythcraft:respawn/spawnall {cityId:$(cityId), cityName:$(cityId), teamName:$(teamName), cityDisplayName:$(cityDisplayName)}
-$execute if score QuestTracker endGame matches 0 run effect give @e[type=!marker,tag=$(cityId)] resistance 60 4
+$execute if score QuestTracker endGame matches 0 run function mythcraft:respawn/start_grace {cityId:$(cityId)}
 
 # reset troop counts to full caps
 $scoreboard players operation $(cityId) troopCount = $(cityId) troopCap

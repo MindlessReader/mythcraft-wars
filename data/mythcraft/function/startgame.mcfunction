@@ -16,6 +16,7 @@ schedule clear mythcraft:raidboss/monitor
 schedule clear mythcraft:raidboss/cleanup_splits
 schedule clear mythcraft:raidboss/clear_transition_flag
 schedule clear mythcraft:raidboss/spawn_loop
+schedule clear mythcraft:respawn/grace_tick
 
 # Reset victory points
 scoreboard players set Team1 victoryPoints 0
@@ -70,6 +71,17 @@ scoreboard players set QuestTracker questRewardType 0
 scoreboard players set QuestTracker questReward 0
 scoreboard players set QuestTracker questLocation 0
 scoreboard players set QuestTracker endGame 0
+
+# Reset grace period timers and clear any lingering invulnerability
+scoreboard players set City1 graceTimer 0
+scoreboard players set City2 graceTimer 0
+scoreboard players set City3 graceTimer 0
+scoreboard players set City4 graceTimer 0
+scoreboard players set City5 graceTimer 0
+scoreboard players set City6 graceTimer 0
+scoreboard players set City7 graceTimer 0
+execute as @e[tag=_gracePeriod] run data merge entity @s {Invulnerable:0b}
+tag @e[tag=_gracePeriod] remove _gracePeriod
 
 # Read quest counts from config
 execute store result score QuestTracker victoryPointQuestsRemaining run data get storage mythcraft:config game.vpQuestCount

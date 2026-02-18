@@ -88,6 +88,7 @@ execute as @a at @s run function mythcraft:troop_indicator/update
 execute as @a[tag=enableTroops,team=Team1] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team1] slowness
 execute as @a[tag=enableTroops,team=Team2] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team2] slowness
 
-# god mode: one-hit strength + bypass troop grace period resistance (separate from debugMode to avoid log spam)
+# god mode: one-hit strength + bypass troop grace period (separate from debugMode to avoid log spam)
 execute as @a[tag=godMode] run effect give @s minecraft:strength infinite 100 true
-execute if entity @a[tag=godMode] run effect clear @e[type=!player] minecraft:resistance
+execute if entity @a[tag=godMode] as @e[tag=_gracePeriod] run data merge entity @s {Invulnerable:0b}
+execute if entity @a[tag=godMode] run tag @e[tag=_gracePeriod] remove _gracePeriod

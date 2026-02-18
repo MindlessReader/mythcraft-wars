@@ -61,3 +61,7 @@ $execute if score _deficit mathCounter matches ..-1 as @e[type=!marker,tag=cityT
 
 # Apply slowness to all troops (newly spawned won't have it)
 $effect give @e[tag=cityTroop,tag=$(cityName)] slowness infinite 9 true
+
+# Grace period cleanup: remove stale invulnerability from troops in unloaded chunks when timer expired
+$execute if score $(cityName) graceTimer matches ..0 as @e[tag=_gracePeriod,tag=$(cityName)] run data merge entity @s {Invulnerable:0b}
+$execute if score $(cityName) graceTimer matches ..0 run tag @e[tag=_gracePeriod,tag=$(cityName)] remove _gracePeriod

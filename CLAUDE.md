@@ -29,6 +29,7 @@ Config fields in `mythcraft:config` storage:
 - **Troop config per city:** `cities.CityN.troopCap`, `.bossCap`, `.regularPool` (string list), `.bossPool` (string list)
 - **Troop config per skill:** `skillLocations.X.troopCap`, `.regularPool` (string list)
 - **Regen timing:** `game.regenCheckInterval` (60s), `game.regenInterval` (20s), `game.skillRegenInterval` (20s)
+- **Grace period:** `game.gracePeriodDuration` (60s) — post-conquest troop invulnerability duration
 - **Quest reward pool:** `rewards.questPool` (string list of reward IDs eligible for quest rewards)
 - **City reward pools:** `cities.CityN.rewardPool` (string list of reward IDs granted by owning each city)
 - **Raid boss pools per location:** `cities.CityN.raidBossPool` (string list), `skillLocations.X.raidBossPool` (string list) — empty = disabled
@@ -69,7 +70,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 | **Mortar** | `mortar/` | Bastion mortar shot: sneak-load crossbow to fire team-colored firework rockets with vanilla damage; leaves Jump Boost field at impact; dynamic arrow refund via item entity data copy; `shot_crossbow` advancement triggers tracker; ride+orphan detection for impact; cooldown-based |
 | **Troop Indicator** | `troop_indicator/` | XP bar shows nearby city troop count: level = troops alive, bar = proportional fill; per-player tick-driven via nearest city marker within 100 blocks |
 | **Raid Boss** | `raidboss/`, `raidboss/spawn/` | One-per-game world boss event: spawns at random eligible location during a random quest (or pre-game); both teams race to kill; advancement-driven damage/kill tracking; 1s monitor loop for tether + fallback death detection; 1 VP + all configured rewards to killing team |
-| **Debug** | `debug/`, `tick.mcfunction` | Two player tags: `debugMode` enables `say`-based event logging (visible in server logs); `godMode` enables one-hit strength + troop grace period bypass (tick-driven, separate to avoid log spam) |
+| **Debug** | `debug/`, `tick.mcfunction` | Two player tags: `debugMode` enables `say`-based event logging (visible in server logs); `godMode` enables one-hit strength + troop grace period Invulnerable bypass (tick-driven, separate to avoid log spam) |
 | **Admin Menu** | `admin/`, `admin/conquer/`, `admin/marker/` | Admin-only menu (gated by `admin` tag) with config access, manual city conquest, marker helper, debug/god mode toggles, start game, respawn troops, give/delete markers |
 
 ### Teams and Cities
@@ -98,6 +99,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - Bastion mortar shot: `mortarCooldown` (per-player, ticks until next mortar shot available; 200 ticks = 10s), `_crossbowLoaded` (per-player, tracks whether hotbar.1 crossbow has charged_projectiles), `_mortarLoaded` (per-player, flag that mortar is loaded). Per-entity (markers): `mortarCharLevel` (character level for field scaling), `mortarFieldLife` (field lifetime countdown; starts 200)
 - Troop indicator temp: `_troopTotal` (per-player, computed total troops), `_troopCap` (per-player, computed total cap), `_xpFill` (per-player, computed bar fill points)
 - Raid boss: `raidBossState` (fake player `RaidBoss`: 0=not spawned, 1=alive, 2=defeated), `raidBossHP`/`raidBossMaxHP` (scoreboard-authoritative HP synced from entity on each hit), `raidBossLastHit` (1=Team1, 2=Team2). Math constants: `C_2`, `C_3`, `C_4`, `C_20` on `mathCounter`
+- Grace period: `graceTimer` (fake players `City1`-`City7`, seconds remaining of post-conquest invulnerability; 0 = inactive)
 
 ### Key Patterns
 
@@ -106,6 +108,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - **Character leveling:** Per-player progression (levels 1-5) from troop/player kills. Affects armor/toughness attributes (per-class via `setattributes`), gear material tiers (iron→diamond at level 3, diamond→netherite at level 5), weapon enchantments, and assassin totem max charge. `checklevel` runs after each kill XP gain; `onlevelup` applies in-place upgrades
 - **Troop slowness:** All troops spawn with Slowness IX (immobile); cleared when a team player is within 10 blocks
 - **Dynamic troop spawning:** Two marker types (`spawnmarker_regular`, `spawnmarker_boss`); troop type chosen randomly from per-city configurable pools; `$function .../spawn/$(troopType)` dispatches pool string directly to function filename. Scoreboard counts (`troopCount`/`bossCount`) are "floating memory" — updated immediately on kills/regen regardless of chunk load; entity sync deferred until load validation passes (marker count == config cap). Full spawns (`spawnall`) iterate markers directly; incremental spawns (`spawn_loop`) prefer unoccupied markers (tag `_availableSpawn`, remove if troop within 2 blocks, fallback to random). Conquest triggers when both counts reach 0. Friendly fire replaces killed troop with random-from-pool (no count change). Regen: `regen_check` activates after quiet period (configurable interval); `regen_tick` increments one count per city per tick (regulars first, then bosses); kills directly deactivate regen via `decrement_count`. Skill locations use `regen_skill_tick` (no quiet period). `respawn_pass` (every 5s) syncs entities to scoreboards via `sync_city`/`sync_skill` with load validation gate
+- **Troop grace period:** On conquest (not during endgame), `start_grace` applies `Invulnerable:1b` NBT + `_gracePeriod` tag to all city troops and starts a per-city scoreboard timer (`graceTimer`, configurable via `game.gracePeriodDuration`). `grace_tick` (1s scheduled, self-stopping) decrements timers; `end_grace` clears NBT + tag on expiry. `sync_city` has a cleanup fallback for troops in unloaded chunks. GodMode bypasses by directly removing `Invulnerable` NBT + tag each tick.
 - **Lookup functions:** `lookup/` maps numeric IDs to city/location names for parameterized operations
 - **Config-driven display:** City/team/skill location names resolved from `mythcraft:config` into `mythcraft:temp`, then passed as macro params to helper functions (never use `interpret:true` or nbt storage refs in display contexts)
 - **Armor trims from config:** `rekit/applyarmor.mcfunction` reads trim material/pattern from storage macros
