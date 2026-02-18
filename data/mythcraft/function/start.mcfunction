@@ -1,4 +1,4 @@
-say starting!
+say Initializing Mythcraft Wars...
 # load world config defaults (only on first run — dialog edits persist across reloads)
 execute unless data storage mythcraft:config cities run function mythcraft:config
 # initialize teleport coordinates if missing (for worlds created before this feature)
@@ -349,11 +349,12 @@ function mythcraft:respawn/regen_skill_tick
 #scoreboard players set CharLvl5 characterXPThresholds 8
 
 #respawn all for testing
-function mythcraft:respawn/masterspawn
+#function mythcraft:respawn/masterspawn
 
 # run rekit for testing
-execute as MindlessReader run function mythcraft:rekit
+#execute as MindlessReader run function mythcraft:rekit
 
 #testing
-advancement revoke @a everything
+#advancement revoke @a everything
 ## TESTING AREA END ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+say Initialized.

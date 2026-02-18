@@ -91,7 +91,7 @@ Earned through combat XP (+1 per troop kill, +3 per player kill). Affects weapon
 
 ### Team Skills (Shared, 0-5)
 
-Earned by your team capturing and holding the four skill locations. Enchantments apply to all team members.
+Earned by your team grinding for XP at the four skill locations. Enchantments apply to all team members.
 
 #### Attack
 
@@ -133,3 +133,25 @@ The Fireball spell scales with Magic level:
 | 3+ | Bow: Infinity, Crossbow: Multishot |
 | 4+ | Bow: Flame, Crossbow: Piercing IV |
 | 5 | Sword: Fire Aspect II, Mace: Wind Burst III |
+
+## Gameplay Systems
+
+### Cities
+
+Capture cities to gain benefits such as extra kit items or buffs. At the end of the game, controlled cities grant your side victory points.
+
+### Skill Locations
+
+4 Locations (Attack, Defense, Magic, Special) with a steady supply of troops to defeat for skill XP.
+
+### Quests
+
+Throughout the game, quests appear with various objectives and grant victory points or other rewards.
+
+![Player Menu](images/quest.png)
+
+### Raid Bosses
+
+Once during the game, a special Raid Boss will spawn at a random location and persist indefinitely. It grants extra XP and various rewards when defeated.
+
+![Player Menu](images/raid_boss.png)
