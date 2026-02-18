@@ -22,4 +22,5 @@ data remove storage mythcraft:raidboss winner
 # If slot 0 (pre-game), schedule spawn now within safe window [15, preGameDuration-15]
 execute if score _raidSlot mathCounter matches 0 run function mythcraft:raidboss/schedule_pregame_spawn
 
-execute if entity @a[tag=debugMode] run say [DEBUG] Raid Boss scheduled for slot (check mythcraft:raidboss scheduledQuest)
+execute store result storage mythcraft:temp slot int 1 run scoreboard players get _raidSlot mathCounter
+execute if entity @a[tag=debugMode] run function mythcraft:debug/raidboss_schedule with storage mythcraft:temp

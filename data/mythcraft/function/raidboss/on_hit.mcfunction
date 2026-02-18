@@ -11,12 +11,13 @@ execute if entity @s[team=Team2] run scoreboard players set RaidBoss raidBossLas
 # Sync HP from entity into scoreboard
 execute store result score RaidBoss raidBossHP run data get entity @e[tag=raidBoss,limit=1] Health 1
 
+# Debug: log HP after hit
+execute store result storage mythcraft:temp hp int 1 run scoreboard players get RaidBoss raidBossHP
+execute store result storage mythcraft:temp maxHp int 1 run scoreboard players get RaidBoss raidBossMaxHP
+execute if entity @a[tag=debugMode] run function mythcraft:debug/raidboss_hit with storage mythcraft:temp
+
 # Check HP thresholds for announcements
 function mythcraft:raidboss/check_thresholds
-
-# Character XP for hitting the raid boss (same as troop kill reward)
-scoreboard players operation @s characterXP += TroopKill characterXPReward
-function mythcraft:leveling/character/checklevel
 
 # Assassin totem charge (+1 per hit)
 execute if score @s playerClass matches 2 run function mythcraft:totem/charge {amount:1}

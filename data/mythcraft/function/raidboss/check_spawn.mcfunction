@@ -28,3 +28,7 @@ scoreboard players add _raidDelay mathCounter 14
 # Schedule the spawn attempt
 execute store result storage mythcraft:temp duration int 1 run scoreboard players get _raidDelay mathCounter
 function mythcraft:schedule/raidboss_spawn with storage mythcraft:temp
+
+execute store result storage mythcraft:temp slot int 1 run scoreboard players get _currentQuest mathCounter
+execute store result storage mythcraft:temp delay int 1 run scoreboard players get _raidDelay mathCounter
+execute if entity @a[tag=debugMode] run function mythcraft:debug/raidboss_check_spawn with storage mythcraft:temp

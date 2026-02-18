@@ -76,11 +76,14 @@ title @a title [{bold:true,color:"dark_purple",text:"RAID BOSS"}]
 title @a subtitle [{nbt:"bossDisplayName",storage:"mythcraft:raidboss"},{text:" at ",color:"white"},{nbt:"cityDisplayName",storage:"mythcraft:raidboss",color:"red"}]
 execute as @a at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~ 1.0 0.8
 
-execute if entity @a[tag=debugMode] run say [DEBUG] Raid Boss announced
+data modify storage mythcraft:temp debugBossType set from storage mythcraft:raidboss bossType
+data modify storage mythcraft:temp debugLocation set from storage mythcraft:temp cityDisplayName
+execute if entity @a[tag=debugMode] run function mythcraft:debug/raidboss_announce with storage mythcraft:temp
 
 # Try to spawn at marker (may fail if chunks not loaded)
 function mythcraft:raidboss/attempt_entity_spawn with storage mythcraft:raidboss
 
 # If marker wasn't loaded (state still 0), start deferred spawn loop
+execute unless score RaidBoss raidBossState matches 1 if entity @a[tag=debugMode] run say [DEBUG] Raid Boss marker not loaded, deferring spawn
 execute unless score RaidBoss raidBossState matches 1 run data modify storage mythcraft:raidboss spawnPending set value 1b
 execute unless score RaidBoss raidBossState matches 1 run schedule function mythcraft:raidboss/spawn_loop 5s

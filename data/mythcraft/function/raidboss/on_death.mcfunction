@@ -1,5 +1,5 @@
 # Handle raid boss death — VP, rewards, announcements, cleanup
-# Called from on_kill (player kill) or monitor (fallback death detection)
+# Called from on_kill (player kill advancement only)
 
 # Set state to defeated
 scoreboard players set RaidBoss raidBossState 2
@@ -42,4 +42,7 @@ function mythcraft:raidboss/announce_victory with storage mythcraft:temp
 # Clean up slime splits (children don't inherit tags) — 2 tick delay
 schedule function mythcraft:raidboss/cleanup_splits 2t
 
-execute if entity @a[tag=debugMode] run say [DEBUG] Raid Boss defeated
+data modify storage mythcraft:temp debugWinner set value "no team"
+execute if score RaidBoss raidBossLastHit matches 1 run data modify storage mythcraft:temp debugWinner set value "Team1"
+execute if score RaidBoss raidBossLastHit matches 2 run data modify storage mythcraft:temp debugWinner set value "Team2"
+execute if entity @a[tag=debugMode] run function mythcraft:debug/raidboss_death with storage mythcraft:temp

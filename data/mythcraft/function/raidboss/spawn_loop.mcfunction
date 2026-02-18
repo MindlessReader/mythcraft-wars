@@ -14,4 +14,5 @@ data modify storage mythcraft:temp cityDisplayName set from storage mythcraft:ra
 function mythcraft:raidboss/attempt_entity_spawn with storage mythcraft:raidboss
 
 # If still pending, reschedule
+execute if data storage mythcraft:raidboss {spawnPending:1b} if entity @a[tag=debugMode] run say [DEBUG] Raid Boss spawn retry (marker still not loaded)
 execute if data storage mythcraft:raidboss {spawnPending:1b} run schedule function mythcraft:raidboss/spawn_loop 5s

@@ -1,6 +1,8 @@
 # Teleport raid boss back to its spawn marker
 # Run as the raid boss entity, at the boss position
 
+execute if entity @a[tag=debugMode] run say [DEBUG] Raid Boss tethered (too far from spawn marker)
+
 # Find nearest raidboss marker and teleport there
 tp @s @e[type=marker,tag=spawnmarker_raidboss,sort=nearest,limit=1]
 

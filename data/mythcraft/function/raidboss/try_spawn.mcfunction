@@ -7,6 +7,7 @@ execute if score QuestTracker endGame matches 2 run return 0
 
 # Transition flag check: if within 15s of a quest start/end, delay by 15s
 execute if data storage mythcraft:raidboss {recentTransition:1b} run schedule function mythcraft:raidboss/try_spawn 15s
+execute if data storage mythcraft:raidboss {recentTransition:1b} if entity @a[tag=debugMode] run say [DEBUG] Raid Boss spawn delayed 15s (transition flag active)
 execute if data storage mythcraft:raidboss {recentTransition:1b} run return 0
 
 # Build eligible location list (config-only: has raidBossPool[0])
@@ -32,6 +33,7 @@ execute if data storage mythcraft:config skillLocations.Special.raidBossPool[0] 
 execute store result score _eligibleCount mathCounter run data get storage mythcraft:temp eligibleLocations
 
 # If none eligible, abort (no valid spawn point)
+execute if score _eligibleCount mathCounter matches 0 if entity @a[tag=debugMode] run say [DEBUG] Raid Boss spawn aborted (no eligible locations)
 execute if score _eligibleCount mathCounter matches 0 run return 0
 
 # Pick random location from eligible list
@@ -53,6 +55,11 @@ execute if score _locIndex mathCounter matches 10 run data modify storage mythcr
 
 # Store location name for runtime
 data modify storage mythcraft:raidboss cityName set from storage mythcraft:temp chosen.name
+
+# Debug: log chosen location
+execute store result storage mythcraft:temp eligibleCount int 1 run scoreboard players get _eligibleCount mathCounter
+data modify storage mythcraft:temp locationName set from storage mythcraft:raidboss cityName
+execute if entity @a[tag=debugMode] run function mythcraft:debug/raidboss_location with storage mythcraft:temp
 
 # Dispatch to spawn_at_location with the location name
 function mythcraft:raidboss/spawn_at_location with storage mythcraft:temp chosen

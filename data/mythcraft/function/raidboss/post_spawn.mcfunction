@@ -12,4 +12,6 @@ scoreboard players set RaidBoss raidBossLastHit 0
 # Start monitor loop (tether + fallback death detection, 1s interval)
 schedule function mythcraft:raidboss/monitor 1s
 
-execute if entity @a[tag=debugMode] run say [DEBUG] Raid Boss entity spawned
+execute store result storage mythcraft:temp hp int 1 run scoreboard players get RaidBoss raidBossMaxHP
+data modify storage mythcraft:temp debugBossType set from storage mythcraft:raidboss bossType
+execute if entity @a[tag=debugMode] run function mythcraft:debug/raidboss_spawned with storage mythcraft:temp
