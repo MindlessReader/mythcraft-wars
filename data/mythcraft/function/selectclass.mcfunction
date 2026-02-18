@@ -4,8 +4,9 @@ scoreboard players operation @s playerClass = @s selectClass
 execute if score @s playerClass matches 1 run tellraw @s {color:"gold",text:"Class changed to Warrior"}
 execute if score @s playerClass matches 2 run tellraw @s {color:"red",text:"Class changed to Assassin"}
 execute if score @s playerClass matches 3 run tellraw @s {color:"blue",text:"Class changed to Bastion"}
-# Cancel totem stealth if active + reset charge on class change
-execute if score @s totemInvisTimer matches 1.. run function mythcraft:totem/cancel_invis
+# Cancel stealth if active + reset charge on class change
+execute if score @s stealthTimer matches 1.. run effect clear @s speed
+execute if score @s stealthTimer matches 1.. run function mythcraft:stealth/cancel
 scoreboard players set @s totemCharge 0
 # Reset parry state on class change
 scoreboard players set @s parryWindow 0

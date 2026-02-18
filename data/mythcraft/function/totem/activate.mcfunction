@@ -18,8 +18,7 @@ title @s actionbar [{text:"Totem Activated!",color:"gold"}]
 execute if entity @s[team=Team1] at @s run effect give @a[distance=..10,team=Team1] speed 30 1
 execute if entity @s[team=Team2] at @s run effect give @a[distance=..10,team=Team2] speed 30 1
 
-# Invisibility (15s) + stealth visuals (armor + totem invisible)
-effect give @s invisibility 15
-function mythcraft:totem/hide_armor
+# Invisibility (15s) + stealth visuals via generic stealth system
+function mythcraft:stealth/start {seconds:15}
+# Hide totem item model (totem-specific, not in generic stealth)
 item modify entity @s weapon.offhand {function:"minecraft:set_components",components:{"minecraft:item_model":"mythcraft:invisible"}}
-scoreboard players set @s totemInvisTimer 300

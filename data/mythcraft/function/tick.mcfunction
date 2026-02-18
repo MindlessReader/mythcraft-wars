@@ -57,9 +57,9 @@ execute as @a unless score @s playerClass matches 2 if items entity @s weapon.of
 execute as @a unless score @s playerClass matches 2 if items entity @s weapon.mainhand totem_of_undying[custom_data~{mythcraft_totem:true},enchantment_glint_override=true] run item modify entity @s weapon.mainhand mythcraft:totem_uncharged
 execute as @a[scores={playerClass=2}] if items entity @s weapon.offhand totem_of_undying[custom_data~{mythcraft_totem:true},enchantment_glint_override=true] run function mythcraft:totem/validate
 execute as @a[scores={playerClass=2}] if items entity @s weapon.mainhand totem_of_undying[custom_data~{mythcraft_totem:true},enchantment_glint_override=true] run function mythcraft:totem/validate_mainhand
-# totem stealth timer
-execute as @a[scores={totemInvisTimer=1}] run function mythcraft:totem/end_stealth
-scoreboard players remove @a[scores={totemInvisTimer=1..}] totemInvisTimer 1
+# stealth timer (generic — used by totem, kelp, etc.)
+execute as @a[scores={stealthTimer=1}] run function mythcraft:stealth/end
+scoreboard players remove @a[scores={stealthTimer=1..}] stealthTimer 1
 
 # bastion parry — shield tracking and cooldown
 scoreboard players remove @a[scores={parryWindow=1..}] parryWindow 1

@@ -1,5 +1,6 @@
-# cancel totem stealth if active
-execute if score @s totemInvisTimer matches 1.. run function mythcraft:totem/cancel_invis
+# cancel stealth if active (clears invisibility + restores armor; also clear totem speed)
+execute if score @s stealthTimer matches 1.. run effect clear @s speed
+execute if score @s stealthTimer matches 1.. run function mythcraft:stealth/cancel
 
 # clear items
 clear @s

@@ -183,7 +183,7 @@ scoreboard objectives add totemCharge dummy
 scoreboard objectives add totemCooldown dummy
 scoreboard objectives add _totemMax dummy
 scoreboard objectives add _totemDmg dummy
-scoreboard objectives add totemInvisTimer dummy
+scoreboard objectives add stealthTimer dummy
 
 # bastion parry
 scoreboard objectives add _shieldTick dummy
@@ -238,6 +238,7 @@ scoreboard players set C_0 mathCounter 0
 scoreboard players set C_2 mathCounter 2
 scoreboard players set C_3 mathCounter 3
 scoreboard players set C_4 mathCounter 4
+scoreboard players set C_20 mathCounter 20
 scoreboard players set C_60 mathCounter 60
 
 # quests

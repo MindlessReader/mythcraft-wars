@@ -8,7 +8,7 @@ scoreboard players set @s totemCharge 0
 item replace entity @s weapon.offhand with totem_of_undying[enchantments={"minecraft:vanishing_curse":1},enchantment_glint_override=false,custom_data={mythcraft_totem:true},max_damage=64,damage=64,food={nutrition:0,saturation:0,can_always_eat:true},consumable={consume_seconds:100,animation:"none",sound:"minecraft:intentionally_empty",has_consume_particles:false},tooltip_display={hidden_components:["minecraft:food","minecraft:consumable","minecraft:enchantments"]}]
 function mythcraft:totem/update
 
-# Start stealth (armor + totem invisible for 15s)
-function mythcraft:totem/hide_armor
+# Start stealth (armor + totem invisible for 15s) via generic stealth system
+function mythcraft:stealth/start {seconds:15}
+# Hide totem item model (totem-specific, not in generic stealth)
 item modify entity @s weapon.offhand {function:"minecraft:set_components",components:{"minecraft:item_model":"mythcraft:invisible"}}
-scoreboard players set @s totemInvisTimer 300

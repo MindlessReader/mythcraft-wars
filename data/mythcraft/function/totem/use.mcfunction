@@ -10,7 +10,7 @@ item replace entity @s weapon.offhand with totem_of_undying[enchantments={"minec
 function mythcraft:totem/update
 
 # Preserve invisible totem model if stealth is active (re-triggered by held right-click)
-execute if score @s totemInvisTimer matches 1.. run item modify entity @s weapon.offhand {function:"minecraft:set_components",components:{"minecraft:item_model":"mythcraft:invisible"}}
+execute if score @s stealthTimer matches 1.. run item modify entity @s weapon.offhand {function:"minecraft:set_components",components:{"minecraft:item_model":"mythcraft:invisible"}}
 
 # Check cooldown and charge (25%) before activating
 # Level 1: need 16, Level 2: need 12, Level 3: need 9, Level 4: need 6, Level 5: need 4
