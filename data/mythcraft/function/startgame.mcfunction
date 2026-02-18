@@ -17,6 +17,47 @@ schedule clear mythcraft:raidboss/cleanup_splits
 schedule clear mythcraft:raidboss/clear_transition_flag
 schedule clear mythcraft:raidboss/spawn_loop
 
+# Reset victory points
+scoreboard players set Team1 victoryPoints 0
+scoreboard players set Team2 victoryPoints 0
+
+# Reset skill XP and levels
+scoreboard players set Team1 xpAttack 0
+scoreboard players set Team1 xpDefense 0
+scoreboard players set Team1 xpMagic 0
+scoreboard players set Team1 xpSpecial 0
+scoreboard players set Team1 levelAttack 0
+scoreboard players set Team1 levelDefense 0
+scoreboard players set Team1 levelMagic 0
+scoreboard players set Team1 levelSpecial 0
+scoreboard players set Team2 xpAttack 0
+scoreboard players set Team2 xpDefense 0
+scoreboard players set Team2 xpMagic 0
+scoreboard players set Team2 xpSpecial 0
+scoreboard players set Team2 levelAttack 0
+scoreboard players set Team2 levelDefense 0
+scoreboard players set Team2 levelMagic 0
+scoreboard players set Team2 levelSpecial 0
+scoreboard players set @a levelAttack 0
+scoreboard players set @a levelDefense 0
+scoreboard players set @a levelMagic 0
+scoreboard players set @a levelSpecial 0
+
+# Reset character XP and levels
+scoreboard players reset * characterXP
+scoreboard players reset * characterLevel
+scoreboard players set @a characterXP 0
+scoreboard players set @a characterLevel 1
+
+# Reset quest buff timers
+scoreboard players set @a BuffResistance 0
+scoreboard players set @a BuffSpeed 0
+scoreboard players set @a BuffHealthBoost 0
+scoreboard players set @a BuffStrength 0
+
+# Reset magic spell cooldowns
+scoreboard players set @a magicSpellCooldown 0
+
 # Reset quest history and quest state
 data remove storage mythcraft:questhistory log
 data modify storage mythcraft:questhistory log set value []
@@ -33,6 +74,13 @@ scoreboard players set QuestTracker endGame 0
 # Read quest counts from config
 execute store result score QuestTracker victoryPointQuestsRemaining run data get storage mythcraft:config game.vpQuestCount
 execute store result score QuestTracker questsRemaining run data get storage mythcraft:config game.questCount
+
+# Refresh bossbar to show reset VP scores
+data modify storage mythcraft:temp team1Name set from storage mythcraft:config teams.Team1.name
+data modify storage mythcraft:temp team1Color set from storage mythcraft:config teams.Team1.color
+data modify storage mythcraft:temp team2Name set from storage mythcraft:config teams.Team2.name
+data modify storage mythcraft:temp team2Color set from storage mythcraft:config teams.Team2.color
+function mythcraft:setup/bossbar with storage mythcraft:temp
 
 title @a title {bold:true,color:"yellow",text:"Game Start"}
 title @a subtitle {color:"light_purple",text:"Mythcraft Wars"}
