@@ -15,14 +15,16 @@ Switch class anytime: /trigger selectClass set <1/2/3>
   Slot 3: Spear (material scales with character level)
   Slot 8: Compass
   Slot 9: Steak x64
-  Armor:  Mixed armor (material scales with character level)
+  Inventory: Arrow x64
+  Armor:  Head + Chest: Iron/Diamond/Netherite (scales with character level)
+          Legs + Feet: Leather (all levels)
 
   Character Level Attributes:
     Level 1: 10 armor, 0 toughness
     Level 2: 12 armor, 1 toughness
-    Level 3: 14 armor, 2 toughness (Iron → Diamond)
+    Level 3: 14 armor, 2 toughness (Iron -> Diamond)
     Level 4: 16 armor, 3 toughness
-    Level 5: 18 armor, 4 toughness (Diamond → Netherite)
+    Level 5: 18 armor, 4 toughness (Diamond -> Netherite)
 
 
 ------------------------------------
@@ -34,8 +36,10 @@ Switch class anytime: /trigger selectClass set <1/2/3>
   Slot 3: Crossbow
   Slot 8: Compass
   Slot 9: Steak x64
+  Inventory: Arrow x64
   Offhand: Chargeable Totem of Undying
-  Armor:  Full Leather (material scales with character level)
+  Armor:  Head: Iron/Diamond/Netherite (scales with character level)
+          Chest + Legs + Feet: Leather (all levels)
 
   Chargeable Totem:
     - Starts at 0 charge (durability bar shows progress)
@@ -55,9 +59,9 @@ Switch class anytime: /trigger selectClass set <1/2/3>
   Character Level Attributes:
     Level 1: 6 armor, 0 toughness
     Level 2: 7 armor, 0 toughness
-    Level 3: 9 armor, 1 toughness (Leather → Diamond)
+    Level 3: 9 armor, 1 toughness (Iron -> Diamond)
     Level 4: 11 armor, 2 toughness
-    Level 5: 13 armor, 3 toughness (Diamond → Netherite)
+    Level 5: 13 armor, 3 toughness (Diamond -> Netherite)
 
 
 ------------------------------------
@@ -69,8 +73,10 @@ Switch class anytime: /trigger selectClass set <1/2/3>
   Slot 3: Mace
   Slot 8: Compass
   Slot 9: Steak x64
+  Inventory: Arrow x64
   Offhand: Shield
-  Armor:  Full Iron (material scales with character level)
+  Armor:  Full plate (all 4 pieces scale with character level)
+          Iron -> Diamond (lvl 3) -> Netherite (lvl 5)
 
   Perfect Parry:
     - Raise shield then block within 0.5s for a Perfect Parry
@@ -82,7 +88,7 @@ Switch class anytime: /trigger selectClass set <1/2/3>
         Normal:   Level 1-2: 1.5 hearts | Level 3-4: 2 hearts | Level 5: 2.5 hearts
     - Cooldown: 2.5 seconds (shared between both parry types)
     - Only reflects to enemies within 5 blocks (melee range)
-    - Bastion-only (other classes with Defense shields cannot parry)
+    - Bastion-only (other classes cannot parry)
 
   Mortar Shot:
     - Load crossbow while sneaking to fire team-colored firework mortars
@@ -91,20 +97,21 @@ Switch class anytime: /trigger selectClass set <1/2/3>
     - On impact: leaves 10-second Jump Boost field for allies
     - Field indicated by team-colored potion particles
     - Scales with character level:
-        Level 1: 2 stars (9 damage), Jump Boost IV, 3 block radius
-        Level 2: 3 stars (11 damage), Jump Boost IV, 3 block radius
-        Level 3: 4 stars (13 damage), Jump Boost V, 4 block radius
-        Level 4: 5 stars (15 damage), Jump Boost V, 4 block radius
-        Level 5: 6 stars (17 damage), Jump Boost V, 5 block radius
+        Level 1: 2 explosions (9 damage), Jump Boost IV, 3 block radius
+        Level 2: 3 explosions (11 damage), Jump Boost IV, 3 block radius
+        Level 3: 4 explosions (13 damage), Jump Boost V, 4 block radius
+        Level 4: 5 explosions (15 damage), Jump Boost V, 4 block radius
+        Level 5: 6 explosions (17 damage), Jump Boost V, 5 block radius
     - Cooldown: 10 seconds between mortar shots
     - Bastion-only ability
+    - Note: Bastion's crossbow does NOT get Quick Charge (mortar use only)
 
   Character Level Attributes:
     Level 1: 14 armor, 1 toughness
     Level 2: 16 armor, 2 toughness
-    Level 3: 17 armor, 4 toughness (Iron → Diamond)
+    Level 3: 17 armor, 4 toughness (Iron -> Diamond)
     Level 4: 18 armor, 6 toughness
-    Level 5: 20 armor, 8 toughness (Diamond → Netherite)
+    Level 5: 20 armor, 8 toughness (Diamond -> Netherite)
 
 
 ====================================
@@ -137,7 +144,7 @@ These enchantments scale with YOUR personal character level:
   Level 5:    Lunge III
 
 ------------------------------------
-  CROSSBOW (Warrior & Assassin)
+  CROSSBOW (Assassin Only)
 ------------------------------------
   Character level directly scales Quick Charge:
     Level 1: Quick Charge I
@@ -145,6 +152,7 @@ These enchantments scale with YOUR personal character level:
     Level 3: Quick Charge III
     Level 4: Quick Charge IV
     Level 5: Quick Charge V
+  (Bastion's crossbow is for Mortar Shot and does not get Quick Charge)
 
 ------------------------------------
   MACE (Bastion Only)
@@ -177,7 +185,6 @@ your team's skill levels at the four skill locations.
   DEFENSE (Levels 1-5)
 ------------------------------------
   Level 1+:
-    Shield granted (if you don't already have one)
     All Armor     -> Protection I-V (scales with level)
   Level 3+:
     All Armor     -> Thorns III
@@ -187,16 +194,16 @@ your team's skill levels at the four skill locations.
   MAGIC (Levels 1-5)
 ------------------------------------
   Level 1+:
-    Seeking Breath spell unlocked
+    Fireball spell unlocked (blaze rod item, right-click to cast)
   Level 3+:
     Sword         -> Knockback II
 
-  Seeking Breath Cooldowns:
-    Level 1: Cold      (30s)
-    Level 2: Lukewarm  (15s)
-    Level 3: Warm      (10s)
-    Level 4: Hot       ( 5s)
-    Level 5: Boiling   ( 3s)
+  Fireball Spell (scales with Magic level):
+    Tier I   (Level 1): Cooldown 30s | Damage 6  | Radius 3.0 | Fire 5s
+    Tier II  (Level 2): Cooldown 25s | Damage 8  | Radius 3.5 | Fire 7s
+    Tier III (Level 3): Cooldown 20s | Damage 10 | Radius 4.0 | Fire 9s
+    Tier IV  (Level 4): Cooldown 15s | Damage 12 | Radius 4.5 | Fire 11s
+    Tier V   (Level 5): Cooldown 10s | Damage 14 | Radius 5.0 | Fire 13s
 
 
 ------------------------------------
