@@ -138,6 +138,19 @@ data modify storage mythcraft:config game.skillRegenInterval set value 20
 # Grace period duration after conquest (seconds)
 data modify storage mythcraft:config game.gracePeriodDuration set value 60
 
+# XP thresholds for character leveling (per-player, levels 2-5)
+data modify storage mythcraft:config xp.character.level2 set value 15
+data modify storage mythcraft:config xp.character.level3 set value 30
+data modify storage mythcraft:config xp.character.level4 set value 50
+data modify storage mythcraft:config xp.character.level5 set value 80
+
+# XP thresholds for skill leveling (per-team, levels 1-5)
+data modify storage mythcraft:config xp.skill.level1 set value 40
+data modify storage mythcraft:config xp.skill.level2 set value 100
+data modify storage mythcraft:config xp.skill.level3 set value 180
+data modify storage mythcraft:config xp.skill.level4 set value 310
+data modify storage mythcraft:config xp.skill.level5 set value 500
+
 # Unaligned (initial state for unclaimed cities)
 data modify storage mythcraft:config teams.Unaligned.name set value "Unaligned"
 data modify storage mythcraft:config teams.Unaligned.color set value "#FFD700"

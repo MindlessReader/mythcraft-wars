@@ -16,6 +16,8 @@ execute unless data storage mythcraft:config rewards run function mythcraft:conf
 execute unless data storage mythcraft:config cities.City1.raidBossPool run function mythcraft:config/init_raidboss
 # initialize grace period duration if missing (for worlds created before configurable grace period)
 execute unless data storage mythcraft:config game.gracePeriodDuration run data modify storage mythcraft:config game.gracePeriodDuration set value 60
+# initialize XP threshold config if missing (for worlds created before configurable XP thresholds)
+execute unless data storage mythcraft:config xp run function mythcraft:config/init_xp
 
 # initialize display name lookups (runs every load)
 function mythcraft:rewards/init_names
@@ -102,18 +104,8 @@ scoreboard objectives add xpSpecial dummy
 scoreboard objectives add levelSpecial dummy
 scoreboard objectives add xpThresholds dummy
 
-# set character xp thresholds
-#scoreboard players set CharLvl2 characterXPThresholds 15
-#scoreboard players set CharLvl3 characterXPThresholds 30
-#scoreboard players set CharLvl4 characterXPThresholds 50
-#scoreboard players set CharLvl5 characterXPThresholds 80
-
-# set skill xp thresholds
-#scoreboard players set Threshold1 xpThresholds 40
-#scoreboard players set Threshold2 xpThresholds 100
-#scoreboard players set Threshold3 xpThresholds 180
-#scoreboard players set Threshold4 xpThresholds 310
-#scoreboard players set Threshold5 xpThresholds 500
+# sync XP thresholds from config into scoreboards
+function mythcraft:config/sync_xp
 
 # set location IDs
 scoreboard players set Attack locationId 8
@@ -343,18 +335,18 @@ function mythcraft:respawn/regen_tick
 function mythcraft:respawn/regen_skill_tick
 
 # TESTING AREA      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# set xp thresholds (temporary for testing)
-scoreboard players set Threshold1 xpThresholds 1
-scoreboard players set Threshold2 xpThresholds 2
-scoreboard players set Threshold3 xpThresholds 4
-scoreboard players set Threshold4 xpThresholds 6
-scoreboard players set Threshold5 xpThresholds 8
+# set xp thresholds (temporary for testing) KEEP IN MIND THIS DOESNT UPDATE THE CONFIG VALUES, JUST THE SCOREBOARD VALUES USED FOR LEVELING
+#scoreboard players set Threshold1 xpThresholds 1
+#scoreboard players set Threshold2 xpThresholds 2
+#scoreboard players set Threshold3 xpThresholds 4
+#scoreboard players set Threshold4 xpThresholds 6
+#scoreboard players set Threshold5 xpThresholds 8
 
 # character level thresholds (temporary for testing)
-scoreboard players set CharLvl2 characterXPThresholds 2
-scoreboard players set CharLvl3 characterXPThresholds 4
-scoreboard players set CharLvl4 characterXPThresholds 6
-scoreboard players set CharLvl5 characterXPThresholds 8
+#scoreboard players set CharLvl2 characterXPThresholds 2
+#scoreboard players set CharLvl3 characterXPThresholds 4
+#scoreboard players set CharLvl4 characterXPThresholds 6
+#scoreboard players set CharLvl5 characterXPThresholds 8
 
 #respawn all for testing
 function mythcraft:respawn/masterspawn

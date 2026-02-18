@@ -34,6 +34,7 @@ Config fields in `mythcraft:config` storage:
 - **City reward pools:** `cities.CityN.rewardPool` (string list of reward IDs granted by owning each city)
 - **Raid boss pools per location:** `cities.CityN.raidBossPool` (string list), `skillLocations.X.raidBossPool` (string list) — empty = disabled
 - **Raid boss reward pool:** `rewards.raidBossPool` (string list — ALL enabled rewards granted on kill, not random pick)
+- **XP thresholds:** `xp.character.level2`-`level5` (character leveling, per-player), `xp.skill.level1`-`level5` (skill leveling, per-team); synced to scoreboards via `config/sync_xp`
 
 Display text uses the "resolve into temp, call helper with macros" pattern: values are read from `mythcraft:config` into `mythcraft:temp` storage via `data modify`, then passed to helper functions via `function ... with storage mythcraft:temp` so they become `$(paramName)` macro parameters. This avoids `{nbt:...,storage:...,interpret:true}` which does not work reliably for bossbars, titles, or entity CustomName.
 
@@ -90,7 +91,7 @@ The tick loop (`tick.mcfunction`) handles: player rekit on death, spell cooldown
 - Player menu triggers: `openMenu` (1=main, 2=class select, 3=quest history, 4=admin menu), `teleportLocation` (1-7=cities, 8-11=skill locations)
 - Admin menu trigger: `adminAction` (1=open config, 2=manual conquer, 3=marker helper start, 4=toggle debug, 5=toggle god mode, 6=start game, 7=respawn all troops, 8=give marker eggs, 9=delete nearby markers, 20=marker helper stop, 21=marker helper confirm); only enabled for `tag=admin` players
 - Marker helper display: `markerCount` (fake players `Regular`, `Boss`, `RaidBoss`); temporarily replaces sidebar during counting mode
-- Character level: `characterLevel` (per-player, 1-5), `characterXP`, `characterXPThresholds` (fake players `CharLvl2`-`CharLvl5`), `characterXPReward` (fake players `TroopKill`=1, `PlayerKill`=3)
+- Character level: `characterLevel` (per-player, 1-5), `characterXP`, `characterXPThresholds` (fake players `CharLvl2`-`CharLvl5`, synced from `xp.character.*` config), `characterXPReward` (fake players `TroopKill`=1, `PlayerKill`=3)
 - Skill XP rewards: `skillXPReward` (fake player `TroopKill`=1) for team-level skill progression
 - Player death triggers rekit via `needsRekit` scoreboard checked in tick
 - Assassin totem charge: `totemCharge` (per-player, persists through death; reset on class change). Temp objectives: `_totemMax`, `_totemDmg`
