@@ -39,7 +39,10 @@ execute if score RaidBoss raidBossLastHit matches 2 run data modify storage myth
 data modify storage mythcraft:temp bossDisplayName set from storage mythcraft:raidboss bossDisplayName
 function mythcraft:raidboss/announce_victory with storage mythcraft:temp
 
-# Clean up slime splits (children don't inherit tags) — 2 tick delay
+# Tag killer for cleanup context (cleared after cleanup)
+tag @s add _raidBossKiller
+# Clean up slime splits — runs every tick for 2 seconds to catch delayed death animations
+scoreboard players set RaidBoss cleanupTimer 40
 schedule function mythcraft:raidboss/cleanup_splits 2t
 
 data modify storage mythcraft:temp debugWinner set value "no team"
