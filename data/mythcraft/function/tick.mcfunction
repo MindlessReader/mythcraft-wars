@@ -88,6 +88,14 @@ execute as @a at @s run function mythcraft:troop_indicator/update
 execute as @a[tag=enableTroops,team=Team1] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team1] slowness
 execute as @a[tag=enableTroops,team=Team2] at @s run effect clear @e[tag=cityTroop,distance=..10,team=!Team2] slowness
 
+# team-tag vexes spawned by evoker troops (prevents friendly fire)
+execute as @e[type=evoker,tag=cityTroop,team=Team1] at @s run team join Team1 @e[type=vex,distance=..32]
+execute as @e[type=evoker,tag=cityTroop,team=Team2] at @s run team join Team2 @e[type=vex,distance=..32]
+
+# clean up slime troop split children instantly (Size:0 children inherit tags but not DeathLootTable)
+execute as @e[type=slime,tag=cityTroop,nbt={Size:0}] run data merge entity @s {DeathLootTable:"minecraft:empty"}
+kill @e[type=slime,tag=cityTroop,nbt={Size:0}]
+
 # god mode: one-hit strength + bypass troop grace period (separate from debugMode to avoid log spam)
 execute as @a[tag=godMode] run effect give @s minecraft:strength infinite 100 true
 execute if entity @a[tag=godMode] as @e[tag=_gracePeriod] run data merge entity @s {Invulnerable:0b}

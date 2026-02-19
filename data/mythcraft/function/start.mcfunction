@@ -202,6 +202,7 @@ scoreboard objectives add raidBossHP dummy
 scoreboard objectives add raidBossMaxHP dummy
 scoreboard objectives add raidBossState dummy
 scoreboard objectives add raidBossLastHit dummy
+scoreboard objectives add cleanupTimer dummy
 
 # grace period (invulnerability timer per city after conquest)
 scoreboard objectives add graceTimer dummy

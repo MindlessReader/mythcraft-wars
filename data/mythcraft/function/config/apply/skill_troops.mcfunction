@@ -1,6 +1,8 @@
 # Rebuilds troop pool lists from checkbox state for a skill location
 # Params: $(skill), $(pillager), $(vindicator), $(zombie), $(skeleton), $(witch),
-#         $(bosszombie), $(bossskeleton), $(bosswitch), $(blaze), $(breeze), $(illusioner)
+#         $(husk), $(parched), $(stray), $(slime), $(bogged), $(piglin),
+#         $(bosszombie), $(bossskeleton), $(bosswitch), $(blaze), $(breeze), $(illusioner),
+#         $(witherskeleton), $(evoker), $(piglinbrute), $(bossslime)
 
 # Store checkbox values in temp as raw booleans (dialog sends true/false → SNBT parses to 1b/0b)
 $data modify storage mythcraft:temp pillager set value $(pillager)
@@ -8,12 +10,22 @@ $data modify storage mythcraft:temp vindicator set value $(vindicator)
 $data modify storage mythcraft:temp zombie set value $(zombie)
 $data modify storage mythcraft:temp skeleton set value $(skeleton)
 $data modify storage mythcraft:temp witch set value $(witch)
+$data modify storage mythcraft:temp husk set value $(husk)
+$data modify storage mythcraft:temp parched set value $(parched)
+$data modify storage mythcraft:temp stray set value $(stray)
+$data modify storage mythcraft:temp slime set value $(slime)
+$data modify storage mythcraft:temp bogged set value $(bogged)
+$data modify storage mythcraft:temp piglin set value $(piglin)
 $data modify storage mythcraft:temp bosszombie set value $(bosszombie)
 $data modify storage mythcraft:temp bossskeleton set value $(bossskeleton)
 $data modify storage mythcraft:temp bosswitch set value $(bosswitch)
 $data modify storage mythcraft:temp blaze set value $(blaze)
 $data modify storage mythcraft:temp breeze set value $(breeze)
 $data modify storage mythcraft:temp illusioner set value $(illusioner)
+$data modify storage mythcraft:temp witherskeleton set value $(witherskeleton)
+$data modify storage mythcraft:temp evoker set value $(evoker)
+$data modify storage mythcraft:temp piglinbrute set value $(piglinbrute)
+$data modify storage mythcraft:temp bossslime set value $(bossslime)
 
 # Rebuild regular pool (all lines need $ prefix because they use $(skill))
 # Note: macro substitution strips type suffixes (true→1b→"1"), so check {key:1} not {key:true}
@@ -23,6 +35,12 @@ $execute if data storage mythcraft:temp {vindicator:1} run data modify storage m
 $execute if data storage mythcraft:temp {zombie:1} run data modify storage mythcraft:config skillLocations.$(skill).regularPool append value "zombie"
 $execute if data storage mythcraft:temp {skeleton:1} run data modify storage mythcraft:config skillLocations.$(skill).regularPool append value "skeleton"
 $execute if data storage mythcraft:temp {witch:1} run data modify storage mythcraft:config skillLocations.$(skill).regularPool append value "witch"
+$execute if data storage mythcraft:temp {husk:1} run data modify storage mythcraft:config skillLocations.$(skill).regularPool append value "husk"
+$execute if data storage mythcraft:temp {parched:1} run data modify storage mythcraft:config skillLocations.$(skill).regularPool append value "parched"
+$execute if data storage mythcraft:temp {stray:1} run data modify storage mythcraft:config skillLocations.$(skill).regularPool append value "stray"
+$execute if data storage mythcraft:temp {slime:1} run data modify storage mythcraft:config skillLocations.$(skill).regularPool append value "slime"
+$execute if data storage mythcraft:temp {bogged:1} run data modify storage mythcraft:config skillLocations.$(skill).regularPool append value "bogged"
+$execute if data storage mythcraft:temp {piglin:1} run data modify storage mythcraft:config skillLocations.$(skill).regularPool append value "piglin"
 
 # Rebuild boss pool
 $data modify storage mythcraft:config skillLocations.$(skill).bossPool set value []
@@ -32,6 +50,10 @@ $execute if data storage mythcraft:temp {bosswitch:1} run data modify storage my
 $execute if data storage mythcraft:temp {blaze:1} run data modify storage mythcraft:config skillLocations.$(skill).bossPool append value "blaze"
 $execute if data storage mythcraft:temp {breeze:1} run data modify storage mythcraft:config skillLocations.$(skill).bossPool append value "breeze"
 $execute if data storage mythcraft:temp {illusioner:1} run data modify storage mythcraft:config skillLocations.$(skill).bossPool append value "illusioner"
+$execute if data storage mythcraft:temp {witherskeleton:1} run data modify storage mythcraft:config skillLocations.$(skill).bossPool append value "witherskeleton"
+$execute if data storage mythcraft:temp {evoker:1} run data modify storage mythcraft:config skillLocations.$(skill).bossPool append value "evoker"
+$execute if data storage mythcraft:temp {piglinbrute:1} run data modify storage mythcraft:config skillLocations.$(skill).bossPool append value "piglinbrute"
+$execute if data storage mythcraft:temp {bossslime:1} run data modify storage mythcraft:config skillLocations.$(skill).bossPool append value "bossslime"
 
 # Return to skill editor
 $function mythcraft:config/edit/skill {skill:$(skill)}
