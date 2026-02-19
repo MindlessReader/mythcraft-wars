@@ -16,3 +16,6 @@ execute if score @s characterLevel matches 3..4 run data modify storage mythcraf
 execute if score @s characterLevel matches 5 run data modify storage mythcraft:temp dmg set value 10
 # Apply damage + slowness via macro helper (at @s needed for distance selector)
 execute at @s run function mythcraft:parry/apply_perfect with storage mythcraft:temp
+# Swap shield cooldown group to bypass axe disable (5s protection)
+item modify entity @s weapon.offhand mythcraft:shield_parry_protect
+scoreboard players set @s parryShieldProtect 100

@@ -1,0 +1,1 @@
+[{"function":"minecraft:set_components","components":{"minecraft:use_cooldown":{"seconds":0.05,"cooldown_group":"mythcraft:shield"}}}]

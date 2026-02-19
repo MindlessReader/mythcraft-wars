@@ -123,10 +123,12 @@ scoreboard players set @a totemCharge 0
 # reset bastion parry state
 scoreboard players reset * parryWindow
 scoreboard players reset * parryCooldown
+scoreboard players reset * parryShieldProtect
 scoreboard players reset * _shieldTick
 scoreboard players reset * _wasBlocking
 scoreboard players set @a parryWindow 0
 scoreboard players set @a parryCooldown 0
+scoreboard players set @a parryShieldProtect 0
 scoreboard players set @a _shieldTick 0
 scoreboard players set @a _wasBlocking 0
 

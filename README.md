@@ -79,7 +79,7 @@ The heavy tank with two unique abilities. Highest armor and toughness, with a sh
 | 4 | 18 | 6 |
 | 5 | 20 | 8 |
 
-**Perfect Parry** — Raise your shield and block an attack within 0.5 seconds for a Perfect Parry, dealing damage and Slowness II to the attacker plus Resistance I to yourself. Blocking outside the window still triggers a lesser Normal Parry. Damage scales with character level (3-5 hearts perfect, 1.5-2.5 hearts normal). 2.5 second cooldown.
+**Perfect Parry** — Raise your shield and block an attack within 0.5 seconds for a Perfect Parry, dealing damage and Slowness II to the attacker plus Resistance I to yourself. A Perfect Parry also prevents your shield from being disabled by heavy attacks (axes, wardens, etc.). Blocking outside the window still triggers a lesser Normal Parry. Damage scales with character level (3-5 hearts perfect, 1.5-2.5 hearts normal). 2.5 second cooldown.
 
 **Mortar Shot** — Load your crossbow while sneaking to fire a team-colored firework mortar. On impact, leaves a 10-second Jump Boost field for allies. Explosion count and field strength scale with character level. 10 second cooldown.
 

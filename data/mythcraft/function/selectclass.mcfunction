@@ -11,6 +11,7 @@ scoreboard players set @s totemCharge 0
 # Reset parry state on class change
 scoreboard players set @s parryWindow 0
 scoreboard players set @s parryCooldown 0
+scoreboard players set @s parryShieldProtect 0
 scoreboard players set @s _shieldTick 0
 scoreboard players set @s _wasBlocking 0
 # Reset mortar state on class change

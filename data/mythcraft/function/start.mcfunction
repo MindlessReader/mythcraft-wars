@@ -180,6 +180,7 @@ scoreboard objectives add _totemDmg dummy
 scoreboard objectives add stealthTimer dummy
 
 # bastion parry
+scoreboard objectives add parryShieldProtect dummy
 scoreboard objectives add _shieldTick dummy
 scoreboard objectives add _wasBlocking dummy
 scoreboard objectives add parryWindow dummy

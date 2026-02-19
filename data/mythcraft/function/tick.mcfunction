@@ -63,6 +63,9 @@ execute as @a[scores={playerClass=2}] if items entity @s weapon.mainhand totem_o
 execute as @a[scores={stealthTimer=1}] run function mythcraft:stealth/end
 scoreboard players remove @a[scores={stealthTimer=1..}] stealthTimer 1
 
+# bastion parry — shield cooldown group restore after perfect parry protection expires
+execute as @a[scores={parryShieldProtect=1}] run item modify entity @s weapon.offhand mythcraft:shield_parry_restore
+scoreboard players remove @a[scores={parryShieldProtect=1..}] parryShieldProtect 1
 # bastion parry — shield tracking and cooldown
 scoreboard players remove @a[scores={parryWindow=1..}] parryWindow 1
 execute as @a[scores={playerClass=3,parryCooldown=1}] at @s run playsound minecraft:block.anvil.land master @s ~ ~ ~ 0.8 1.5
