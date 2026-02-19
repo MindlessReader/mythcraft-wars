@@ -229,6 +229,11 @@ scoreboard players set @a totemCharge 0
 # clean up mortar entities and scores
 function mythcraft:mortar/cleanup
 
+# clean up fireball burn tags
+tag @e remove _fireballBurn
+tag @e remove _fbTeam1
+tag @e remove _fbTeam2
+
 scoreboard players set QuestTracker endGame 0
 
 # set constants
@@ -295,6 +300,8 @@ scoreboard players set RNGseed RNG_Variable 0
 #Magic Spell System (generic for all magic spells)
 scoreboard objectives add magicSpellCooldown dummy
 scoreboard objectives add _spellLifetime dummy
+scoreboard objectives add _fbBurnTimer dummy
+scoreboard objectives add _fbSubTick dummy
 
 # Display
 scoreboard objectives add display dummy

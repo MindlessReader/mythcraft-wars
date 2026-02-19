@@ -16,6 +16,8 @@ execute as @a[scores={levelMagic=1..5,magicSpellCooldown=0}] run function mythcr
 # execute as @e[type=area_effect_cloud,tag=breath_spell] at @s run function mythcraft:spells/breathseek
 # Fireball tracking
 execute as @e[type=area_effect_cloud,tag=fireball_spell] at @s run function mythcraft:spells/fireballtrack
+# Fireball burn tick (player-attributed DoT)
+execute as @e[tag=_fireballBurn] at @s run function mythcraft:spells/fireburntick
 #Markers
 execute as @e[type=marker,tag=setmarker] at @s run function mythcraft:markers/setcity
 

@@ -2,6 +2,11 @@
 execute if score @s stealthTimer matches 1.. run effect clear @s speed
 execute if score @s stealthTimer matches 1.. run function mythcraft:stealth/cancel
 
+# clear fireball burn
+tag @s remove _fireballBurn
+tag @s remove _fbTeam1
+tag @s remove _fbTeam2
+
 # clear items
 clear @s
 
