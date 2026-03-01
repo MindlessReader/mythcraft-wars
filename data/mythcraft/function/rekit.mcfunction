@@ -13,6 +13,10 @@ clear @s
 # default class for anyone without one
 execute unless score @s playerClass matches 1..3 run scoreboard players set @s playerClass 1
 
+# initialize character level for new players (load function fires before player joins, so @a misses them)
+execute unless score @s characterLevel matches 1.. run scoreboard players set @s characterLevel 1
+execute unless score @s characterXP matches 0.. run scoreboard players set @s characterXP 0
+
 # shared items (same for all classes)
 item replace entity @s hotbar.7 with compass[enchantments={"minecraft:vanishing_curse":1},max_stack_size=1,food={nutrition:0,saturation:0,can_always_eat:true},consumable={consume_seconds:0.1,animation:"none",sound:"minecraft:intentionally_empty",has_consume_particles:false},lodestone_tracker={tracked:false,target:{dimension:"minecraft:the_end",pos:[I;0,0,0]}},custom_name="Unset, right click to set"]
 item replace entity @s hotbar.8 with cooked_beef[enchantments={"minecraft:vanishing_curse":1},enchantment_glint_override=false] 64
